@@ -1,0 +1,12 @@
+{
+	"$schema": "https://json.schemastore.org/block.json",
+	"apiVersion": 2,
+	"version": "1.0",
+	"name": "mgblockslider/slide",
+	"title": "MG Block Slide",
+	"textdomain": "mgblockslide",
+	"keywords": ["slide", "slideshow", "block", "anything", "content"],
+	"category": "media",
+	"editorScript": "file:./mgblockslide.js",
+	"editorStyle": "file:../../css/mgblockslider.css"
+}

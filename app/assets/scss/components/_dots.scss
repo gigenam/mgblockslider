@@ -1,0 +1,70 @@
+//
+// Control dots
+//
+
+.wp-block-mgblockslider-slider__control {
+	&__dots {
+		align-items: center;
+		width: 100%;
+		height: 40px;
+		overflow-x: auto;
+		transition: height var(--slider--transition-duration--controls);
+	}
+
+	&__dot {
+		flex: 0 0 auto;
+		width: 15px;
+		height: 15px;
+		margin: 0 5px;
+		border: 1px solid var(--slider--items--primary);
+		border-radius: 50%;
+		cursor: pointer;
+
+		&:first-child {
+			margin-left: auto;
+		}
+
+		&:last-child {
+			margin-right: auto;
+		}
+
+		@include to(large) {
+			margin: 0 8px;
+		}
+
+		&--current {
+			background-color: var(--slider--items--primary);
+		}
+	}
+
+	// Dot types.
+	&--squares,
+	&--squares-block {
+		.wp-block-mgblockslider-slider__control__dot {
+			border-radius: 0;
+		}
+	}
+
+	&--block,
+	&--squares-block {
+		background-color: var(--slider--items--primary);
+
+		.wp-block-mgblockslider-slider__control__dot {
+			border-color: var(--slider--items--secondary);
+
+			&--current {
+				background-color: var(--slider--items--secondary);
+			}
+		}
+	}
+}
+
+//
+// Auto hide controls
+// ------------------------------------------
+&:not(:hover) .wp-block-mgblockslider-slider__container.control-nav--is-hidden {
+	~ .wp-block-mgblockslider-slider__control__dots {
+		height: 0;
+		overflow: hidden;
+	}
+}

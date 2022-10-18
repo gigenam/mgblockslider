@@ -1,0 +1,64 @@
+{
+	"type": "module",
+	"name": "mgblockslider",
+	"site": "http://localhost:8080/mgblockslider",
+	"version": "1.0.0",
+	"description": "A simple slideshow block to use it in any block editor",
+	"author": "Marcos Gigena",
+	"homepage": "https://github.com/gigenam/",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/gigenam/mgblockslider",
+		"author": "gigenam"
+	},
+	"license": "GNU General Public License v2 or later",
+	"keywords": [
+		"wordpress",
+		"plugin"
+	],
+	"main": "index.js",
+	"scripts": {
+		"help": "node index.js",
+		"start": "npm install && composer update && gulp updateThemeInfo && gulp build && gulp translate",
+		"start:no-composer": "npm install && gulp updateThemeInfo && gulp build && gulp translate",
+		"dev": "gulp dev",
+		"blocks": "wp-scripts start --webpack-copy-php --webpack-src-dir=./app/assets/blocks/ --output-path=./app/blocks/",
+		"watch": "gulp watch",
+		"build": "NODE_ENV=production gulp build && gulp scripts",
+		"build-blocks": "wp-scripts build --webpack-copy-php --webpack-src-dir=./app/assets/blocks/ --output-path=./app/blocks/"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.18.13",
+		"@babel/preset-env": "^7.18.10",
+		"@babel/register": "^7.18.9",
+		"babel-loader": "^8.2.5",
+		"eslint": "^8.21.0",
+		"@wordpress/eslint-plugin": "^13.0.0",
+		"browser-sync": "^2.27.10",
+		"gulp": "^4.0.2",
+		"gulp-clean": "^0.4.0",
+		"gulp-css-url-adjuster": "^0.2.3",
+		"gulp-imagemin": "^8.0.0",
+		"gulp-merge-media-queries": "^0.2.1",
+		"gulp-postcss": "^9.0.1",
+		"gulp-rename": "^2.0.0",
+		"gulp-sass": "^5.1.0",
+		"gulp-sourcemaps": "^3.0.0",
+		"gulp-string-replace": "^1.1.2",
+		"gulp-svg-sprite": "^1.5.0",
+		"gulp-wp-pot": "^2.5.0",
+		"sass": "^1.54.5",
+		"autoprefixer": "^10.4.8",
+		"cssnano": "^5.1.13",
+		"webpack": "^5.74.0",
+		"webpack-stream": "^7.0.0",
+		"@wordpress/env": "^4.6.0",
+		"@wordpress/scripts": "^23.0.0",
+		"copy-webpack-plugin": "^10.2.4"
+	},
+	"browserslist": [
+		"> 1%",
+		"last 3 versions",
+		"Firefox ESR"
+	]
+}

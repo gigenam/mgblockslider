@@ -1,0 +1,142 @@
+/**
+ * MG Block Slider editor styles
+ */
+.wp-block-mgblockslider-slider {
+  overflow: hidden;
+  padding: 12px !important;
+  color: #333;
+  background-color: #f5f5f5;
+  border: 1px solid #dfdfdf;
+  border-radius: 4px;
+}
+.wp-block-mgblockslider-slider, .wp-block-mgblockslider-slider * {
+  box-sizing: border-box !important;
+}
+.wp-block-mgblockslider-slider .wp-block-mgblockslider-slider__title {
+  max-width: calc(100% - 120px);
+  margin: 0 auto;
+}
+.wp-block-mgblockslider-slider .wp-block-mgblockslider-slider__title .components-base-control__field {
+  margin-bottom: 0;
+}
+.wp-block-mgblockslider-slider .wp-block-mgblockslider-slider__title input {
+  font-size: 20px;
+  color: currentColor;
+  background-color: transparent;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 4px;
+  border-color: currentColor;
+  opacity: 0.85;
+}
+.wp-block-mgblockslider-slider .wp-block-mgblockslider-slider__title input:focus {
+  font-weight: normal;
+  color: #333;
+  background-color: #fff;
+}
+.wp-block-mgblockslider-slider .wp-block-mgblockslider-slider__toggle {
+  display: flex;
+  position: absolute;
+  top: 15px;
+  cursor: pointer;
+}
+.wp-block-mgblockslider-slider .wp-block-mgblockslider-slider__toggle:hover {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+}
+.wp-block-mgblockslider-slider .wp-block-mgblockslider-slider__toggle.is-collapse {
+  transform: rotate(180deg);
+}
+.wp-block-mgblockslider-slider .wp-block-mgblockslider-slider__toggle--full {
+  left: 10px;
+}
+.wp-block-mgblockslider-slider .wp-block-mgblockslider-slider__toggle--compact {
+  right: 10px;
+}
+.wp-block-mgblockslider-slider .wp-block-mgblockslider-slider__toggle svg {
+  fill: currentColor;
+  pointer-events: none;
+}
+.wp-block-mgblockslider-slider .block-editor-block-list__layout:not(.is-collapse-full) {
+  margin-top: 16px;
+  margin-bottom: 30px;
+}
+.wp-block-mgblockslider-slider .block-editor-block-list__layout.is-collapse-full {
+  height: 0;
+  overflow: hidden;
+}
+.wp-block-mgblockslider-slider .block-editor-block-list__layout.is-collapse-full .wp-block-mgblockslider-slide {
+  padding: 0 !important;
+}
+.wp-block-mgblockslider-slider .wp-block-mgblockslider-slide {
+  max-width: 800px !important;
+  padding: 15px !important;
+  margin: 10px auto 0 !important;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  box-shadow: 0 6px 8px -3px rgba(0, 0, 0, 0.12);
+}
+.wp-block-mgblockslider-slider .wp-block-mgblockslider-slide ~ .block-list-appender {
+  right: -9px;
+  bottom: -37px;
+}
+.wp-block-mgblockslider-slider .wp-block-mgblockslider-slide__title {
+  margin: 0 0 10px;
+  line-height: 15px;
+  text-align: center;
+}
+.wp-block-mgblockslider-slider .block-editor-inner-blocks.is-collapse .wp-block-mgblockslider-slide:not(.is-selected, .has-child-selected) {
+  max-height: 50px;
+  overflow: hidden;
+}
+.wp-block-mgblockslider-slider .block-editor-inner-blocks.is-collapse .wp-block-mgblockslider-slide:not(.is-selected, .has-child-selected) .block-editor-inner-blocks {
+  display: none;
+}
+.wp-block-mgblockslider-slider > .block-editor-inner-blocks > .block-editor-block-list__layout > .block-list-appender:only-child button {
+  margin-top: 10px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.components-panel__body__mgblockslider .hidden {
+  display: none;
+}
+.components-panel__body__mgblockslider .components-panel__row {
+  flex-wrap: wrap;
+}
+.components-panel__body__mgblockslider .components-panel__row:first-of-type {
+  margin-top: 1.25em;
+}
+.components-panel__body__mgblockslider .components-flex,
+.components-panel__body__mgblockslider .components-base-control {
+  width: 100%;
+}
+.components-panel__body__mgblockslider .components-base-control:first-of-type:where(:not(.components-range-control)) {
+  margin-bottom: 1em;
+}
+.components-panel__body__mgblockslider .components-base-control--custom {
+  margin-top: -1.5em;
+}
+.components-panel__body__mgblockslider .components-base-control .components-input-control__label {
+  font-size: 13px !important;
+  text-transform: none !important;
+}
+.components-panel__body__mgblockslider .components-base-control .components-text-control__input {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.block-editor-block-inspector__advanced .component-button--restore {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 0.5rem;
+  margin-bottom: 1.2rem;
+}
+.block-editor-block-inspector__advanced .component-button--restore:hover {
+  color: #ffffff !important;
+  background-color: #f14040;
+  font-weight: bold;
+  border-color: #f14040;
+}
+/*# sourceMappingURL=mgblockslider.css.map */

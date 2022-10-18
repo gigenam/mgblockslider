@@ -1,0 +1,62 @@
+{
+	"translation-revision-date": "",
+	"generator": "WP-CLI/2.6.0",
+	"source": "blocks/controls.js",
+	"domain": "messages",
+	"locale_data": {
+		"messages": {
+			"": {
+				"domain": "messages",
+				"lang": "es_AR",
+				"plural-forms": "nplurals=2; plural=(n != 1);"
+			},
+			"Help": ["Ayuda"],
+			"Navigations": ["Navegaciones"],
+			"Navigation arrows": ["Flechas de navegaci\u00f3n"],
+			"Auto hide arrows": ["Auto ocultar flechas"],
+			"Arrows type": ["Tipo de flechas"],
+			"Default": ["Por defecto"],
+			"Squares": ["Cubos"],
+			"Circles": ["C\u00edrculos"],
+			"Pagination dots": ["Puntos de paginaci\u00f3n"],
+			"Auto hide dots": ["Auto ocultar puntos"],
+			"Paginations type": ["Tipo de paginaci\u00f3n"],
+			"Circles with background": ["Circulos con fondo"],
+			"Squares with background": ["Cubos con fondo"],
+			"Thumbnails navigation": ["Navegaci\u00f3n con miniaturas"],
+			"Auto hide thumbs": ["Auto ocultar miniaturas"],
+			"Swipe navigation": ["Navegaci\u00f3n por gestos"],
+			"Animations": ["Animaciones"],
+			"Auto start animations": ["Auto comenzar animaciones"],
+			"Stop animations on hover": ["Para animaciones al interactuar"],
+			"Animation type": ["Tipo de animaci\u00f3n"],
+			"Swipe": ["Deslizar"],
+			"Fade": ["Desvanecer"],
+			"Cards": ["Tarjetas"],
+			"No animation": ["Sin animaci\u00f3n"],
+			"Vertical animations": ["Animaciones verticales"],
+			"Transition type": ["Tipo de transici\u00f3n"],
+			"Add custom css transitions with steps() or cubic-bezier().": [
+				"Agrega transiciones css personalizadas con step() o cubic-bezier()."
+			],
+			"Duration between slides": ["Duraci\u00f3n entre tarjetas"],
+			"Animation speed": ["Velocidad de animaci\u00f3n"],
+			"Media": [""],
+			"Pause content when losing focus": [
+				"Pausar contenido al perder foco"
+			],
+			"Wait videos to finish": ["Esperar a terminar los videos"],
+			"Theme": ["Tema"],
+			"Light": ["Claro"],
+			"Dark": ["Oscuro"],
+			"Auto minimum height": ["Altura m\u00ednima autom\u00e1tica"],
+			"Expand block": ["Expandir bloque"],
+			"Collapse block": ["Colapsar bloque"],
+			"Expand slides": ["Expandir tarjetas"],
+			"Collapse slides": ["Colapsar tarjetas"],
+			"Collapse": ["Colapsar"],
+			"Slide ": ["Tarjeta "],
+			"Restore everything to default": ["Restaurar a valores por defecto"]
+		}
+	}
+}

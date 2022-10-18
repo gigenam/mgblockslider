@@ -1,0 +1,80 @@
+//
+// Breakpoints for responsive design
+//
+// * from().
+// * to().
+// * only().
+//
+// @since 1.0.0
+//
+
+$breakpoints: (
+	// from Mobiles HD
+	small: 429px,
+	// from Tablets in portrait
+	medium: 599px,
+	// from HD / Notebooks
+	large: 1099px,
+	// from FullHD / Retina,
+	// xlarge: 1499px
+);
+
+// From -> ( from $bp to higher resolutions ) !Recommended
+// ----------------------------------------------
+@mixin from($bp) {
+	@if map-has-key($breakpoints, $bp) {
+		@media screen and (min-width: map-get($breakpoints, $bp)) {
+			@content;
+		}
+	} @else {
+		@media screen and (min-width: $bp) {
+			@content;
+		}
+	}
+}
+
+// To -> ( from $bp to lower resolutions )
+// ----------------------------------------------
+@mixin to($bp) {
+	@if map-has-key($breakpoints, $bp) {
+		@media screen and (max-width: map-get($breakpoints, $bp)) {
+			@content;
+		}
+	} @else {
+		@media screen and (max-width: $bp) {
+			@content;
+		}
+	}
+}
+
+// Only on X size ( $bp )
+// * You can use small, medium and large options.
+// * * If you want a size below small, use @include to(small){}.
+// * * If you want a size above large, use @include from(xlarge){}.
+// ----------------------------------------------
+@mixin only($bp) {
+	@if $bp==small {
+		// If is small $bp, only works between small and medium.
+		@media screen and (min-width: map-get($breakpoints, small)) and (max-width: map-get($breakpoints, medium)) {
+			@content;
+		}
+	} @else if $bp==medium {
+		// If is medium $bp, only works between medium and large.
+		@media screen and (min-width: map-get($breakpoints, medium)) and (max-width: map-get($breakpoints, large)) {
+			@content;
+		}
+	} @else if $bp==large {
+		// If is large $bp, only works between large and xlarge.
+		@media screen and (min-width: map-get($breakpoints, $bp)) and (max-width: map-get($breakpoints, xlarge)) {
+			@content;
+		}
+	}
+}
+
+// How to use:
+// ----------------------------------------------
+// @include from(size) {
+//     css styles
+// }
+// size: $breakpoints or fixed size* (px, rem, etc.)
+// * Fixed size doesn't work with only().

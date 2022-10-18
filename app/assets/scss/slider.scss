@@ -1,0 +1,157 @@
+/**
+ * Main slider styles
+ *
+ * @since 1.0.0
+ */
+
+@import "base/breakpoints";
+
+// Reset styles for lists.
+%reset-list {
+	display: flex;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+// Main parent element.
+.wp-block-mgblockslider-slider {
+	--slider--items--primary: #ffffff;
+	--slider--items--secondary: #111111;
+	--slider--items--background: rgba(255, 255, 255, 0.85);
+	--slider--z-index--controls: 50;
+	--slider--transition-duration--controls: 200ms;
+	width: 100%;
+	margin-bottom: 1em;
+	color: var(--slider--items--secondary);
+
+	// Main container for thumbnails, dots, and slides container.
+	&,
+	&__container {
+		position: relative;
+		overflow: hidden;
+	}
+
+	&__container:not(&.dragging) .wp-block-mgblockslider-slide {
+		transition-delay: 0.1s;
+	}
+
+	&__container.dragging .wp-block-mgblockslider-slide {
+		transition: transform 0ms linear !important;
+	}
+
+	&__container.thumbnails-nav {
+		margin-bottom: 0 !important;
+	}
+
+	ul,
+	ol {
+		@extend %reset-list;
+	}
+
+	// Default text color.
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	p,
+	a,
+	span,
+	figcaption,
+	figure figcaption,
+	blockquote,
+	cite {
+		color: currentColor;
+	}
+
+	// Responsive images.
+	img,
+	video,
+	picture,
+	figure {
+		display: block;
+		width: 100%;
+		height: auto;
+		margin: 0 !important;
+	}
+
+	// Full width videos.
+	video,
+	iframe {
+		width: 100%;
+	}
+
+	// Import components.
+	@import "components/slides";
+	@import "components/arrows";
+	@import "components/dots";
+	@import "components/thumbnails";
+
+	// Loading spinner.
+	&__loading {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: calc(var(--slider--z-index--controls) + 10);
+		background-color: var(--slider--items--primary);
+		opacity: 0.95;
+
+		// Loading animation.
+		p {
+			width: 40px;
+			height: 40px;
+			margin: 0;
+			background: url(../img/spinner-dark.svg) no-repeat center / contain;
+			animation: spin 0.8s infinite linear;
+
+			@keyframes spin {
+				to {
+					transform: rotate(360deg);
+				}
+			}
+		}
+	}
+
+	@import "components/dark-theme";
+}
+
+//
+// Hide the screen reader text for accessibility
+// ----------------------------------------------
+.screen-reader-text {
+	width: 1px;
+	height: 1px;
+	position: absolute !important; // Override: Force floating position.
+	left: 0;
+	overflow: hidden;
+	padding: 0;
+	margin: -1px;
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	word-wrap: normal !important; // Override: Force word wrapping.
+
+	&:focus {
+		display: block;
+		width: auto;
+		height: auto;
+		top: 5px;
+		left: 5px;
+		z-index: 100000;
+		padding: 15px 23px 14px;
+		line-height: normal;
+		color: #444;
+		background-color: #eee;
+		font-size: 1em;
+		text-decoration: none;
+		clip: auto !important; // Override: Force clip.
+		clip-path: none;
+	}
+}

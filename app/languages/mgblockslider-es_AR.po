@@ -1,0 +1,363 @@
+# Copyright (C) 2022 mgblockslider
+# This file is distributed under the same license as the mgblockslider package.
+msgid ""
+msgstr ""
+"Project-Id-Version: mgblockslider 1.0\n"
+"POT-Creation-Date: 2022-10-18 09:38-0300\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es_AR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;"
+"_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;"
+"esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 3.1.1\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: assets/blocks/controls.js:10
+msgid "Help"
+msgstr "Ayuda"
+
+#: assets/blocks/controls.js:12
+msgid "Documentation is coming soon."
+msgstr ""
+
+#: assets/blocks/controls.js:12
+msgid "Placeholder Link"
+msgstr ""
+
+#: assets/blocks/controls.js:16
+msgid "Navigations"
+msgstr "Navegaciones"
+
+#: assets/blocks/controls.js:19
+msgid "Navigation arrows"
+msgstr "Flechas de navegación"
+
+#: assets/blocks/controls.js:31
+msgid "Auto hide arrows"
+msgstr "Auto ocultar flechas"
+
+#: assets/blocks/controls.js:38
+msgid "Arrows type"
+msgstr "Tipo de flechas"
+
+#: assets/blocks/controls.js:41
+msgid "Default"
+msgstr "Por defecto"
+
+#: assets/blocks/controls.js:42 assets/blocks/controls.js:73
+msgid "Squares"
+msgstr "Cubos"
+
+#: assets/blocks/controls.js:43 assets/blocks/controls.js:72
+msgid "Circles"
+msgstr "Círculos"
+
+#: assets/blocks/controls.js:50
+msgid "Pagination dots"
+msgstr "Puntos de paginación"
+
+#: assets/blocks/controls.js:62
+msgid "Auto hide dots"
+msgstr "Auto ocultar puntos"
+
+#: assets/blocks/controls.js:69
+msgid "Paginations type"
+msgstr "Tipo de paginación"
+
+#: assets/blocks/controls.js:74
+msgid "Circles with background"
+msgstr "Circulos con fondo"
+
+#: assets/blocks/controls.js:75
+msgid "Squares with background"
+msgstr "Cubos con fondo"
+
+#: assets/blocks/controls.js:82
+msgid "Thumbnails navigation"
+msgstr "Navegación con miniaturas"
+
+#: assets/blocks/controls.js:94
+msgid "Auto hide thumbs"
+msgstr "Auto ocultar miniaturas"
+
+#: assets/blocks/controls.js:101
+msgid "Swipe navigation"
+msgstr "Navegación por gestos"
+
+#: assets/blocks/controls.js:108
+msgid "Animations"
+msgstr "Animaciones"
+
+#: assets/blocks/controls.js:111
+msgid "Auto start animations"
+msgstr "Auto comenzar animaciones"
+
+#: assets/blocks/controls.js:118
+msgid "Stop animations on hover"
+msgstr "Para animaciones al interactuar"
+
+#: assets/blocks/controls.js:125
+msgid "Animation type"
+msgstr "Tipo de animación"
+
+#: assets/blocks/controls.js:128
+msgid "Swipe"
+msgstr "Deslizar"
+
+#: assets/blocks/controls.js:129
+msgid "Fade"
+msgstr "Desvanecer"
+
+#: assets/blocks/controls.js:130
+msgid "Cards"
+msgstr "Tarjetas"
+
+#: assets/blocks/controls.js:131
+msgid "No animation"
+msgstr "Sin animación"
+
+#: assets/blocks/controls.js:138
+msgid "Vertical animations"
+msgstr "Animaciones verticales"
+
+#: assets/blocks/controls.js:145
+msgid "Transition type"
+msgstr "Tipo de transición"
+
+#: assets/blocks/controls.js:165
+msgid "Add custom css transitions with steps() or cubic-bezier()."
+msgstr "Agrega transiciones css personalizadas con step() o cubic-bezier()."
+
+#: assets/blocks/controls.js:170
+msgid "Duration between slides"
+msgstr "Duración entre tarjetas"
+
+#: assets/blocks/controls.js:185
+msgid "Animation speed"
+msgstr "Velocidad de animación"
+
+#: assets/blocks/controls.js:200
+msgid "Media"
+msgstr ""
+
+#: assets/blocks/controls.js:203
+msgid "Pause content when losing focus"
+msgstr "Pausar contenido al perder foco"
+
+#: assets/blocks/controls.js:210
+msgid "Wait videos to finish"
+msgstr "Esperar a terminar los videos"
+
+#: assets/blocks/controls.js:217
+msgid "Theme"
+msgstr "Tema"
+
+#: assets/blocks/controls.js:222
+msgid "Light"
+msgstr "Claro"
+
+#: assets/blocks/controls.js:223
+msgid "Dark"
+msgstr "Oscuro"
+
+#: assets/blocks/controls.js:230
+msgid "Auto minimum height"
+msgstr "Altura mínima automática"
+
+#: assets/blocks/controls.js:269
+msgid "Restore everything to default"
+msgstr "Restaurar a valores por defecto"
+
+#: assets/blocks/editBlocks.js:48
+msgid "Expand block"
+msgstr "Expandir bloque"
+
+#: assets/blocks/editBlocks.js:52
+msgid "Collapse block"
+msgstr "Colapsar bloque"
+
+#: assets/blocks/editBlocks.js:57
+msgid "Expand slides"
+msgstr "Expandir tarjetas"
+
+#: assets/blocks/editBlocks.js:60
+msgid "Collapse slides"
+msgstr "Colapsar tarjetas"
+
+#: assets/blocks/editBlocks.js:80 assets/blocks/editBlocks.js:92
+msgid "Collapse"
+msgstr "Colapsar"
+
+#: assets/blocks/editBlocks.js:85
+msgid "MG Block Slider"
+msgstr ""
+
+#: assets/blocks/editBlocks.js:130
+msgid "Slide "
+msgstr "Tarjeta "
+
+#: mgblockslider.php:94
+msgid ""
+"Hello. This plugin does not add any page or menu in your admin. Just use it "
+"as a block in your content or as a widget. If you want some help, you can "
+"find it in the"
+msgstr ""
+"Hola. Este plugin no agrega ninguna página o menú en tu administración. "
+"Simplemente usalo como bloque en tu contenido o como widget. Si quieres algo "
+"de ayuda, puedes encontrarla en la"
+
+#: mgblockslider.php:95
+msgid ""
+"And if you find this plugin useful, please spread the word and/or leave a "
+"review. Enjoy simplicity!"
+msgstr ""
+"Y si este plugin te resulto útil, por favor corre la voz y/o deja una "
+"reseña. Disfruta la simplicidad!"
+
+#: mgblockslider.php:132
+msgid "Slide"
+msgstr "Tarjeta"
+
+#: mgblockslider.php:133
+msgid "Show slide"
+msgstr "Mostrar tarjeta"
+
+#: mgblockslider.php:134
+msgid "Previous"
+msgstr "Anterior"
+
+#: mgblockslider.php:135
+msgid "Previous slide"
+msgstr "Tarjeta anterior"
+
+#: mgblockslider.php:136
+msgid "Show previous slide"
+msgstr "Mostrar tarjeta anterior"
+
+#: mgblockslider.php:137
+msgid "Next"
+msgstr "Siguiente"
+
+#: mgblockslider.php:138
+msgid "Next slide"
+msgstr "Tarjeta siguiente"
+
+#: mgblockslider.php:139
+msgid "Show next slide"
+msgstr "Mostrar tarjeta siguiente"
+
+#: mgblockslider.php:140
+msgid "Loading"
+msgstr "Cargando"
+
+#: mgblockslider.php:271
+msgid "Documentation"
+msgstr "Documentación"
+
+#: mgblockslider.php:271
+msgid "How to use"
+msgstr "Como usar"
+
+#: mgblockslider.php:272
+msgid "Support the development"
+msgstr "Apoya el desarrollo"
+
+#: mgblockslider.php:272
+msgid "Support"
+msgstr "Apoyar"
+
+#~ msgid "Docs"
+#~ msgstr "Ayuda"
+
+#~ msgid "Links"
+#~ msgstr "Enlaces"
+
+#~ msgid "Add custom link to the slide"
+#~ msgstr "Agregar un enlace personalizado a la tarjeta"
+
+#~ msgid "Target"
+#~ msgstr "Destino"
+
+#~ msgid "Same Tab"
+#~ msgstr "Misma pestaña"
+
+#~ msgid "Open in new Tab"
+#~ msgstr "Abrir en una nueva pestaña"
+
+#~ msgid "Primary"
+#~ msgstr "Primario"
+
+#~ msgid "Secondary"
+#~ msgstr "Secundario"
+
+#~ msgid "Accent"
+#~ msgstr "Destacado"
+
+#~ msgid "Success"
+#~ msgstr "Éxito"
+
+#~ msgid "Warning"
+#~ msgstr "Advertencia"
+
+#~ msgid "Colors"
+#~ msgstr "Colores"
+
+#~ msgid "Text Color"
+#~ msgstr "Color de texto"
+
+#~ msgid "Background Color"
+#~ msgstr "Color de fondo"
+
+#~ msgid ""
+#~ "For all the help and documentation on how to use every option, please go "
+#~ "to the"
+#~ msgstr ""
+#~ "Para toda la ayuda y documentación sobre como usar cada opción, por favor "
+#~ "ve a la"
+
+#~ msgid "GitHub Wiki"
+#~ msgstr "Wiki en GitHub"
+
+#~ msgid "Values in milliseconds (1000 = 1 second)."
+#~ msgstr "Valores en milisegundos (1000 = 1 segundo)."
+
+#~ msgid "Minimum value = "
+#~ msgstr "Valor mínimo = "
+
+#~ msgid "If you want some help, you can find it in the"
+#~ msgstr "Si quieres ayuda, puedes encontrarla en la"
+
+#~ msgid "Vertical"
+#~ msgstr "Vertical"
+
+#~ msgid "Options"
+#~ msgstr "Opciones"
+
+#~ msgid "Thumbnails"
+#~ msgstr "Imágenes"
+
+#~ msgid "Pause Unfocused"
+#~ msgstr "Pausar en desenfoque"
+
+#~ msgid "Popup lightbox"
+#~ msgstr "Lightbox"
+
+#~ msgid "None"
+#~ msgstr "Nada"
+
+#~ msgid "Control dots"
+#~ msgstr "Puntos de control"
+
+#~ msgid "Pause videos or animatied content after the slide change."
+#~ msgstr "Pausar videos o contenido animado luego de cambiar de tarjeta."
+
+#~ msgid "Change slides with fingers or arrow keys."
+#~ msgstr "Cambiar tarjetas con los dedos y flechas del teclado."

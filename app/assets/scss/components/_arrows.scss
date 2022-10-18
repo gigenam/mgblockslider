@@ -1,0 +1,135 @@
+//
+// Directional arrows
+//
+
+.wp-block-mgblockslider-slider__control {
+	// Individual arrows.
+	&__arrow {
+		width: clamp(24px, 5vw, 40px);
+		height: clamp(28px, 5vw, 50px);
+		position: absolute;
+		top: 0;
+		margin: 0;
+		z-index: calc(var(--slider--z-index--controls) + 5);
+		background: url(../img/arrow.svg) no-repeat center / contain;
+		transform-origin: center;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		cursor: pointer;
+
+		&--prev,
+		&--next {
+			top: 50%;
+			translate: 0 -50%;
+		}
+
+		&--prev {
+			left: 0.25rem;
+			transform: rotate(180deg);
+		}
+		&--next {
+			right: 0.25rem;
+		}
+	}
+
+	// Arrow types.
+	&--squares,
+	&--circles {
+		.wp-block-mgblockslider-slider__control__arrow {
+			background-color: var(--slider--items--background);
+			background-image: url(../img/arrow-dark.svg);
+		}
+	}
+
+	&--squares {
+		.wp-block-mgblockslider-slider__control__arrow {
+			height: clamp(40px, 9vw, 60px);
+			background-size: 60%;
+
+			&--prev {
+				left: 0;
+			}
+			&--next {
+				right: 0;
+			}
+		}
+	}
+
+	&--circles {
+		.wp-block-mgblockslider-slider__control__arrow {
+			width: clamp(25px, 5vw, 40px);
+			height: clamp(25px, 5vw, 40px);
+			background-size: 30%;
+			background-position: 55% center;
+			border-radius: 50%;
+
+			&--prev {
+				left: 0.5rem;
+			}
+			&--next {
+				right: 0.5rem;
+			}
+		}
+	}
+}
+
+//
+// Hide directional nav
+// ------------------------------------------
+.directional-nav--is-hidden {
+	.wp-block-mgblockslider-slider__control__arrow {
+		transition: opacity var(--slider--transition-duration--controls);
+		opacity: 0;
+	}
+
+	&:hover .wp-block-mgblockslider-slider__control__arrow {
+		opacity: 1;
+	}
+}
+
+//
+// Vertical controls.
+// If you select the vertical animation, the controls will take this styles.
+// ----------------------------------------------
+.wp-block-mgblockslider-slider__container.is-vertical .wp-block-mgblockslider-slider__control {
+	&__arrow {
+		&--prev,
+		&--next {
+			top: 0;
+			left: 50%;
+			margin: auto;
+			translate: -50% 0;
+		}
+
+		&--prev {
+			transform: rotate(-90deg);
+		}
+		&--next {
+			top: unset;
+			right: unset;
+			bottom: 0.25rem;
+			transform: rotate(90deg);
+		}
+	}
+
+	&--squares {
+		.wp-block-mgblockslider-slider__control__arrow--prev {
+			top: -11px;
+		}
+		.wp-block-mgblockslider-slider__control__arrow--next {
+			bottom: -11px;
+		}
+	}
+
+	&--circles {
+		.wp-block-mgblockslider-slider__control__arrow--prev {
+			top: 6px;
+		}
+		.wp-block-mgblockslider-slider__control__arrow--next {
+			bottom: 6px;
+		}
+	}
+}

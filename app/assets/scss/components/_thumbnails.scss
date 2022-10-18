@@ -1,0 +1,61 @@
+//
+// Thumbnails
+//
+// Don't add the slider class as a parent because this will be after the slider
+// main container to prevent problems with absolute controls and descriptions.
+
+.wp-block-mgblockslider-slider__thumbnails {
+	@extend %reset-list;
+	width: 100%;
+	max-height: 120px;
+	transition: transform var(--slider--transition-duration--controls),
+		max-height var(--slider--transition-duration--controls);
+
+	.wp-block-mgblockslider-slider__thumb {
+		display: flex;
+		flex: 1 1 100%;
+		height: auto;
+		max-height: 100%;
+		margin: 0;
+
+		&--current img,
+		&:hover img {
+			filter: grayscale(0);
+		}
+
+		&:first-child {
+			margin-left: auto;
+		}
+
+		&:last-child {
+			margin-right: auto;
+		}
+
+		&--img {
+			background: url(../img/img-thumb.jpg) no-repeat center / cover;
+		}
+
+		&--video {
+			background: url(../img/video-thumb.jpg) no-repeat center / cover;
+		}
+	}
+
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: filter 300ms;
+		filter: grayscale(1);
+		cursor: pointer;
+	}
+}
+
+//
+// Auto hide thumbnails
+// ------------------------------------------
+&:not(:hover) .wp-block-mgblockslider-slider__container.thumbnails-nav--is-hidden {
+	~ .wp-block-mgblockslider-slider__thumbnails {
+		max-height: 0;
+		transform: translate3d(0, -100%, 0);
+	}
+}

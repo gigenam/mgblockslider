@@ -1,0 +1,173 @@
+//
+// Slides
+//
+
+// Slides and arrows container.
+// Animate only the slides next to each others.
+.wp-block-mgblockslider-slides__container {
+	&--next,
+	&--prev {
+		.wp-block-mgblockslider-slide {
+			transition-duration: inherit;
+		}
+	}
+
+	&--next .wp-block-mgblockslider-slide__next,
+	&--prev .wp-block-mgblockslider-slide__prev {
+		transition: none;
+	}
+
+	// Only if the slider has 2 slides.
+	&--2-slides {
+		.wp-block-mgblockslider-slide:first-child:not(.wp-block-mgblockslider-slide__current) {
+			transform: translate3d(-100%, 0, 0);
+		}
+
+		.wp-block-mgblockslider-slide:last-child:not(.wp-block-mgblockslider-slide__current) {
+			transform: translate3d(100%, 0, 0);
+		}
+	}
+}
+
+.wp-block-mgblockslider-slide {
+	width: 100%;
+	height: 100%;
+	min-height: inherit;
+	z-index: 0;
+	padding: 0;
+	margin: 0;
+	background-color: var(--slider--items--primary);
+	transition-timing-function: inherit;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	touch-action: pan-x;
+
+	// Every slide except the current are absolutes.
+	&:not(&__current) {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: auto;
+	}
+
+	&__prev,
+	&__next {
+		z-index: 1;
+	}
+
+	&__current {
+		z-index: 5;
+		transform: translate3d(0, 0, 0);
+	}
+
+	// Reset margin for the first elements inside the slide.
+	> * {
+		margin: 0;
+	}
+}
+
+//
+// Minimum height for all slides
+// ----------------------------------------------
+&.auto-height .wp-block-mgblockslider-slide > * {
+	height: 100%;
+}
+
+//
+// Slides animations
+// ----------------------------------------------
+.wp-block-mgblockslider-slider__container {
+	// Slide.
+	&.is-slide {
+		.wp-block-mgblockslider-slide {
+			&__prev {
+				transform: translate3d(-100%, 0, 0);
+			}
+
+			&__next {
+				transform: translate3d(100%, 0, 0);
+			}
+		}
+	}
+
+	// Fade.
+	&.is-fade {
+		.wp-block-mgblockslider-slide {
+			opacity: 0;
+			transition-property: opacity;
+
+			&__current {
+				opacity: 1;
+			}
+		}
+
+		// Only if the slide has 2 slides.
+		.wp-block-mgblockslider-slides__container--2-slides {
+			.wp-block-mgblockslider-slide:first-child:not(.wp-block-mgblockslider-slide__current),
+			.wp-block-mgblockslider-slide:last-child:not(.wp-block-mgblockslider-slide__current) {
+				transform: translate3d(0, 0, 0);
+			}
+		}
+	}
+
+	// Cards.
+	&.is-cards {
+		.wp-block-mgblockslider-slide {
+			&:not(.wp-block-mgblockslider-slide__current, .wp-block-mgblockslider-slide__next) {
+				transform: scale(0.96);
+				border-radius: 8px;
+				overflow: hidden;
+				z-index: -1000;
+			}
+
+			&__current {
+				box-shadow: -26px 0 10px -14px rgba(#000, 0.15);
+			}
+
+			&__next {
+				transform: translate3d(100%, 0, 0);
+			}
+		}
+	}
+}
+
+//
+// Vertical animations
+// ----------------------------------------------
+.wp-block-mgblockslider-slider__container.is-vertical {
+	// Slide.
+	&.is-slide {
+		.wp-block-mgblockslider-slide {
+			&__prev {
+				transform: translate3d(0, 100%, 0);
+			}
+
+			&__next {
+				transform: translate3d(0, -100%, 0);
+			}
+		}
+
+		// Only if the slide has 2 slides.
+		.wp-block-mgblockslider-slides__container--2-slides {
+			.wp-block-mgblockslider-slide:first-child:not(.wp-block-mgblockslider-slide__current) {
+				transform: translate3d(0, -100%, 0);
+			}
+
+			.wp-block-mgblockslider-slide:last-child:not(.wp-block-mgblockslider-slide__current) {
+				transform: translate3d(0, 100%, 0);
+			}
+		}
+	}
+
+	// Cards.
+	&.is-cards {
+		.wp-block-mgblockslider-slide {
+			&__next {
+				transform: translate3d(0, -100%, 0);
+			}
+		}
+	}
+}
