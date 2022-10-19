@@ -1,3 +1,5 @@
+[Leer en español](./LEEME.md)
+
 ```
 Contributors : gigenam
 License      : GPLv2 or later
@@ -43,17 +45,17 @@ A couple of examples of what you can configure with this plugin.
 - Texts in English and Spanish (check FAQ), and is translation ready.
 - Developer friendly, you can add your own assets with a couple of CSS lines.
 
-Go to the [Wiki](https://github.com/gigenam/mgblockslider/wiki) for the full documentation on
-how to use and/or customize everything.
+Go to the [Wiki](https://github.com/gigenam/mgblockslider/wiki) for the full
+documentation on how to use and/or customize everything.
 
 ## Installation
 
 Install it like any other plugin, via the WordPress plugin directory inside your
-WordPress administration or by downloading this repo, compress the content of the
-`app` folder and uploading the .zip file to your server at /wp-content/plugins/.
+WordPress administration or by downloading this repo, and upload the content of the
+`app` folder to your server at /wp-content/plugins/.
 
-Go to the [Wiki](https://github.com/gigenam/mgblockslider/wiki) for the full documentation on
-how to use and/or customize everything.
+Go to the [Wiki](https://github.com/gigenam/mgblockslider/wiki) for the full
+documentation on how to use and/or customize everything.
 
 ## Frequently Asked Questions
 
@@ -115,9 +117,8 @@ and thats why it has minimum features and is easy to extend. If you want hundred
 of features with a ton of buttons and a really bloated UI, this is not for you.
 
 Do you have cool ideas for more options/themes or want to contribute to this project?
-Go to the [GitHub Repo](https://github.com/gigenam/mgblockslider), clone it and
-do whatever you want, or make a pull request with your changes. Keep in mind the
-simplicity of this project.
+Clone it, do whatever you want, and make a pull request with your changes.
+Keep in mind the simplicity of this project.
 
 You want to contribute without coding? Every donation to keep this rolling is very
 appreciated. Check [this link](https://www.paypal.com/donate/?hosted_button_id=X73V9XW8Y94C8).
