@@ -9,7 +9,7 @@ export const controlsSlider = ( props ) => {
 			<InspectorControls>
 				<PanelBody title={__( 'Help', 'mgblockslider' )} initialOpen={false} className="components-panel__body__mgblockslider" icon="editor-help">
 					<PanelRow>
-						<p>{ __( 'Documentation is coming soon.', 'mgblockslider' ) } <a href="https://github.com/gigenam" target="_blank">{ __( 'Placeholder Link', 'mgblockslider' ) }</a>.</p>
+						<p>{ __( 'Check out how to configure and customize at the', 'mgblockslider' ) } <a href="https://github.com/gigenam/mgblockslider/wiki" target="_blank">{ __( 'GitHub Wiki', 'mgblockslider' ) }</a>.</p>
 					</PanelRow>
 				</PanelBody>
 

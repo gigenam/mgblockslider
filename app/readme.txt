@@ -1,4 +1,4 @@
-=== MG Block SLider ===
+=== MG Block Slider ===
 Contributors: gigenam
 Tags: block, editor, slider, slideshow, content, image, video
 Requires at least: 5.9
@@ -90,6 +90,17 @@ slides.
 Also, when you configure the title, you are adding a custom ID to the main slider
 container element.
 
+= How translations work? =
+
+By default everything is in English and comes with a couple of Spanish types:
+
+- `es_ES`
+- `es_AR`
+- `es_MX`
+
+Every string of text is translation ready and you can learn how to make your own
+translations at the [Wiki](https://github.com/gigenam/mgblockslider/wiki).
+
 = Where are the PRO features? =
 
 There aren't. First and most important, I made this for myself and my clients,
@@ -108,6 +119,12 @@ No money, no coding? No problem. Please, share, review it and let me know if you
 find problems or bugs in the support forum.
 
 == Screenshots ==
+
+1. Block slideshow in the gutenberg editor (compact and minimal).
+2. Sidebar options.
+3. Slider with default arrows.
+4. Slider with circle arrows and pagination dots.
+5. Slider with thumbnails and hidden arrows.
 
 == Changelog ==
 

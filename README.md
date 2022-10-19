@@ -10,7 +10,9 @@ License URI  : https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 ![Required WP Version](https://img.shields.io/badge/Required->=5.9-blue?logo=wordpress)
 ![Tested WP Version](https://img.shields.io/badge/Tested-6.0.2-lightgrey?logo=wordpress)
 
-# MG Block SLider
+![MG Block Slider Banner](./app/assets/img/banner.png)
+
+# MG Block Slider
 
 A simple slideshow block to use it in any block editor with any type of content.
 Post, pages, widgets. Anything and anywhere you want.
@@ -38,6 +40,7 @@ A couple of examples of what you can configure with this plugin.
 - Custom interactions for videos.
 - Light and Dark theme.
 - A couple of arrows and dots types to choose.
+- Texts in English and Spanish (check FAQ), and is translation ready.
 - Developer friendly, you can add your own assets with a couple of CSS lines.
 
 Go to the [Wiki](https://github.com/gigenam/wiki) for the full documentation on
@@ -46,8 +49,8 @@ how to use and/or customize everything.
 ## Installation
 
 Install it like any other plugin, via the WordPress plugin directory inside your
-WordPress administration or by downloading and uploading the .zip file to your
-server at /wp-content/plugins/.
+WordPress administration or by downloading this repo, compress the content of the
+`app` folder and uploading the .zip file to your server at /wp-content/plugins/.
 
 Go to the [Wiki](https://github.com/gigenam/wiki) for the full documentation on
 how to use and/or customize everything.
@@ -94,6 +97,17 @@ slides.
 Also, when you configure the title, you are adding a custom ID to the main slider
 container element.
 
+### How translations work?
+
+By default everything is in English and comes with a couple of Spanish types:
+
+- `es_ES`
+- `es_AR`
+- `es_MX`
+
+Every string of text is translation ready and you can learn how to make your own
+translations at the [Wiki](https://github.com/gigenam/mgblockslider/wiki).
+
 ### Where are the PRO features?
 
 There aren't. First and most important, I made this for myself and my clients,
@@ -110,8 +124,6 @@ appreciated. Check [this link](https://www.paypal.com/donate/?hosted_button_id=X
 
 No money, no coding? No problem. Please, share, review it and let me know if you
 find problems or bugs in the support forum.
-
-## Screenshots
 
 ## Changelog
 

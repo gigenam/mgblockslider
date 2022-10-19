@@ -1,4 +1,4 @@
-=== MG Block SLider ===
+=== MG Block Slider ===
 Contributors: gigenam
 Tags: block, editor, slider, slideshow, content, image, video
 Requires at least: 5.9
@@ -10,5 +10,5 @@ License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
 == Changelog ==
 
-= 1.0.0 - 2022-XX-XX : =
+= 1.0.0 - 2022-10-19 : =
 * Init Version

@@ -164,11 +164,6 @@
 			margin-top: -1.5em;
 		}
 
-		.components-input-control__label {
-			font-size: 13px !important;
-			text-transform: none !important;
-		}
-
 		.components-text-control__input {
 			margin-right: 0;
 			margin-left: 0;
@@ -194,5 +189,14 @@
 			font-weight: bold;
 			border-color: #f14040;
 		}
+	}
+}
+
+.components-panel__body__mgblockslider,
+.block-editor-block-inspector__advanced {
+	.components-base-control__label,
+	.components-input-control__label {
+		font-size: 13px !important;
+		text-transform: none !important;
 	}
 }
