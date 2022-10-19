@@ -43,7 +43,7 @@ A couple of examples of what you can configure with this plugin.
 - Texts in English and Spanish (check FAQ), and is translation ready.
 - Developer friendly, you can add your own assets with a couple of CSS lines.
 
-Go to the [Wiki](https://github.com/gigenam/wiki) for the full documentation on
+Go to the [Wiki](https://github.com/gigenam/mgblockslider/wiki) for the full documentation on
 how to use and/or customize everything.
 
 ## Installation
@@ -52,7 +52,7 @@ Install it like any other plugin, via the WordPress plugin directory inside your
 WordPress administration or by downloading this repo, compress the content of the
 `app` folder and uploading the .zip file to your server at /wp-content/plugins/.
 
-Go to the [Wiki](https://github.com/gigenam/wiki) for the full documentation on
+Go to the [Wiki](https://github.com/gigenam/mgblockslider/wiki) for the full documentation on
 how to use and/or customize everything.
 
 ## Frequently Asked Questions
