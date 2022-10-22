@@ -146,10 +146,6 @@
   margin: 0;
 }
 
-.wp-block-mg-block-slider-slider.auto-height .wp-block-mg-block-slider-slide > * {
-  height: 100%;
-}
-
 .wp-block-mg-block-slider-slider .wp-block-mg-block-slider-slider__container.is-slide .wp-block-mg-block-slider-slide__prev {
   -webkit-transform: translate3d(-100%, 0, 0);
   transform: translate3d(-100%, 0, 0);

@@ -53,8 +53,8 @@ documentación completa y como personalizar todo.
 ## Instalación
 
 Instálalo como cualquier otro plugin, a través del directorio de plugins de WordPress
-dentro de su administración de WordPress o descargando este repositorio, y subiendo
-el contenido de la carpeta `app` en su servidor en /wp-content/plugins/.
+dentro de tu administración de WordPress o descargando este repositorio, y subiendo
+el contenido de la carpeta `app` en tu servidor en /wp-content/plugins/.
 
 Ve a la [Wiki](https://github.com/gigenam/mgblockslider/wiki/Inicio) para ver la
 documentación completa y como personalizar todo.
@@ -95,7 +95,7 @@ Añade un bloque de grupo o similar y configurar los espaciados, alineaciones, e
 
 ### ¿Puedo agregar clases personalizadas para mejores modificaciones de CSS?
 
-Sí, por supuesto. como cualquier otro bloque, puede agregar tantas clases como
+Sí, por supuesto. Como cualquier otro bloque, puede agregar tantas clases como
 desee. Puede agregar clases personalizadas para el bloque principal y para las
 tarjetas individuales.
 
