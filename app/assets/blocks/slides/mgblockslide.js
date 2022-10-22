@@ -15,7 +15,7 @@ const mgIconSlide = createElement(
 
 // Register the slides.
 registerBlockType( blockInfo.name, {
-	parent: [ 'mgblockslider/slider' ],
+	parent: [ 'mg-block-slider/slider' ],
 	icon: mgIconSlide,
 	edit: EditSlides,
 	save: SaveSlides,

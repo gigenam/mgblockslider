@@ -21,43 +21,43 @@ export const EditSlider = ( props ) => {
 
 		// Save state.
 		if ( 'is-collapse' === e.target.classList[ 2 ] ) {
-			localStorage.setItem( 'mgblockslider_collapse_full', true );
+			localStorage.setItem( 'mg-block-slider_collapse_full', true );
 		} else {
-			localStorage.removeItem( 'mgblockslider_collapse_full' );
+			localStorage.removeItem( 'mg-block-slider_collapse_full' );
 		}
 	}
 
 	function collapseSlides( e ) {
 		e.target.classList.toggle( 'is-collapse' );
 		e.target.nextElementSibling.classList.toggle( 'is-collapse' );
-		e.target.parentElement.querySelectorAll( '.wp-block-mgblockslider-slide__title' ).forEach( ( title ) => title.classList.toggle( 'is-collapse' ) );
+		e.target.parentElement.querySelectorAll( '.wp-block-mg-block-slider-slide__title' ).forEach( ( title ) => title.classList.toggle( 'is-collapse' ) );
 
 		// Save state.
 		if ( 'is-collapse' === e.target.classList[ 2 ] ) {
-			localStorage.setItem( 'mgblockslider_collapse_slides', true );
+			localStorage.setItem( 'mg-block-slider_collapse_slides', true );
 		} else {
-			localStorage.removeItem( 'mgblockslider_collapse_slides' );
+			localStorage.removeItem( 'mg-block-slider_collapse_slides' );
 		}
 	}
 
 	// Remember collapsed options.
 	setTimeout( () => {
-		document.querySelectorAll( '.wp-block-mgblockslider-slider' ).forEach( ( slider ) => {
+		document.querySelectorAll( '.wp-block-mg-block-slider-slider' ).forEach( ( slider ) => {
 			// Collapse full.
-			if ( localStorage.getItem( 'mgblockslider_collapse_full' ) ) {
-				slider.querySelector( '.wp-block-mgblockslider-slider__toggle--full' ).setAttribute( 'title', __( 'Expand block', 'mgblockslider' ) );
-				slider.querySelector( '.wp-block-mgblockslider-slider__toggle--full' ).classList.add( 'is-collapse' );
+			if ( localStorage.getItem( 'mg-block-slider_collapse_full' ) ) {
+				slider.querySelector( '.wp-block-mg-block-slider-slider__toggle--full' ).setAttribute( 'title', __( 'Expand block', 'mg-block-slider' ) );
+				slider.querySelector( '.wp-block-mg-block-slider-slider__toggle--full' ).classList.add( 'is-collapse' );
 				slider.querySelector( '.block-editor-inner-blocks > .block-editor-block-list__layout' ).classList.add( 'is-collapse-full' );
 			} else {
-				slider.querySelector( '.wp-block-mgblockslider-slider__toggle--full' ).setAttribute( 'title', __( 'Collapse block', 'mgblockslider' ) );
+				slider.querySelector( '.wp-block-mg-block-slider-slider__toggle--full' ).setAttribute( 'title', __( 'Collapse block', 'mg-block-slider' ) );
 			}
 
 			// Compact mode.
-			if ( localStorage.getItem( 'mgblockslider_collapse_slides' ) ) {
-				slider.querySelector( '.wp-block-mgblockslider-slider__toggle--compact' ).setAttribute( 'title', __( 'Expand slides', 'mgblockslider' ) );
-				slider.querySelectorAll( '.block-editor-inner-blocks, .wp-block-mgblockslider-slider__toggle--compact, .wp-block-mgblockslider-slide__title' ).forEach( ( els ) => els.classList.add( 'is-collapse' ) );
+			if ( localStorage.getItem( 'mg-block-slider_collapse_slides' ) ) {
+				slider.querySelector( '.wp-block-mg-block-slider-slider__toggle--compact' ).setAttribute( 'title', __( 'Expand slides', 'mg-block-slider' ) );
+				slider.querySelectorAll( '.block-editor-inner-blocks, .wp-block-mg-block-slider-slider__toggle--compact, .wp-block-mg-block-slider-slide__title' ).forEach( ( els ) => els.classList.add( 'is-collapse' ) );
 			} else {
-				slider.querySelector( '.wp-block-mgblockslider-slider__toggle--compact' ).setAttribute( 'title', __( 'Collapse slides', 'mgblockslider' ) );
+				slider.querySelector( '.wp-block-mg-block-slider-slider__toggle--compact' ).setAttribute( 'title', __( 'Collapse slides', 'mg-block-slider' ) );
 			}
 		} );
 	}, 150 );
@@ -77,22 +77,22 @@ export const EditSlider = ( props ) => {
 			{ controlsSlider( props ) }
 			{ changeColor( blockProps ) }
 			<div { ...blockProps }>
-				<span onClick={ ( e ) => compactSlider( e ) } className="wp-block-mgblockslider-slider__toggle wp-block-mgblockslider-slider__toggle--full" title={ __( 'Collapse', 'mgblockslider' ) }>
+				<span onClick={ ( e ) => compactSlider( e ) } className="wp-block-mg-block-slider-slider__toggle wp-block-mg-block-slider-slider__toggle--full" title={ __( 'Collapse', 'mg-block-slider' ) }>
 					<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.5 12.4L12 8l5.5 4.4-.9 1.2L12 10l-4.5 3.6-1-1.2z"></path></svg>
 				</span>
-				<p className="wp-block-mgblockslider-slider__title">
+				<p className="wp-block-mg-block-slider-slider__title">
 					<TextControl
-						label={__( 'MG Block Slider', 'mgblockslider' )}
+						label={__( 'MG Block Slider', 'mg-block-slider' )}
 						hideLabelFromVision={true}
-						className="wp-block-mgblockslider-slider__title__input"
+						className="wp-block-mg-block-slider-slider__title__input"
 						value={ ( '' === attributes.customId ) ? blockInfo.title : attributes.customId }
 						onChange={ ( val ) => setAttributes( { customId: val } ) }
 					/>
 				</p>
-				<span onClick={ ( e ) => collapseSlides( e ) } className="wp-block-mgblockslider-slider__toggle wp-block-mgblockslider-slider__toggle--compact" title={ __( 'Collapse', 'mgblockslider' ) }>
+				<span onClick={ ( e ) => collapseSlides( e ) } className="wp-block-mg-block-slider-slider__toggle wp-block-mg-block-slider-slider__toggle--compact" title={ __( 'Collapse', 'mg-block-slider' ) }>
 					<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.5 12.4L12 8l5.5 4.4-.9 1.2L12 10l-4.5 3.6-1-1.2z"></path></svg>
 				</span>
-				<InnerBlocks allowedBlocks={ [ 'mgblockslider/slides' ] } />
+				<InnerBlocks allowedBlocks={ [ 'mg-block-slider/slides' ] } />
 			</div>
 		</>
 	);
@@ -127,7 +127,7 @@ export const EditSlides = ( props ) => {
 	return (
 		<>
 			<div { ...blockProps }>
-				<p className="wp-block-mgblockslider-slide__title">{ __( 'Slide ', 'mgblockslider' ) + blockCount }</p>
+				<p className="wp-block-mg-block-slider-slide__title">{ __( 'Slide ', 'mg-block-slider' ) + blockCount }</p>
 				<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS }/>
 			</div>
 		</>

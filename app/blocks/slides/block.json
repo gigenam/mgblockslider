@@ -2,9 +2,9 @@
   "$schema": "https://json.schemastore.org/block.json",
   "apiVersion": 2,
   "version": "1.0",
-  "name": "mgblockslider/slide",
+  "name": "mg-block-slider/slide",
   "title": "MG Block Slide",
-  "textdomain": "mgblockslide",
+  "textdomain": "mg-block-slide",
   "keywords": [
     "slide",
     "slideshow",

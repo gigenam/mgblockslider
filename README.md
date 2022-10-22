@@ -2,6 +2,7 @@
 
 ```
 Contributors : gigenam
+Plugin URI   : https://wordpress.org/plugins/mg-block-slider
 License      : GPLv2 or later
 License URI  : https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 ```

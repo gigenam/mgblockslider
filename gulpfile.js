@@ -202,35 +202,9 @@ export const translate = ( done ) => {
 	done();
 };
 
-// Actualizar info del tema en app/styles.css al instalar herramientas de
-// desarrollo. Igual a package.json.
-export const updateThemeInfo = ( done ) => {
-	let themeName = themeDomain.replace( '-', ' ' );
-	themeName = themeName.trim().replace( /^\w/, ( c ) => c.toUpperCase() );
-
-	gulp.src( './app/style.css' )
-		.pipe( replace( /Theme Name:\s.*/, `Theme Name: ${ themeName }` ) )
-		.pipe( replace( /Theme URI:\s.*/, `Theme URI: ${ themeURL }` ) )
-		.pipe( replace( /Author:\s.*/, `Author: ${ authorName }` ) )
-		.pipe( replace( /Author URI:\s.*/, `Author URI: ${ authorURL }` ) )
-		.pipe( replace( /Description:\s.*/, `Description: ${ themeDescription }` ) )
-		.pipe( replace( /License:\s.*/, `License: ${ info.license }` ) )
-		.pipe( replace( /Text Domain:\s.*/, `Text Domain: ${ themeDomain }` ) )
-		.pipe( gulp.dest( './app' ) );
-
-	gulp.src( [ './composer.json', '!./node_modules/**/*', '!./vendor/**/*' ] )
-		.pipe( replace( /"name":\s.*/, `"name": "${ info.repository.author }/${ themeDomain }"` ) )
-		.pipe( replace( /"description":\s.*/, `"description": "${ themeDescription }"` ) )
-		.pipe( replace( /"author":\s.*/, `"author": "${ authorName }"` ) )
-		.pipe( replace( /"homepage":\s.*/, `"homepage": "${ themeURL }"` ) )
-		.pipe( replace( /"license":\s.*/, `"license": "${ info.license }"` ) )
-		.pipe( gulp.dest( './' ) );
-	done();
-};
-
 // Actualizar versión del tema al correr 'npm run build'. Igual a package.json.
 export const updateThemeVersion = ( done ) => {
-	gulp.src( './app/mgblockslider.php' )
+	gulp.src( './app/mg-block-slider.php' )
 		.pipe( replace( /Version:\s([0-9.])*/, `Version: ${ themeVersion }` ) )
 		.pipe( gulp.dest( './app' ) );
 

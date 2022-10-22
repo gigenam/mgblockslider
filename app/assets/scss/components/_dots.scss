@@ -2,7 +2,7 @@
 // Control dots
 //
 
-.wp-block-mgblockslider-slider__control {
+.wp-block-mg-block-slider-slider__control {
 	&__dots {
 		align-items: center;
 		width: 100%;
@@ -40,7 +40,7 @@
 	// Dot types.
 	&--squares,
 	&--squares-block {
-		.wp-block-mgblockslider-slider__control__dot {
+		.wp-block-mg-block-slider-slider__control__dot {
 			border-radius: 0;
 		}
 	}
@@ -49,7 +49,7 @@
 	&--squares-block {
 		background-color: var(--slider--items--primary);
 
-		.wp-block-mgblockslider-slider__control__dot {
+		.wp-block-mg-block-slider-slider__control__dot {
 			border-color: var(--slider--items--secondary);
 
 			&--current {
@@ -62,8 +62,8 @@
 //
 // Auto hide controls
 // ------------------------------------------
-&:not(:hover) .wp-block-mgblockslider-slider__container.control-nav--is-hidden {
-	~ .wp-block-mgblockslider-slider__control__dots {
+&:not(:hover) .wp-block-mg-block-slider-slider__container.control-nav--is-hidden {
+	~ .wp-block-mg-block-slider-slider__control__dots {
 		height: 0;
 		overflow: hidden;
 	}

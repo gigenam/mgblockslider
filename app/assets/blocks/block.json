@@ -2,10 +2,10 @@
 	"$schema": "https://json.schemastore.org/block.json",
 	"apiVersion": 2,
 	"version": "1.0",
-	"name": "mgblockslider/slider",
+	"name": "mg-block-slider/slider",
 	"title": "MG Block Slider",
 	"description": "A simple slideshow block to use it in any block editor",
-	"textdomain": "mgblockslider",
+	"textdomain": "mg-block-slider",
 	"keywords": ["slider", "slideshow", "block", "anything", "content"],
 	"category": "media",
 	"supports": {

@@ -15,7 +15,7 @@
 }
 
 // Main parent element.
-.wp-block-mgblockslider-slider {
+.wp-block-mg-block-slider-slider {
 	--slider--items--primary: #ffffff;
 	--slider--items--secondary: #111111;
 	--slider--items--background: rgba(255, 255, 255, 0.85);
@@ -32,11 +32,11 @@
 		overflow: hidden;
 	}
 
-	&__container:not(&.dragging) .wp-block-mgblockslider-slide {
+	&__container:not(&.dragging) .wp-block-mg-block-slider-slide {
 		transition-delay: 0.1s;
 	}
 
-	&__container.dragging .wp-block-mgblockslider-slide {
+	&__container.dragging .wp-block-mg-block-slider-slide {
 		transition: transform 0ms linear !important;
 	}
 

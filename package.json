@@ -1,6 +1,6 @@
 {
 	"type": "module",
-	"name": "mgblockslider",
+	"name": "mg-block-slider",
 	"site": "http://localhost:8080/mgblockslider",
 	"version": "1.0.0",
 	"description": "A simple slideshow block to use it in any block editor",

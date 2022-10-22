@@ -5,7 +5,7 @@
 //
 // Main slider block
 // ------------------------------------------
-.wp-block-mgblockslider-slider {
+.wp-block-mg-block-slider-slider {
 	overflow: hidden;
 	padding: 12px !important;
 	color: #333;
@@ -95,7 +95,7 @@
 	//
 	// Slides
 	// ------------------------------------------
-	& .wp-block-mgblockslider-slide {
+	& .wp-block-mg-block-slider-slide {
 		max-width: 800px !important;
 		padding: 15px !important;
 		margin: 10px auto 0 !important;
@@ -116,7 +116,7 @@
 	}
 
 	// Collapse block.
-	.block-editor-inner-blocks.is-collapse .wp-block-mgblockslider-slide:not(.is-selected, .has-child-selected) {
+	.block-editor-inner-blocks.is-collapse .wp-block-mg-block-slider-slide:not(.is-selected, .has-child-selected) {
 		max-height: 50px;
 		overflow: hidden;
 
@@ -137,7 +137,7 @@
 //
 // Sidebar options
 // ------------------------------------------
-.components-panel__body__mgblockslider {
+.components-panel__body__mg-block-slider {
 	.hidden {
 		display: none;
 	}
@@ -192,7 +192,7 @@
 	}
 }
 
-.components-panel__body__mgblockslider,
+.components-panel__body__mg-block-slider,
 .block-editor-block-inspector__advanced {
 	.components-base-control__label,
 	.components-input-control__label {

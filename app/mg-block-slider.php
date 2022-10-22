@@ -2,14 +2,14 @@
 /**
  * MG Block Slider
  *
- * @package   mgblockslider
- * @link      https://github.com/gigenam/mgblockslider
+ * @package   mg-block-slider
+ * @link      https://wordpress.org/plugins/mg-block-slider
  * @author    Marcos Gigena
  * @copyright 2022 @ Marcos Gigena
  * @license   GPL v2 or later
  *
  * Plugin Name: MG Block Slider
- * Plugin URI: https://github.com/gigenam/mgblockslider
+ * Plugin URI: https://wordpress.org/plugins/mg-block-slider
  * Author: Marcos Gigena
  * Author URI: https://github.com/gigenam
  * Description: A simple slideshow block to use it in any block editor with any type of content. Post, pages, widgets. Anything and anywhere where you want.
@@ -17,7 +17,7 @@
  * Requires at least: 5.9
  * Tested up to: 6.0.3
  * Requires PHP: 7.0
- * Text Domain: mgblockslider
+ * Text Domain: mg-block-slider
  * Domain Path: /languages
  *
  * This program is free software; you can redistribute it and/or modify it under
@@ -91,8 +91,8 @@ if ( ! class_exists( 'MGBlockSlider' ) ) {
 			if ( get_transient( 'mgblockslider_admin_notice' ) ) {
 				?>
 				<div class="updated notice is-dismissible">
-					<p><?php esc_html_e( 'Hello. This plugin does not add any page or menu in your admin. Just use it as a block in your content or as a widget. If you want some help, you can find it in the', 'mgblockslider' ); ?> <a href="https://github.com/gigenam/mgblockslider/wiki" target="_blank">Wiki</a>.</p>
-					<p><?php esc_html_e( 'And if you find this plugin useful, please spread the word and/or leave a review. Enjoy simplicity!', 'mgblockslider' ); ?></p>
+					<p><?php esc_html_e( 'Hello. This plugin does not add any page or menu in your admin. Just use it as a block in your content or as a widget. If you want some help, you can find it in the', 'mg-block-slider' ); ?> <a href="https://github.com/gigenam/mgblockslider/wiki" target="_blank">Wiki</a>.</p>
+					<p><?php esc_html_e( 'And if you find this plugin useful, please spread the word and/or leave a review. Enjoy simplicity!', 'mg-block-slider' ); ?></p>
 				</div>
 				<?php
 				// Only display this notice once.
@@ -109,10 +109,10 @@ if ( ! class_exists( 'MGBlockSlider' ) ) {
 			register_block_type( __DIR__ . '/blocks/slides/', array( 'render_callback' => array( __CLASS__, 'slides_callback' ) ) );
 
 			// Load translations.
-			load_plugin_textdomain( 'mgblockslider', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+			load_plugin_textdomain( 'mg-block-slider', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 			// Load JSON files for JS - this is necessary if using a custom languages path.
-			$script_handle = generate_block_asset_handle( 'mgblockslider/slider', 'editorScript' );
-			wp_set_script_translations( $script_handle, 'mgblockslider', plugin_dir_path( __FILE__ ) . 'languages/' );
+			$script_handle = generate_block_asset_handle( 'mg-block-slider/slider', 'editorScript' );
+			wp_set_script_translations( $script_handle, 'mg-block-slider', plugin_dir_path( __FILE__ ) . 'languages/' );
 		}
 
 		/**
@@ -123,21 +123,21 @@ if ( ! class_exists( 'MGBlockSlider' ) ) {
 			self::publish_block( 'widget' );
 
 			if ( self::$block_publish ) {
-				wp_enqueue_style( 'mgblockslider-main', MGSLIDER_DIR . "css/slider{$GLOBALS['mgblockslider_enqueue_suffix']}.css", null, $GLOBALS['mgblockslider_enqueue_version'], 'all' );
-				wp_enqueue_script( 'mgblockslider-main', MGSLIDER_DIR . "js/slider{$GLOBALS['mgblockslider_enqueue_suffix']}.js", null, $GLOBALS['mgblockslider_enqueue_version'], true );
+				wp_enqueue_style( 'mg-block-slider-main', MGSLIDER_DIR . "css/slider{$GLOBALS['mgblockslider_enqueue_suffix']}.css", null, $GLOBALS['mgblockslider_enqueue_version'], 'all' );
+				wp_enqueue_script( 'mg-block-slider-main', MGSLIDER_DIR . "js/slider{$GLOBALS['mgblockslider_enqueue_suffix']}.js", null, $GLOBALS['mgblockslider_enqueue_version'], true );
 				wp_localize_script(
-					'mgblockslider-main',
+					'mg-block-slider-main',
 					'mgblocksliderI18n',
 					array(
-						'slide'         => __( 'Slide', 'mgblockslider' ),
-						'showSlide'     => __( 'Show slide', 'mgblockslider' ),
-						'prev'          => __( 'Previous', 'mgblockslider' ),
-						'prevSlide'     => __( 'Previous slide', 'mgblockslider' ),
-						'showPrevSlide' => __( 'Show previous slide', 'mgblockslider' ),
-						'next'          => __( 'Next', 'mgblockslider' ),
-						'nextSlide'     => __( 'Next slide', 'mgblockslider' ),
-						'showNextSlide' => __( 'Show next slide', 'mgblockslider' ),
-						'loading'       => __( 'Loading', 'mgblockslider' ),
+						'slide'         => __( 'Slide', 'mg-block-slider' ),
+						'showSlide'     => __( 'Show slide', 'mg-block-slider' ),
+						'prev'          => __( 'Previous', 'mg-block-slider' ),
+						'prevSlide'     => __( 'Previous slide', 'mg-block-slider' ),
+						'showPrevSlide' => __( 'Show previous slide', 'mg-block-slider' ),
+						'next'          => __( 'Next', 'mg-block-slider' ),
+						'nextSlide'     => __( 'Next slide', 'mg-block-slider' ),
+						'showNextSlide' => __( 'Show next slide', 'mg-block-slider' ),
+						'loading'       => __( 'Loading', 'mg-block-slider' ),
 					)
 				);
 				add_action( 'wp_footer', array( __CLASS__, 'esc_script' ), 999 );
@@ -149,7 +149,7 @@ if ( ! class_exists( 'MGBlockSlider' ) ) {
 		 */
 		public static function esc_script() {
 			$scaped_script = str_replace( array( "\'", '\n' ), array( "'", '' ), esc_js( self::$render_slider ) );
-			echo "<script id='mgblockslider-main-js-options' type='text/javascript'>{$scaped_script}</script>"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo "<script id='mg-block-slider-main-js-options' type='text/javascript'>{$scaped_script}</script>"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 
 		/**
@@ -179,7 +179,7 @@ if ( ! class_exists( 'MGBlockSlider' ) ) {
 				$slider_id          = strtolower( ! empty( $default_configs['customId'] ) ? str_replace( ' ', '-', $default_configs['customId'] ) : $default_configs['id'] );
 				$slider_id_formated = str_replace( '-', '_', $slider_id );
 				$init_slider        = "var {$slider_id_formated} = new MGBlockSlider({
-					selector       : '.wp-block-mgblockslider-slider#{$slider_id}',
+					selector       : '.wp-block-mg-block-slider-slider#{$slider_id}',
 					theme          : '{$default_configs['theme']}',
 					directionNav   : {$default_configs['directionNav']},
 					hideDirections : {$default_configs['hideDirections']},
@@ -206,8 +206,8 @@ if ( ! class_exists( 'MGBlockSlider' ) ) {
 
 				return "
 					<div id='{$slider_id}' {$wrapper_attributes}>
-						<div class='wp-block-mgblockslider-slider__container'>
-							<ul class='wp-block-mgblockslider-slides__container'>
+						<div class='wp-block-mg-block-slider-slider__container'>
+							<ul class='wp-block-mg-block-slider-slides__container'>
 								{$content}
 							</ul>
 						</div>
@@ -246,11 +246,11 @@ if ( ! class_exists( 'MGBlockSlider' ) ) {
 
 			if ( isset( $blocks ) ) {
 				foreach ( $blocks as $key => $block ) {
-					if ( 'post' === $type && 'mgblockslider/slider' === $block['blockName'] ) {
+					if ( 'post' === $type && 'mg-block-slider/slider' === $block['blockName'] ) {
 						self::$block_publish = true;
 					}
 
-					if ( 'widget' === $type && ( ! empty( $block['content'] ) && has_block( 'mgblockslider/slider', $block['content'] ) ) ) {
+					if ( 'widget' === $type && ( ! empty( $block['content'] ) && has_block( 'mg-block-slider/slider', $block['content'] ) ) ) {
 						self::$block_publish = true;
 					}
 				}

@@ -1,6 +1,6 @@
 ```
 Plugin Name : MG Block Slider
-Plugin URI  : https://github.com/gigenam/mgblockslider
+Plugin URI  : https://wordpress.org/plugins/mg-block-slider
 Description : A simple slideshow block to use it in any block editor
 Author      : Marcos Gigena
 Author URI  : https://github.com/gigenam

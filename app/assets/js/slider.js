@@ -52,9 +52,9 @@ class MGBlockSlider {
 		this.current         = 0;
 		this.loadState       = false;
 		this.triggerObserver = false;
-		this.slider          = document.querySelector( `${ this.selector } .wp-block-mgblockslider-slider__container` );
-		this.slidesContainer = document.querySelector( `${ this.selector } .wp-block-mgblockslider-slides__container` );
-		this.slides          = document.querySelectorAll( `${ this.selector } .wp-block-mgblockslider-slide` );
+		this.slider          = document.querySelector( `${ this.selector } .wp-block-mg-block-slider-slider__container` );
+		this.slidesContainer = document.querySelector( `${ this.selector } .wp-block-mg-block-slider-slides__container` );
+		this.slides          = document.querySelectorAll( `${ this.selector } .wp-block-mg-block-slider-slide` );
 		this.i18n            = mgblocksliderI18n;
 
 		if ( this.slider ) {
@@ -86,12 +86,12 @@ class MGBlockSlider {
 		if ( this.vertical ) {
 			this.slider.classList.add( 'is-vertical' );
 		}
-		this.slides[ this.current ].classList.add( 'wp-block-mgblockslider-slide__current' );
+		this.slides[ this.current ].classList.add( 'wp-block-mg-block-slider-slide__current' );
 
 		// If the slider only contains 2 slides, add a custom class to prevent
 		// breaking the animations.
 		if ( this.slides.length === 2 ) {
-			this.slidesContainer.classList.add( 'wp-block-mgblockslider-slides__container--2-slides' );
+			this.slidesContainer.classList.add( 'wp-block-mg-block-slider-slides__container--2-slides' );
 		}
 
 		this.createControls();
@@ -135,22 +135,22 @@ class MGBlockSlider {
 		// --------------------------------------
 		if ( this.directionNav ) {
 			const directionNavigation = document.createElement( 'div' );
-			directionNavigation.classList.add( 'wp-block-mgblockslider-slider__control', 'wp-block-mgblockslider-slider__control__arrows' );
+			directionNavigation.classList.add( 'wp-block-mg-block-slider-slider__control', 'wp-block-mg-block-slider-slider__control__arrows' );
 			directionNavigation.innerHTML = `
-				<p class="wp-block-mgblockslider-slider__control__arrow wp-block-mgblockslider-slider__control__arrow--prev" title="${ this.i18n.prev }">
+				<p class="wp-block-mg-block-slider-slider__control__arrow wp-block-mg-block-slider-slider__control__arrow--prev" title="${ this.i18n.prev }">
 					<span class="screen-reader-text">${ this.i18n.showPrevSlide }</span>
 				</p>
-				<p class="wp-block-mgblockslider-slider__control__arrow wp-block-mgblockslider-slider__control__arrow--next" title="${ this.i18n.next }">
+				<p class="wp-block-mg-block-slider-slider__control__arrow wp-block-mg-block-slider-slider__control__arrow--next" title="${ this.i18n.next }">
 					<span class="screen-reader-text">${ this.i18n.showNextSlide }</span>
 				</p>`;
 
 			if ( '' !== this.arrowType ) {
-				directionNavigation.classList.add( `wp-block-mgblockslider-slider__control--${ this.arrowType }` );
+				directionNavigation.classList.add( `wp-block-mg-block-slider-slider__control--${ this.arrowType }` );
 			}
 
 			this.slider.appendChild( directionNavigation );
-			const navPrev = directionNavigation.querySelector( `.wp-block-mgblockslider-slider__control__arrow--prev` );
-			const navNext = directionNavigation.querySelector( `.wp-block-mgblockslider-slider__control__arrow--next` );
+			const navPrev = directionNavigation.querySelector( `.wp-block-mg-block-slider-slider__control__arrow--prev` );
+			const navNext = directionNavigation.querySelector( `.wp-block-mg-block-slider-slider__control__arrow--next` );
 
 			// Change slides.
 			navPrev.addEventListener( 'click', ( e ) => {
@@ -188,25 +188,25 @@ class MGBlockSlider {
 		// --------------------------------------
 		if ( this.controlNav ) {
 			const controlNavigation = document.createElement( 'ul' );
-			controlNavigation.classList.add( 'wp-block-mgblockslider-slider__control', 'wp-block-mgblockslider-slider__control__dots' );
+			controlNavigation.classList.add( 'wp-block-mg-block-slider-slider__control', 'wp-block-mg-block-slider-slider__control__dots' );
 			this.slides.forEach( ( slide, index ) => controlNavigation.innerHTML += `
-				<li class="wp-block-mgblockslider-slider__control__dot" title="${ index + 1 }">
+				<li class="wp-block-mg-block-slider-slider__control__dot" title="${ index + 1 }">
 					<span class="screen-reader-text">${ this.i18n.showSlide } ${ index + 1 }</span>
 				</li>`,
 			);
 
 			if ( '' !== this.paginationType ) {
-				controlNavigation.classList.add( `wp-block-mgblockslider-slider__control--${ this.paginationType }` );
+				controlNavigation.classList.add( `wp-block-mg-block-slider-slider__control--${ this.paginationType }` );
 			}
 
 			this.slider.insertAdjacentElement( 'afterend', controlNavigation );
-			this.navDots = document.querySelectorAll( `${ this.selector } .wp-block-mgblockslider-slider__control__dot` );
-			this.navDots[ this.current ].classList.add( 'wp-block-mgblockslider-slider__control__dot--current' );
+			this.navDots = document.querySelectorAll( `${ this.selector } .wp-block-mg-block-slider-slider__control__dot` );
+			this.navDots[ this.current ].classList.add( 'wp-block-mg-block-slider-slider__control__dot--current' );
 
 			// Change slides and dots.
 			this.navDots.forEach( ( dot, index ) => {
 				dot.addEventListener( 'click', () => {
-					this.changeControls( this.navDots, 'wp-block-mgblockslider-slider__control__dot--current', index );
+					this.changeControls( this.navDots, 'wp-block-mg-block-slider-slider__control__dot--current', index );
 					this.changeSlide( 'dots', index );
 
 					// Check the current index and change slides in the correct
@@ -233,7 +233,7 @@ class MGBlockSlider {
 		// --------------------------------------
 		if ( this.thumbsNav ) {
 			const thumbNavigation = document.createElement( 'ul' );
-			thumbNavigation.classList.add( 'wp-block-mgblockslider-slider__thumbnails' );
+			thumbNavigation.classList.add( 'wp-block-mg-block-slider-slider__thumbnails' );
 
 			if ( this.slider.classList.contains( 'alignwide' ) ) {
 				thumbNavigation.classList.add( 'alignwide' );
@@ -252,26 +252,26 @@ class MGBlockSlider {
 					const imagePath = slideSrc.slice( 0, slideSrc.length - imageFormat.length - 1 );
 
 					thumbNavigation.innerHTML += `
-						<li class="wp-block-mgblockslider-slider__thumb">
+						<li class="wp-block-mg-block-slider-slider__thumb">
 							<img src="${ imagePath }.${ imageFormat }" alt="${ this.i18n.slide } ${ index + 1 }">
 							<span class="screen-reader-text">${ this.i18n.showSlide } ${ index + 1 }</span>
 						</li>`;
 				} else {
 					slideSrc = slide.querySelector( 'video' ) ? 'video' : 'img';
 					thumbNavigation.innerHTML += `
-						<li class="wp-block-mgblockslider-slider__thumb wp-block-mgblockslider-slider__thumb--${ slideSrc }">
+						<li class="wp-block-mg-block-slider-slider__thumb wp-block-mg-block-slider-slider__thumb--${ slideSrc }">
 							<span class="screen-reader-text">${ this.i18n.showSlide } ${ index + 1 }</span>
 						</li>`;
 				}
 			} );
 			this.slider.insertAdjacentElement( 'afterend', thumbNavigation );
-			this.thumbs = document.querySelectorAll( `${ this.selector } .wp-block-mgblockslider-slider__thumbnails .wp-block-mgblockslider-slider__thumb` );
-			this.thumbs[ this.current ].classList.add( 'wp-block-mgblockslider-slider__thumb--current' );
+			this.thumbs = document.querySelectorAll( `${ this.selector } .wp-block-mg-block-slider-slider__thumbnails .wp-block-mg-block-slider-slider__thumb` );
+			this.thumbs[ this.current ].classList.add( 'wp-block-mg-block-slider-slider__thumb--current' );
 
 			// Change slides and thumbnails.
 			this.thumbs.forEach( ( img, index ) => {
 				img.addEventListener( 'click', () => {
-					this.changeControls( this.navDots, 'wp-block-mgblockslider-slider__control__dot--current', index );
+					this.changeControls( this.navDots, 'wp-block-mg-block-slider-slider__control__dot--current', index );
 					this.changeSlide( 'dots', index );
 
 					// Check the current index and change slides in the correct order.
@@ -302,21 +302,21 @@ class MGBlockSlider {
 	changeSlide( direction, index = this.current ) {
 		this.slides.forEach( ( slide, position ) => {
 			slide.classList.remove(
-				'wp-block-mgblockslider-slide__current',
-				'wp-block-mgblockslider-slide__prev',
-				'wp-block-mgblockslider-slide__next',
+				'wp-block-mg-block-slider-slide__current',
+				'wp-block-mg-block-slider-slide__prev',
+				'wp-block-mg-block-slider-slide__next',
 			);
 
 			setTimeout( () => {
 				this.slidesContainer.classList.remove(
-					'wp-block-mgblockslider-slides__container--prev',
-					'wp-block-mgblockslider-slides__container--next',
+					'wp-block-mg-block-slider-slides__container--prev',
+					'wp-block-mg-block-slider-slides__container--next',
 				);
 			}, this.speed );
 
 			// If there are videos.
 			if ( slide.querySelector( 'video' ) ) {
-				slide.classList.add( 'wp-block-mgblockslider-slide--has-video' );
+				slide.classList.add( 'wp-block-mg-block-slider-slide--has-video' );
 				const videoDuration = Math.ceil( slide.querySelector( 'video' ).duration ) * 1000;
 
 				// Pause the video on change slide.
@@ -350,21 +350,21 @@ class MGBlockSlider {
 			this.orderSlides( index );
 
 			if ( 'next' === direction ) {
-				this.slidesContainer.classList.add( 'wp-block-mgblockslider-slides__container--next' );
+				this.slidesContainer.classList.add( 'wp-block-mg-block-slider-slides__container--next' );
 			}
 			if ( 'prev' === direction ) {
-				this.slidesContainer.classList.add( 'wp-block-mgblockslider-slides__container--prev' );
+				this.slidesContainer.classList.add( 'wp-block-mg-block-slider-slides__container--prev' );
 			}
 		}
 
-		this.slides[ index ].classList.add( 'wp-block-mgblockslider-slide__current' );
+		this.slides[ index ].classList.add( 'wp-block-mg-block-slider-slide__current' );
 
 		if ( this.controlNav ) {
-			this.changeControls( this.navDots, 'wp-block-mgblockslider-slider__control__dot--current', index );
+			this.changeControls( this.navDots, 'wp-block-mg-block-slider-slider__control__dot--current', index );
 		}
 
 		if ( this.thumbsNav ) {
-			this.changeControls( this.thumbs, 'wp-block-mgblockslider-slider__thumb--current', index );
+			this.changeControls( this.thumbs, 'wp-block-mg-block-slider-slider__thumb--current', index );
 		}
 	}
 
@@ -391,16 +391,16 @@ class MGBlockSlider {
 		if ( this.slides.length > 2 ) {
 			// Prevent null on previous sibling of current.
 			if ( undefined != this.slides[ index ].previousElementSibling ) {
-				this.slides[ index ].previousElementSibling.classList.add( 'wp-block-mgblockslider-slide__prev' );
+				this.slides[ index ].previousElementSibling.classList.add( 'wp-block-mg-block-slider-slide__prev' );
 			} else {
-				this.slides[ this.slides.length - 1 ].classList.add( 'wp-block-mgblockslider-slide__prev' );
+				this.slides[ this.slides.length - 1 ].classList.add( 'wp-block-mg-block-slider-slide__prev' );
 			}
 
 			// Prevent null on next sibling of current.
 			if ( undefined != this.slides[ index ].nextElementSibling ) {
-				this.slides[ index ].nextElementSibling.classList.add( 'wp-block-mgblockslider-slide__next' );
+				this.slides[ index ].nextElementSibling.classList.add( 'wp-block-mg-block-slider-slide__next' );
 			} else {
-				this.slides[ 0 ].classList.add( 'wp-block-mgblockslider-slide__next' );
+				this.slides[ 0 ].classList.add( 'wp-block-mg-block-slider-slide__next' );
 			}
 		}
 	}
@@ -424,14 +424,14 @@ class MGBlockSlider {
 		this.slidesContainer.addEventListener( 'touchmove', ( e ) => {
 			touchstartX = e.touches[ 0 ].clientX;
 			this.slides[ this.current ].style.transform = `translate3d(${ touchstartX - startTouch }px, 0, 0)`;
-			this.slidesContainer.querySelector( '.wp-block-mgblockslider-slide__prev' ).style.transform = `translate3d(calc(${ touchstartX - startTouch }px - 100%), 0, 0)`;
-			this.slidesContainer.querySelector( '.wp-block-mgblockslider-slide__next' ).style.transform = `translate3d(calc(${ touchstartX - startTouch }px + 100%), 0, 0)`;
+			this.slidesContainer.querySelector( '.wp-block-mg-block-slider-slide__prev' ).style.transform = `translate3d(calc(${ touchstartX - startTouch }px - 100%), 0, 0)`;
+			this.slidesContainer.querySelector( '.wp-block-mg-block-slider-slide__next' ).style.transform = `translate3d(calc(${ touchstartX - startTouch }px + 100%), 0, 0)`;
 		} );
 
 		this.slidesContainer.addEventListener( 'touchend', ( e ) => {
-			this.slidesContainer.querySelector( '.wp-block-mgblockslider-slide__current' ).style.removeProperty( 'transform' );
-			this.slidesContainer.querySelector( '.wp-block-mgblockslider-slide__prev' ).style.removeProperty( 'transform' );
-			this.slidesContainer.querySelector( '.wp-block-mgblockslider-slide__next' ).style.removeProperty( 'transform' );
+			this.slidesContainer.querySelector( '.wp-block-mg-block-slider-slide__current' ).style.removeProperty( 'transform' );
+			this.slidesContainer.querySelector( '.wp-block-mg-block-slider-slide__prev' ).style.removeProperty( 'transform' );
+			this.slidesContainer.querySelector( '.wp-block-mg-block-slider-slide__next' ).style.removeProperty( 'transform' );
 
 			if ( touchstartX - startTouch > 100 ) {
 				if ( this.current > 0 ) {
@@ -565,7 +565,7 @@ class MGBlockSlider {
 	loadingEvent( state ) {
 		if ( !state ) {
 			this.loadingSpinner = document.createElement( 'div' );
-			this.loadingSpinner.classList.add( 'wp-block-mgblockslider-slider__loading' );
+			this.loadingSpinner.classList.add( 'wp-block-mg-block-slider-slider__loading' );
 			this.loadingSpinner.innerHTML = `<p><span class="screen-reader-text">${ this.i18n.loading }</span></p>`;
 			this.slider.parentElement.appendChild( this.loadingSpinner );
 		}

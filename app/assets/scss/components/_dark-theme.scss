@@ -8,14 +8,14 @@
 	--slider--items--background: rgba(17, 17, 17, 0.85);
 
 	// Controls.
-	.wp-block-mgblockslider-slider__control {
+	.wp-block-mg-block-slider-slider__control {
 		&__arrow {
 			background-image: url(../img/arrow-dark.svg);
 		}
 
 		&--squares,
 		&--circles {
-			.wp-block-mgblockslider-slider__control__arrow {
+			.wp-block-mg-block-slider-slider__control__arrow {
 				background-color: var(--slider--items--background);
 				background-image: url(../img/arrow.svg);
 			}
@@ -23,7 +23,7 @@
 	}
 
 	// Loading.
-	.wp-block-mgblockslider-slider__loading p {
+	.wp-block-mg-block-slider-slider__loading p {
 		background-image: url(../img/spinner.svg);
 	}
 }
