@@ -7,11 +7,11 @@ License      : GPLv2 or later
 License URI  : https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 ```
 
-![Package Version](https://img.shields.io/github/package-json/v/gigenam/mgblockslider)
+![WordPress Plugin Version](https://img.shields.io/wordpress/plugin/v/mg-block-slider?label=Version)
 ![Required Node Version](https://img.shields.io/badge/Minimum->=16.x%20-blue?logo=node.js)
-![Required PHP Version](https://img.shields.io/badge/Recomended->=7.0-blue?logo=php)
-![Required WP Version](https://img.shields.io/badge/Required->=5.9-blue?logo=wordpress)
-![Tested WP Version](https://img.shields.io/badge/Tested-6.0.2-lightgrey?logo=wordpress)
+![WordPress Plugin Required PHP Version](https://img.shields.io/wordpress/plugin/required-php/mg-block-slider?label=Recommended&logo=php)
+![WordPress Plugin: Required WP Version](https://img.shields.io/wordpress/plugin/wp-version/mg-block-slider?label=Minimum&logo=wordpress)
+![WordPress Plugin: Tested WP Version](https://img.shields.io/wordpress/plugin/tested/mg-block-slider?label=Tested&logo=wordpress)
 
 ![MG Block Slider Banner](./app/assets/img/banner.png)
 
