@@ -13,9 +13,9 @@
  * Author: Marcos Gigena
  * Author URI: https://github.com/gigenam
  * Description: A simple slideshow block to use it in any block editor with any type of content. Post, pages, widgets. Anything and anywhere where you want.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Requires at least: 5.9
- * Tested up to: 6.0.3
+ * Tested up to: 6.1
  * Requires PHP: 7.0
  * Text Domain: mg-block-slider
  * Domain Path: /languages
