@@ -3,7 +3,7 @@ Contributors: gigenam
 Tags: block, editor, slider, slideshow, content, image, video
 Requires at least: 5.9
 Tested up to: 6.1
-Stable tag: 1.0.1
+Stable tag: 1.1.0
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
@@ -96,6 +96,9 @@ No money, no coding? No problem. Please, share, review it and let me know if you
 5. Slider with thumbnails and hidden arrows.
 
 == Changelog ==
+
+= 1.1.0 - 2022-11-01 : =
+* Improvements in optimization for animations on lost focus.
 
 = 1.0.1 - 2022-10-27 : =
 * Support for WP 6.1

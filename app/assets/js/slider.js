@@ -555,6 +555,18 @@ class MGBlockSlider {
 			);
 			Observer.observe( this.slider );
 		}
+
+		// Stop animation on change the browser tab.
+		document.addEventListener( 'visibilitychange', () => {
+			if ( document.visibilityState !== 'visible' ) {
+				clearInterval( this.animation );
+			} else {
+				this.animation = setInterval( () => {
+					this.current = ( this.current + 1 ) % this.slides.length;
+					this.changeSlide( 'next', this.current );
+				}, this.duration );
+			}
+		} );
 	}
 
 	/**
