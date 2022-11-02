@@ -12,6 +12,10 @@ License URI : https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
 [ + ] Add -- [ - ] Remove -- [ ! ] Fix/Modify.
 
+## Ver 1.1.1 - 2022-11-02 :
+
+- Minor fix on touch scroll.
+
 ## Ver 1.1.0 - 2022-11-01 :
 
 - Improvements in optimization for animations on lost focus.
