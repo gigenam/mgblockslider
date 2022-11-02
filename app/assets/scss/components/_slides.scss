@@ -38,12 +38,7 @@
 	margin: 0;
 	background-color: var(--slider--items--primary);
 	transition-timing-function: inherit;
-	-webkit-user-select: none;
-	-khtml-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-	touch-action: pan-x;
+	touch-action: pan-y;
 
 	// Every slide except the current are absolutes.
 	&:not(&__current) {
