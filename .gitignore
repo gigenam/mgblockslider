@@ -130,3 +130,7 @@ TODO.md
 
 ### Final & minify files ###
 *.zip
+/app/blocks/
+/app/css/
+/app/img/
+/app/js/

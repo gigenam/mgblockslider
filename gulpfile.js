@@ -173,10 +173,6 @@ export const images = ( done ) => {
 		gulp.src( paths.images.src )
 			.pipe( gulp.dest( paths.images.dest ) );
 	} else {
-		// Primero borrar todo.
-		gulp.src( paths.images.dest + '/*', { allowEmpty: true } )
-			.pipe( clean() );
-
 		gulp.src( paths.images.src )
 			.pipe( imagemin( [
 				gifsicle( { interlaced: true } ),
@@ -208,7 +204,7 @@ export const updateThemeVersion = ( done ) => {
 		.pipe( replace( /Version:\s([0-9.])*/, `Version: ${ themeVersion }` ) )
 		.pipe( gulp.dest( './app' ) );
 
-	gulp.src( './app/readme.txt' )
+	gulp.src( ['./app/readme.txt', './app/changelog.txt' ] )
 		.pipe( replace( /Stable tag:\s([0-9.])*/, `Stable tag: ${ themeVersion }` ) )
 		.pipe( gulp.dest( './app' ) );
 
