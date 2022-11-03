@@ -52,83 +52,34 @@ documentación completa y como personalizar todo.
 
 ## Instalación
 
-Instálalo como cualquier otro plugin, a través del directorio de plugins de WordPress
-dentro de tu administración de WordPress o descargando este repositorio, y subiendo
-el contenido de la carpeta `app` en tu servidor en /wp-content/plugins/.
+Instalarlo como cualquier otro plugin, a través del directorio de plugins de WordPress
+dentro de tu administración de WordPress o descargando este repositorio, compilando,
+y subiendo el contenido de la carpeta `app` en tu servidor en /wp-content/plugins/.
 
 Ve a la [Wiki](https://github.com/gigenam/mgblockslider/wiki/Inicio) para ver la
 documentación completa y como personalizar todo.
 
-## Preguntas Frecuentes (FAQ)
+## Desarrollo
 
-### ¿Cómo puedo cambiar el estilo del contenido que quiero mostrar?
+Instala todas las dependencias con `npm start` o `npm start:no-composer`.
 
-Este plugin solo agrega estilos a sus propios elementos (flechas, puntos, etc.).
-Todos los estilos de párrafos, encabezados, columnas, portadas o cualquier bloque
-que agregues depende del tema que estés usando o la opción de bloque que puedas
-modificar, como colores, espacios, tipografía, etc.
+Hay tareas separadas para php, js y el desarrollo de bloques.
 
-### ¿Qué tipo de alineaciones están soportados?
+- Corre `npm run dev` para modificar los archivos principales del slider de js,
+  css e imágenes.
+- Corre `npm run blocks` para modificar los bloques del editor.
 
-Si tu tema soporta alineaciones de bloques:
+¿Listo para producción?
 
-- Ninguna (lo cual es el ancho del contenido the tema).
-- Izquierda.
-- Derecha.
-- Pantalla ancha.
-- Ancho completo.
+- Corre `npm run build` y `npm run build-blocks`.
 
-### ¿Puedo agregar colores o temas personalizados?
+Para más información, revisa los archivos [package.json](package.json) y
+[gulpfile.js](gulpfile.js).
 
-No para los elementos de control deslizante (flechas, puntos, etc.) a menos que
-tenga un poco de conocimiento con la modificación de temas CSS y WP (o uses
-complementos para ayudarte). En este caso es bastante fácil porque fue diseñado
-para ser personalizable.
+## Preguntas Frecuentes
 
-Si tienes algunas ideas geniales para nuevos temas/estilos, Házmelo saber.
-Cualquier ayuda para mejorar es muy bienvenida.
-
-Para una fácil personalización del contenido, la forma recomendada es editar los
-bloques internos. Por ejemplo, agrega un bloque de párrafo y configura los estilos
-personalizados en ese bloque. ¿Quiere más separación entre la tarjeta y el contenido?
-Añade un bloque de grupo o similar y configurar los espaciados, alineaciones, etc.
-
-### ¿Puedo agregar clases personalizadas para mejores modificaciones de CSS?
-
-Sí, por supuesto. Como cualquier otro bloque, puede agregar tantas clases como
-desee. Puede agregar clases personalizadas para el bloque principal y para las
-tarjetas individuales.
-
-Además, cuando configuras el título, estás agregando un ID personalizado al
-elemento contenedor del slider principal.
-
-### ¿Cómo funcionan las traducciones?
-
-Por defecto todo está en inglés y viene con un par de tipos en español:
-
-- `es_ES`
-- `es_AR`
-- `es_MX`
-
-Cada cadena de texto está lista para traducir y puedes aprender a hacer tus
-propias traducciones en la [Wiki](https://github.com/gigenam/mgblockslider/wiki/Inicio).
-
-### ¿Dónde están las funciones PRO?
-
-No hay. Primero y más importante, hice esto para mí y mis clientes, y es por eso
-que tiene características mínimas y es fácil de ampliar. Si deseas cientos de
-funcionalidades con una tonelada de botones y una interfaz de usuario realmente
-sobre cargada, esto no es para ti.
-
-¿Tienes ideas geniales para más opciones/temas o quieres contribuir a este proyecto?
-Clonalo, haz lo que quieras, y crea un pull request con tus cambios. Ten en cuenta
-la simplicidad de este proyecto.
-
-¿Quieres contribuir sin código? Cada donación para mantener esto en marcha es muy
-apreciada. Mira [este enlace](https://www.paypal.com/donate/?hosted_button_id=X73V9XW8Y94C8).
-
-Sin dinero, sin código? No hay problema. Por favor, compártelo, deja una valoración
-y avísame si encuentras problemas o errores en el foro de soporte.
+Revisa el archivo [readme.txt](./app/readme.txt#L40)
+(o la [página del plugin](https://wordpress.org/plugins/mg-block-slider)).
 
 ## Cambios
 
