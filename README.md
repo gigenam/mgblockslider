@@ -52,80 +52,30 @@ documentation on how to use and/or customize everything.
 ## Installation
 
 Install it like any other plugin, via the WordPress plugin directory inside your
-WordPress administration or by downloading this repo, and upload the content of the
-`app` folder to your server at /wp-content/plugins/.
+WordPress administration or by downloading this repo, compile it and upload the
+content of the `app` folder to your server at /wp-content/plugins/.
 
 Go to the [Wiki](https://github.com/gigenam/mgblockslider/wiki) for the full
 documentation on how to use and/or customize everything.
 
+## Development
+
+Install all the dependencies with `npm start` or `npm start:no-composer`.
+
+There are separate task for php and js and for blocks development.
+
+- Run `npm run dev` for modify the core slider js, styles and images files.
+- Run `npm run blocks` for modify the blocks for the editor.
+
+Ready for production?
+
+- Run `npm run build` and `npm run build-blocks`.
+
+For more info, check the [package.json](package.json) and [gulpfile.js](gulpfile.js).
+
 ## Frequently Asked Questions
 
-### How can I change the style of the content I want to diplay?
-
-This plugin only adds styles to it's own elements (arrows, dots, etc). All the
-styles for paragraphs, headings, columns, covers, or whatever block you add
-depends on the theme you are using or the block option you can tweak, like colors,
-spacings, typography, etc.
-
-### What type of alignments are supported?
-
-If your theme support block alignments:
-
-- None (witch is the content width defined by the theme).
-- Left.
-- Right.
-- Wide screen.
-- Full width.
-
-### Can I add custom colors or themes?
-
-Not for the slider elements (arrows, dots, etc) unless you have a bit of knowledge
-with CSS and WP themes modification (or using plugins to help). In this case is
-pretty easy because was designed to be customizable.
-
-If you have some cool ideas for new themes/styles, let me know. Any help for
-improvements is very welcome.
-
-For easy content customization, the recommended way is editing the inner blocks.
-For example, add a paragraph block and set up the custom styles in that block.
-Want more separation between the slider and content? Add a group block or similar
-and configure the spacing, alignments, etc.
-
-### Can I add custom classes for better CSS modifications?
-
-Yes, of course. Like any other block, you can add as many classes as you want.
-You can add custom classes for the main slider block, and for the individual
-slides.
-
-Also, when you configure the title, you are adding a custom ID to the main slider
-container element.
-
-### How translations work?
-
-By default everything is in English and comes with a couple of Spanish types:
-
-- `es_ES`
-- `es_AR`
-- `es_MX`
-
-Every string of text is translation ready and you can learn how to make your own
-translations at the [Wiki](https://github.com/gigenam/mgblockslider/wiki).
-
-### Where are the PRO features?
-
-There aren't. First and most important, I made this for myself and my clients,
-and thats why it has minimum features and is easy to extend. If you want hundreds
-of features with a ton of buttons and a really bloated UI, this is not for you.
-
-Do you have cool ideas for more options/themes or want to contribute to this project?
-Clone it, do whatever you want, and make a pull request with your changes.
-Keep in mind the simplicity of this project.
-
-You want to contribute without coding? Every donation to keep this rolling is very
-appreciated. Check [this link](https://www.paypal.com/donate/?hosted_button_id=X73V9XW8Y94C8).
-
-No money, no coding? No problem. Please, share, review it and let me know if you
-find problems or bugs in the support forum.
+Check the [readme.txt](./app/readme.txt#L40).
 
 ## Changelog
 
