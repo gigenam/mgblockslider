@@ -433,16 +433,19 @@ class MGBlockSlider {
 			this.slidesContainer.querySelector( '.wp-block-mg-block-slider-slide__prev' ).style.removeProperty( 'transform' );
 			this.slidesContainer.querySelector( '.wp-block-mg-block-slider-slide__next' ).style.removeProperty( 'transform' );
 
-			if ( touchstartX - startTouch > 100 ) {
-				if ( this.current > 0 ) {
-					this.current--;
-				} else {
-					this.current = this.slides.length - 1;
+			if ( 0 !== touchstartX ) {
+				if ( startTouch - touchstartX < -50 ) {
+					if ( this.current > 0 ) {
+						this.current--;
+					} else {
+						this.current = this.slides.length - 1;
+					}
+					this.changeSlide( 'prev' );
+				} else if ( startTouch - touchstartX > 50 ) {
+					this.current = ( this.current + 1 ) % this.slides.length;
+					this.changeSlide( 'next' );
 				}
-				this.changeSlide( 'prev' );
-			} else if ( touchstartX - startTouch < 100 ) {
-				this.current = ( this.current + 1 ) % this.slides.length;
-				this.changeSlide( 'next' );
+				touchstartX = 0;
 			}
 
 			this.slider.classList.remove( 'dragging' );

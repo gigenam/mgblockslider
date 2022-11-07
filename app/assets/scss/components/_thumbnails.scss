@@ -17,9 +17,12 @@
 		height: auto;
 		max-height: 100%;
 		margin: 0;
+		transition: filter 300ms;
+		filter: grayscale(1);
+		cursor: pointer;
 
-		&--current img,
-		&:hover img {
+		&--current,
+		&:hover {
 			filter: grayscale(0);
 		}
 
@@ -44,9 +47,6 @@
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-		transition: filter 300ms;
-		filter: grayscale(1);
-		cursor: pointer;
 	}
 }
 
