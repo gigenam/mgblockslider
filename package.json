@@ -2,7 +2,7 @@
 	"type": "module",
 	"name": "mg-block-slider",
 	"site": "http://localhost:8080/mgblockslider",
-	"version": "1.1.2",
+	"version": "1.1.3",
 	"description": "A simple slideshow block to use it in any block editor",
 	"author": "Marcos Gigena",
 	"homepage": "https://github.com/gigenam/",

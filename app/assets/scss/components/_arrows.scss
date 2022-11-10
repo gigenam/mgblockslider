@@ -80,7 +80,7 @@
 // Hide directional nav
 // ------------------------------------------
 .directional-nav--is-hidden {
-	.wp-block-mgblockslider-slider__control__arrow {
+	.wp-block-mg-block-slider-slider__control__arrow {
 		transition: opacity var(--slider--transition-duration--controls);
 		opacity: 0;
 	}
