@@ -1,0 +1,122 @@
+/**
+ * Lightbox
+ */
+
+// Open button in main slides.
+.wp-block-mg-block-slider-slide__open-lightbox {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 1em;
+	height: 1em;
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: calc(var(--slider--z-index--controls) + 50);
+	color: var(--slider--items--primary);
+	font-size: 1.6em;
+	cursor: pointer;
+
+	&--squares,
+	&--circles {
+		color: var(--slider--items--secondary);
+		background-color: var(--slider--items--primary);
+	}
+
+	&--circles {
+		top: 0.25rem;
+		right: 0.25rem;
+		border-radius: 50%;
+	}
+}
+
+// Main lightbox.
+&__lightbox {
+	display: flex;
+	visibility: hidden;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 999999;
+	background-color: var(--slider--items--background);
+
+	&--is-open {
+		visibility: visible;
+	}
+
+	// Slides.
+	.wp-block-mg-block-slider-slide {
+		flex: 0 0 100%;
+		height: auto !important;
+		max-height: 100%;
+		margin: auto;
+		background-color: transparent;
+
+		&:not(&__current) {
+			position: static;
+		}
+
+		img,
+		picture,
+		video,
+		iframe {
+			max-width: 100%;
+			height: auto;
+			max-height: 94vh;
+			margin: auto !important;
+			object-fit: contain;
+		}
+	}
+
+	//
+	// Controls
+	// ------------------------------------------
+	&__control {
+		display: block;
+		width: clamp(24px, 5vw, 40px);
+		height: clamp(24px, 5vw, 40px);
+		position: absolute;
+		top: 0.5rem;
+		background: no-repeat center / 55%;
+		cursor: pointer;
+
+		&--close {
+			right: 0.5rem;
+			background-image: url(../img/close-dark.svg);
+		}
+
+		&--counter {
+			left: 0.5rem;
+			height: auto;
+			text-align: center;
+		}
+
+		// Controls styles.
+		&--squares,
+		&--circles {
+			&.wp-block-mg-block-slider-slider__lightbox__control--close,
+			&.wp-block-mg-block-slider-slider__lightbox__control--counter {
+				background-color: var(--slider--items--primary);
+			}
+		}
+
+		&--circles {
+			&.wp-block-mg-block-slider-slider__lightbox__control--close {
+				border-radius: 50%;
+			}
+
+			&.wp-block-mg-block-slider-slider__lightbox__control--counter {
+				border-radius: 10rem;
+			}
+		}
+	}
+
+	//
+	// Block tweaks.
+	// ------------------------------------------
+	.wp-block-cover {
+		overflow: hidden;
+	}
+}

@@ -18,10 +18,11 @@
 .wp-block-mg-block-slider-slider {
 	--slider--items--primary: #ffffff;
 	--slider--items--secondary: #111111;
-	--slider--items--background: rgba(255, 255, 255, 0.85);
+	--slider--items--background: rgba(255, 255, 255, 0.9);
 	--slider--z-index--controls: 50;
 	--slider--transition-duration--controls: 200ms;
 	width: 100%;
+	position: relative;
 	margin-bottom: 1em;
 	color: var(--slider--items--secondary);
 
@@ -87,6 +88,7 @@
 	@import "components/arrows";
 	@import "components/dots";
 	@import "components/thumbnails";
+	@import "components/lightbox";
 
 	// Loading spinner.
 	&__loading {

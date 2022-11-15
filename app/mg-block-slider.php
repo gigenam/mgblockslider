@@ -138,6 +138,8 @@ if ( ! class_exists( 'MGBlockSlider' ) ) {
 						'nextSlide'     => __( 'Next slide', 'mg-block-slider' ),
 						'showNextSlide' => __( 'Show next slide', 'mg-block-slider' ),
 						'loading'       => __( 'Loading', 'mg-block-slider' ),
+						'closeLightbox' => __( 'Close lightbox', 'mg-block-slider' ),
+						'openLightbox'  => __( 'Open lightbox', 'mg-block-slider' ),
 					)
 				);
 				add_action( 'wp_footer', array( __CLASS__, 'esc_script' ), 999 );

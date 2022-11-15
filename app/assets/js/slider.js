@@ -27,6 +27,7 @@ class MGBlockSlider {
 		arrowType      = '',
 		paginationType = '',
 		autoHeight     = true,
+		lightbox       = true, // TODO: Cambiar luego a false.
 	} = {} ) {
 		this.selector        = selector;
 		this.theme           = theme;
@@ -49,6 +50,7 @@ class MGBlockSlider {
 		this.arrowType       = arrowType;
 		this.paginationType  = paginationType;
 		this.autoHeight      = autoHeight;
+		this.lightbox        = lightbox;
 		this.current         = 0;
 		this.loadState       = false;
 		this.triggerObserver = false;
@@ -110,6 +112,11 @@ class MGBlockSlider {
 		if ( this.autoHeight ) {
 			this.calcMinHeight();
 			this.slider.parentElement.classList.add( 'auto-height' );
+		}
+
+		if ( this.lightbox ) {
+			this.createLightbox();
+			this.slider.parentElement.classList.add( 'has-lightbox' );
 		}
 	}
 
@@ -514,10 +521,10 @@ class MGBlockSlider {
 
 		if ( this.stopOnHover ) {
 			// Stop animation on hover.
-			this.slider.addEventListener( 'mouseenter', () => clearInterval( this.animation ) );
+			this.slider.parentElement.addEventListener( 'mouseenter', () => clearInterval( this.animation ) );
 
 			// Resume animation when lost hover.
-			this.slider.addEventListener( 'mouseleave', () => {
+			this.slider.parentElement.addEventListener( 'mouseleave', () => {
 				this.animation = setInterval( () => {
 					this.current = ( this.current + 1 ) % this.slides.length;
 					this.changeSlide( 'next', this.current );
@@ -570,6 +577,72 @@ class MGBlockSlider {
 				}, this.duration );
 			}
 		} );
+	}
+
+	/**
+	 * Lightbox
+	 */
+	createLightbox() {
+		const lightbox = document.createElement( 'div' );
+		lightbox.classList.add( 'wp-block-mg-block-slider-slider__lightbox' );
+		lightbox.innerHTML = `
+			<ul class="wp-block-mg-block-slider-slider__lightbox__container"></ul>
+			<p class="wp-block-mg-block-slider-slider__lightbox__control wp-block-mg-block-slider-slider__lightbox__control--close"><span class="screen-reader-text">${ this.i18n.closeLightbox }</span></p>
+		`;
+		const lightboxContainer = lightbox.querySelector( '.wp-block-mg-block-slider-slider__lightbox__container' );
+		const lightboxClose     = lightbox.querySelector( '.wp-block-mg-block-slider-slider__lightbox__control--close' );
+
+		// Slides counter.
+		// TODO: Separado para agregar opción de activar/desactivar.
+		const slidesCounter = document.createElement( 'span' );
+		slidesCounter.classList.add( 'wp-block-mg-block-slider-slider__lightbox__control', 'wp-block-mg-block-slider-slider__lightbox__control--counter' );
+		lightbox.appendChild( slidesCounter );
+
+		// Open icon.
+		const openLightbox = document.createElement( 'p' );
+		openLightbox.classList.add( 'wp-block-mg-block-slider-slide__open-lightbox' );
+		openLightbox.innerHTML = `+ <span class="screen-reader-text">${ this.i18n.openLightbox }</span>`;
+
+		// Control types.
+		if ( '' !== this.arrowType ) {
+			lightboxClose.classList.add( `wp-block-mg-block-slider-slider__lightbox__control--${ this.arrowType }` );
+			slidesCounter.classList.add( `wp-block-mg-block-slider-slider__lightbox__control--${ this.arrowType }` );
+			openLightbox.classList.add( `wp-block-mg-block-slider-slide__open-lightbox--${ this.arrowType }` );
+		}
+
+		// Get all the slides to show on lightbox.
+		this.slides.forEach( ( slide ) => {
+			const slideContent = slide.cloneNode( true );
+			slideContent.classList.remove(
+				'wp-block-mg-block-slider-slide__current',
+				'wp-block-mg-block-slider-slide__prev',
+				'wp-block-mg-block-slider-slide__next',
+			);
+
+			// Append slides clones.
+			lightboxContainer.appendChild( slideContent );
+
+			// Append open icon.
+			const openLightboxItem = openLightbox.cloneNode( true );
+			slide.appendChild( openLightboxItem );
+
+			openLightboxItem.addEventListener( 'click', () => {
+				document.body.style.overflow = 'hidden';
+				slidesCounter.innerHTML = `${ this.current + 1 }/${ this.slides.length }`;
+				lightboxContainer.style.transform = `translateX(-${ this.current * 100 }vw)`;
+				lightbox.classList.add( 'wp-block-mg-block-slider-slider__lightbox--is-open' );
+				slideContent.classList.add( 'wp-block-mg-block-slider-slide__current' );
+			} );
+		} );
+
+		// Close button.
+		lightbox.querySelector( '.wp-block-mg-block-slider-slider__lightbox__control--close' ).addEventListener( 'click', () => {
+			lightbox.classList.remove( 'wp-block-mg-block-slider-slider__lightbox--is-open' );
+			document.body.style.overflow = null;
+		} );
+
+		lightboxContainer.style.width = `${ this.slides.length * 100 }vw`;
+		this.slider.parentElement.appendChild( lightbox );
 	}
 
 	/**
