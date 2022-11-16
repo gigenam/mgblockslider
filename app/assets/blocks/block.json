@@ -40,7 +40,10 @@
 		"speed": { "type": "integer", "default": 0.5 },
 		"arrowType": { "type": "string", "default": "" },
 		"paginationType": { "type": "string", "default": "" },
-		"autoHeight": { "type": "boolean", "default": true }
+		"autoHeight": { "type": "boolean", "default": true },
+		"lightbox": { "type": "boolean", "default": false },
+		"lightboxCounter": { "type": "boolean", "default": false },
+		"lightboxArrows": { "type": "boolean", "default": false }
 	},
 	"editorScript": "file:./mgblockslider.js",
 	"editorStyle": "file:../css/mgblockslider.css"

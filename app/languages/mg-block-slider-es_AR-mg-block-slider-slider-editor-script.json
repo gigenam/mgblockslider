@@ -53,6 +53,8 @@
 				"Pausar contenido al perder foco"
 			],
 			"Wait videos to finish": ["Esperar a terminar los videos"],
+			"Open content on a lightbox": ["Abrir contenido en lightbox"],
+			"Show slides counter": ["Mostrar contador de tarjetas"],
 			"Theme": ["Tema"],
 			"Light": ["Claro"],
 			"Dark": ["Oscuro"],

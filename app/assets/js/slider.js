@@ -6,28 +6,30 @@
 
 class MGBlockSlider {
 	constructor( {
-		selector       = '.wp-block-mgblockslider-slider',
-		theme          = 'light',
-		directionNav   = true,
-		hideDirections = true,
-		controlNav     = false,
-		hideControls   = false,
-		thumbsNav      = false,
-		hideThumbs     = false,
-		autoStart      = true,
-		stopOnHover    = true,
-		pauseUnfocused = true,
-		waitVideo      = false,
-		swipeNav       = true,
-		animation      = 'slide',
-		vertical       = false,
-		transition     = 'ease',
-		duration       = 5.0,
-		speed          = 0.5,
-		arrowType      = '',
-		paginationType = '',
-		autoHeight     = true,
-		lightbox       = true, // TODO: Cambiar luego a false.
+		selector        = '.wp-block-mgblockslider-slider',
+		theme           = 'light',
+		directionNav    = true,
+		hideDirections  = true,
+		controlNav      = false,
+		hideControls    = false,
+		thumbsNav       = false,
+		hideThumbs      = false,
+		autoStart       = true,
+		stopOnHover     = true,
+		pauseUnfocused  = true,
+		waitVideo       = false,
+		swipeNav        = true,
+		animation       = 'slide',
+		vertical        = false,
+		transition      = 'ease',
+		duration        = 5.0,
+		speed           = 0.5,
+		arrowType       = '',
+		paginationType  = '',
+		autoHeight      = true,
+		lightbox        = false,
+		lightboxCounter = false,
+		lightboxArrows  = false,
 	} = {} ) {
 		this.selector        = selector;
 		this.theme           = theme;
@@ -51,6 +53,8 @@ class MGBlockSlider {
 		this.paginationType  = paginationType;
 		this.autoHeight      = autoHeight;
 		this.lightbox        = lightbox;
+		this.lightboxCounter = lightboxCounter;
+		this.lightboxArrows  = lightboxArrows;
 		this.current         = 0;
 		this.loadState       = false;
 		this.triggerObserver = false;
@@ -250,8 +254,7 @@ class MGBlockSlider {
 			}
 
 			this.slides.forEach( ( slide, index ) => {
-				// Add thumbnails based on the images file name or with a generic
-				// image.
+				// Add thumbnails based on the images file name or with a generic image.
 				let slideSrc = slide.querySelector( 'img' ) ? slide.querySelector( 'img' ).src : null;
 
 				if ( slideSrc ) {
@@ -587,27 +590,38 @@ class MGBlockSlider {
 		lightbox.classList.add( 'wp-block-mg-block-slider-slider__lightbox' );
 		lightbox.innerHTML = `
 			<ul class="wp-block-mg-block-slider-slider__lightbox__container"></ul>
-			<p class="wp-block-mg-block-slider-slider__lightbox__control wp-block-mg-block-slider-slider__lightbox__control--close"><span class="screen-reader-text">${ this.i18n.closeLightbox }</span></p>
+			<p class="wp-block-mg-block-slider-slider__lightbox__control wp-block-mg-block-slider-slider__lightbox__control--close" title="${ this.i18n.closeLightbox }"><span class="screen-reader-text">${ this.i18n.closeLightbox }</span></p>
+			<p class="wp-block-mg-block-slider-slider__lightbox__control wp-block-mg-block-slider-slider__lightbox__control--prev" title="${ this.i18n.prev }"><span class="screen-reader-text">${ this.i18n.prevSlide }</span></p>
+			<p class="wp-block-mg-block-slider-slider__lightbox__control wp-block-mg-block-slider-slider__lightbox__control--next" title="${ this.i18n.next }"><span class="screen-reader-text">${ this.i18n.nextSlide }</span></p>
 		`;
 		const lightboxContainer = lightbox.querySelector( '.wp-block-mg-block-slider-slider__lightbox__container' );
-		const lightboxClose     = lightbox.querySelector( '.wp-block-mg-block-slider-slider__lightbox__control--close' );
-
-		// Slides counter.
-		// TODO: Separado para agregar opción de activar/desactivar.
-		const slidesCounter = document.createElement( 'span' );
-		slidesCounter.classList.add( 'wp-block-mg-block-slider-slider__lightbox__control', 'wp-block-mg-block-slider-slider__lightbox__control--counter' );
-		lightbox.appendChild( slidesCounter );
+		const lightboxPrev      = lightbox.querySelector( '.wp-block-mg-block-slider-slider__lightbox__control--prev' );
+		const lightboxNext      = lightbox.querySelector( '.wp-block-mg-block-slider-slider__lightbox__control--next' );
 
 		// Open icon.
 		const openLightbox = document.createElement( 'p' );
 		openLightbox.classList.add( 'wp-block-mg-block-slider-slide__open-lightbox' );
+		openLightbox.setAttribute( 'title', this.i18n.openLightbox );
 		openLightbox.innerHTML = `+ <span class="screen-reader-text">${ this.i18n.openLightbox }</span>`;
+
+		// Slides counter.
+		let slidesCounter;
+		if ( this.lightboxCounter ) {
+			slidesCounter = document.createElement( 'span' );
+			slidesCounter.classList.add( 'wp-block-mg-block-slider-slider__lightbox__control', 'wp-block-mg-block-slider-slider__lightbox__control--counter' );
+			lightbox.appendChild( slidesCounter );
+		}
 
 		// Control types.
 		if ( '' !== this.arrowType ) {
-			lightboxClose.classList.add( `wp-block-mg-block-slider-slider__lightbox__control--${ this.arrowType }` );
-			slidesCounter.classList.add( `wp-block-mg-block-slider-slider__lightbox__control--${ this.arrowType }` );
+			lightbox.querySelectorAll( '.wp-block-mg-block-slider-slider__lightbox__control' ).forEach( ( control ) => control.classList.add( `wp-block-mg-block-slider-slider__lightbox__control--${ this.arrowType }` ) );
 			openLightbox.classList.add( `wp-block-mg-block-slider-slide__open-lightbox--${ this.arrowType }` );
+		}
+
+		// Hide controls.
+		if ( ! this.lightboxArrows ) {
+			lightboxPrev.classList.add( `wp-block-mg-block-slider-slider__lightbox__control--hidden` );
+			lightboxNext.classList.add( `wp-block-mg-block-slider-slider__lightbox__control--hidden` );
 		}
 
 		// Get all the slides to show on lightbox.
@@ -628,10 +642,13 @@ class MGBlockSlider {
 
 			openLightboxItem.addEventListener( 'click', () => {
 				document.body.style.overflow = 'hidden';
-				slidesCounter.innerHTML = `${ this.current + 1 }/${ this.slides.length }`;
 				lightboxContainer.style.transform = `translateX(-${ this.current * 100 }vw)`;
 				lightbox.classList.add( 'wp-block-mg-block-slider-slider__lightbox--is-open' );
 				slideContent.classList.add( 'wp-block-mg-block-slider-slide__current' );
+
+				if ( this.lightboxCounter ) {
+					slidesCounter.innerHTML = `${ this.current + 1 }/${ this.slides.length }`;
+				}
 			} );
 		} );
 
@@ -639,6 +656,32 @@ class MGBlockSlider {
 		lightbox.querySelector( '.wp-block-mg-block-slider-slider__lightbox__control--close' ).addEventListener( 'click', () => {
 			lightbox.classList.remove( 'wp-block-mg-block-slider-slider__lightbox--is-open' );
 			document.body.style.overflow = null;
+		} );
+
+		// Previous slide.
+		lightboxPrev.addEventListener( 'click', () => {
+			if ( this.current > 0 ) {
+				this.current--;
+			} else {
+				this.current = this.slides.length - 1;
+			}
+			this.changeSlide( 'prev' );
+			lightboxContainer.style.transform = `translate3d(-${ this.current * 100 }vw, 0, 0)`;
+
+			if ( this.lightboxCounter ) {
+				slidesCounter.innerHTML = `${ this.current + 1 }/${ this.slides.length }`;
+			}
+		} );
+
+		// Next slide.
+		lightboxNext.addEventListener( 'click', () => {
+			this.current = ( this.current + 1 ) % this.slides.length;
+			this.changeSlide( 'next' );
+			lightboxContainer.style.transform = `translate3d(-${ this.current * 100 }vw, 0, 0)`;
+
+			if ( this.lightboxCounter ) {
+				slidesCounter.innerHTML = `${ this.current + 1 }/${ this.slides.length }`;
+			}
 		} );
 
 		lightboxContainer.style.width = `${ this.slides.length * 100 }vw`;

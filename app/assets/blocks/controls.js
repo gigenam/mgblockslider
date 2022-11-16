@@ -212,6 +212,32 @@ export const controlsSlider = ( props ) => {
 							onChange={ ( val ) => setAttributes( { waitVideo: val } ) }
 						/>
 					</PanelRow>
+					<PanelRow>
+						<ToggleControl
+							label={__( 'Open content on a lightbox', 'mg-block-slider' )}
+							checked={ attributes.lightbox }
+							onChange={ ( val ) => setAttributes( { lightbox: val } ) }
+						/>
+					</PanelRow>
+					<PanelRow className={attributes.lightbox ? '' : 'hidden'}>
+						<ToggleControl
+							label={__( 'Navigation arrows', 'mg-block-slider' )}
+							checked={ attributes.lightboxArrows }
+							onChange={ ( val ) => {
+								setAttributes( { lightboxArrows: val } );
+								if ( ! val ) {
+									setAttributes( { lightboxCounter: false } );
+								}
+							} }
+						/>
+					</PanelRow>
+					<PanelRow className={attributes.lightboxArrows ? '' : 'hidden'}>
+						<ToggleControl
+							label={__( 'Show slides counter', 'mg-block-slider' )}
+							checked={ attributes.lightboxCounter }
+							onChange={ ( val ) => setAttributes( { lightboxCounter: val } ) }
+						/>
+					</PanelRow>
 				</PanelBody>
 
 				<PanelBody title={__( 'Theme', 'mg-block-slider' )} initialOpen={false} className="components-panel__body__mg-block-slider">

@@ -7,14 +7,14 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 1em;
-	height: 1em;
+	width: 1em !important;
+	height: 1em !important;
 	position: absolute;
 	top: 0;
 	right: 0;
 	z-index: calc(var(--slider--z-index--controls) + 50);
 	color: var(--slider--items--primary);
-	font-size: 1.6em;
+	font-size: 1.6rem;
 	cursor: pointer;
 
 	&--squares,
@@ -40,7 +40,7 @@
 	top: 0;
 	left: 0;
 	z-index: 999999;
-	background-color: var(--slider--items--background);
+	background-color: var(--slider--items--primary);
 
 	&--is-open {
 		visibility: visible;
@@ -79,8 +79,13 @@
 		height: clamp(24px, 5vw, 40px);
 		position: absolute;
 		top: 0.5rem;
+		margin: 0;
 		background: no-repeat center / 55%;
 		cursor: pointer;
+
+		&--hidden {
+			display: none;
+		}
 
 		&--close {
 			right: 0.5rem;
@@ -93,18 +98,62 @@
 			text-align: center;
 		}
 
+		&--prev,
+		&--next {
+			top: 50%;
+			background-image: url(../img/arrow-dark.svg);
+			transform: translateY(-50%);
+		}
+
+		&--prev {
+			left: 0.5rem;
+			transform: translateY(-50%) rotate(180deg);
+		}
+
+		&--next {
+			right: 0.5rem;
+			transform: translateY(-50%);
+		}
+
 		// Controls styles.
 		&--squares,
 		&--circles {
-			&.wp-block-mg-block-slider-slider__lightbox__control--close,
-			&.wp-block-mg-block-slider-slider__lightbox__control--counter {
+			&.wp-block-mg-block-slider-slider__lightbox__control {
 				background-color: var(--slider--items--primary);
 			}
 		}
 
+		&--squares {
+			&.wp-block-mg-block-slider-slider__lightbox__control--close,
+			&.wp-block-mg-block-slider-slider__lightbox__control--counter {
+				top: 0;
+			}
+
+			&.wp-block-mg-block-slider-slider__lightbox__control--close,
+			&.wp-block-mg-block-slider-slider__lightbox__control--next {
+				right: 0;
+			}
+
+			&.wp-block-mg-block-slider-slider__lightbox__control--counter,
+			&.wp-block-mg-block-slider-slider__lightbox__control--prev {
+				left: 0;
+			}
+
+			&.wp-block-mg-block-slider-slider__lightbox__control--prev,
+			&.wp-block-mg-block-slider-slider__lightbox__control--next {
+				height: clamp(40px, 9vw, 60px);
+			}
+		}
+
 		&--circles {
-			&.wp-block-mg-block-slider-slider__lightbox__control--close {
+			&.wp-block-mg-block-slider-slider__lightbox__control {
 				border-radius: 50%;
+			}
+
+			&.wp-block-mg-block-slider-slider__lightbox__control--prev,
+			&.wp-block-mg-block-slider-slider__lightbox__control--next {
+				background-size: 30%;
+				background-position: 55% center;
 			}
 
 			&.wp-block-mg-block-slider-slider__lightbox__control--counter {

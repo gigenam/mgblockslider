@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mgblockslider 1.0\n"
-"POT-Creation-Date: 2022-10-19 08:23-0300\n"
+"POT-Creation-Date: 2022-11-16 09:31-0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -17,7 +17,7 @@ msgstr ""
 "_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;"
 "esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.1\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: assets/blocks/controls.js:10
@@ -29,6 +29,10 @@ msgid "Check out how to configure and customize at the"
 msgstr "Revisa como configurar y personalizar en la"
 
 #: assets/blocks/controls.js:12
+msgid "https://github.com/gigenam/mgblockslider/wiki"
+msgstr "https://github.com/gigenam/mgblockslider/wiki/Inicio"
+
+#: assets/blocks/controls.js:12
 msgid "GitHub Wiki"
 msgstr "Wiki de GitHub"
 
@@ -36,7 +40,7 @@ msgstr "Wiki de GitHub"
 msgid "Navigations"
 msgstr "Navegaciones"
 
-#: assets/blocks/controls.js:19
+#: assets/blocks/controls.js:19 assets/blocks/controls.js:224
 msgid "Navigation arrows"
 msgstr "Flechas de navegación"
 
@@ -157,22 +161,30 @@ msgid "Wait videos to finish"
 msgstr "Esperar a terminar los videos"
 
 #: assets/blocks/controls.js:217
+msgid "Open content on a lightbox"
+msgstr "Abrir contenido en lightbox"
+
+#: assets/blocks/controls.js:236
+msgid "Show slides counter"
+msgstr "Mostrar contador de tarjetas"
+
+#: assets/blocks/controls.js:243
 msgid "Theme"
 msgstr "Tema"
 
-#: assets/blocks/controls.js:222
+#: assets/blocks/controls.js:248
 msgid "Light"
 msgstr "Claro"
 
-#: assets/blocks/controls.js:223
+#: assets/blocks/controls.js:249
 msgid "Dark"
 msgstr "Oscuro"
 
-#: assets/blocks/controls.js:230
+#: assets/blocks/controls.js:256
 msgid "Auto minimum height"
 msgstr "Altura mínima automática"
 
-#: assets/blocks/controls.js:269
+#: assets/blocks/controls.js:295
 msgid "Restore everything to default"
 msgstr "Restaurar a valores por defecto"
 
@@ -204,7 +216,7 @@ msgstr ""
 msgid "Slide "
 msgstr "Tarjeta "
 
-#: mgblockslider.php:94
+#: mg-block-slider.php:94
 msgid ""
 "Hello. This plugin does not add any page or menu in your admin. Just use it "
 "as a block in your content or as a widget. If you want some help, you can "
@@ -214,7 +226,7 @@ msgstr ""
 "Simplemente usalo como bloque en tu contenido o como widget. Si quieres algo "
 "de ayuda, puedes encontrarla en la"
 
-#: mgblockslider.php:95
+#: mg-block-slider.php:95
 msgid ""
 "And if you find this plugin useful, please spread the word and/or leave a "
 "review. Enjoy simplicity!"
@@ -222,55 +234,63 @@ msgstr ""
 "Y si este plugin te resulto útil, por favor corre la voz y/o deja una "
 "reseña. Disfruta la simplicidad!"
 
-#: mgblockslider.php:132
+#: mg-block-slider.php:132
 msgid "Slide"
 msgstr "Tarjeta"
 
-#: mgblockslider.php:133
+#: mg-block-slider.php:133
 msgid "Show slide"
 msgstr "Mostrar tarjeta"
 
-#: mgblockslider.php:134
+#: mg-block-slider.php:134
 msgid "Previous"
 msgstr "Anterior"
 
-#: mgblockslider.php:135
+#: mg-block-slider.php:135
 msgid "Previous slide"
 msgstr "Tarjeta anterior"
 
-#: mgblockslider.php:136
+#: mg-block-slider.php:136
 msgid "Show previous slide"
 msgstr "Mostrar tarjeta anterior"
 
-#: mgblockslider.php:137
+#: mg-block-slider.php:137
 msgid "Next"
 msgstr "Siguiente"
 
-#: mgblockslider.php:138
+#: mg-block-slider.php:138
 msgid "Next slide"
 msgstr "Tarjeta siguiente"
 
-#: mgblockslider.php:139
+#: mg-block-slider.php:139
 msgid "Show next slide"
 msgstr "Mostrar tarjeta siguiente"
 
-#: mgblockslider.php:140
+#: mg-block-slider.php:140
 msgid "Loading"
 msgstr "Cargando"
 
-#: mgblockslider.php:271
+#: mg-block-slider.php:141
+msgid "Close lightbox"
+msgstr "Cerrar lightbox"
+
+#: mg-block-slider.php:142
+msgid "Open lightbox"
+msgstr "Abrir lightbox"
+
+#: mg-block-slider.php:276
 msgid "Documentation"
 msgstr "Documentación"
 
-#: mgblockslider.php:271
+#: mg-block-slider.php:276
 msgid "How to use"
 msgstr "Como usar"
 
-#: mgblockslider.php:272
+#: mg-block-slider.php:277
 msgid "Support the development"
 msgstr "Apoya el desarrollo"
 
-#: mgblockslider.php:272
+#: mg-block-slider.php:277
 msgid "Support"
 msgstr "Apoyar"
 
@@ -343,9 +363,6 @@ msgstr "Apoyar"
 
 #~ msgid "Pause Unfocused"
 #~ msgstr "Pausar en desenfoque"
-
-#~ msgid "Popup lightbox"
-#~ msgstr "Lightbox"
 
 #~ msgid "None"
 #~ msgstr "Nada"
