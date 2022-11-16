@@ -212,14 +212,16 @@ export const controlsSlider = ( props ) => {
 							onChange={ ( val ) => setAttributes( { waitVideo: val } ) }
 						/>
 					</PanelRow>
-					<PanelRow>
+					{/* TODO: Remove beta-testing classes when this is stable and well tested. */}
+					<PanelRow className='beta-testing'>
 						<ToggleControl
 							label={__( 'Open content on a lightbox', 'mg-block-slider' )}
 							checked={ attributes.lightbox }
 							onChange={ ( val ) => setAttributes( { lightbox: val } ) }
+							help={__( 'This feature is in BETA and need more tests with different blocks. Use with careful in production.', 'mg-block-slider' )}
 						/>
 					</PanelRow>
-					<PanelRow className={attributes.lightbox ? '' : 'hidden'}>
+					<PanelRow className={attributes.lightbox ? 'beta-testing' : 'hidden'}>
 						<ToggleControl
 							label={__( 'Navigation arrows', 'mg-block-slider' )}
 							checked={ attributes.lightboxArrows }
@@ -231,7 +233,7 @@ export const controlsSlider = ( props ) => {
 							} }
 						/>
 					</PanelRow>
-					<PanelRow className={attributes.lightboxArrows ? '' : 'hidden'}>
+					<PanelRow className={attributes.lightbox && attributes.lightboxArrows ? 'beta-testing' : 'hidden'}>
 						<ToggleControl
 							label={__( 'Show slides counter', 'mg-block-slider' )}
 							checked={ attributes.lightboxCounter }
@@ -260,6 +262,7 @@ export const controlsSlider = ( props ) => {
 					</PanelRow>
 				</PanelBody>
 			</InspectorControls>
+
 			<InspectorAdvancedControls key="inspector">
 				<PanelRow>
 					<Button

@@ -4,7 +4,7 @@
 
 //
 // Main slider block
-// ------------------------------------------
+// ----------------------------------------------
 .wp-block-mg-block-slider-slider {
 	overflow: hidden;
 	padding: 12px !important;
@@ -136,7 +136,7 @@
 
 //
 // Sidebar options
-// ------------------------------------------
+// ----------------------------------------------
 .components-panel__body__mg-block-slider {
 	.hidden {
 		display: none;
@@ -173,7 +173,7 @@
 
 //
 // Advanced options
-// ------------------------------------------
+// ----------------------------------------------
 .block-editor-block-inspector__advanced {
 	// Restore everything to default.
 	.component-button--restore {
@@ -198,5 +198,15 @@
 	.components-input-control__label {
 		font-size: 13px !important;
 		text-transform: none !important;
+	}
+}
+
+//
+// Beta options
+// ----------------------------------------------
+.components-panel__row.beta-testing {
+	// Checkbox.
+	.components-form-toggle.is-checked .components-form-toggle__track {
+		background-color: tomato;
 	}
 }

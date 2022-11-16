@@ -16,6 +16,7 @@
 	color: var(--slider--items--primary);
 	font-size: 1.6rem;
 	cursor: pointer;
+	opacity: 0.25;
 
 	&--squares,
 	&--circles {
@@ -28,6 +29,10 @@
 		right: 0.25rem;
 		border-radius: 50%;
 	}
+}
+
+&:hover .wp-block-mg-block-slider-slide__open-lightbox {
+	opacity: 1;
 }
 
 // Main lightbox.
