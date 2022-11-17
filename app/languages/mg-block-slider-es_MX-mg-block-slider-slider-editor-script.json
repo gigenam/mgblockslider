@@ -53,7 +53,13 @@
 				"Pausar contenido al perder foco"
 			],
 			"Wait videos to finish": ["Esperar a terminar los videos"],
+			"These features are in beta and need more testing with different blocks and user customizations. Be careful and let me know of any problem you experience.": [
+				"Estas opciones están en beta y necesitan más pruebas con diferentes bloques y personalizaciones de usuario. Ten cuidado y hazme saber sobre cualquier problema que experimentes."
+			],
 			"Open content on a lightbox": ["Abrir contenido en lightbox"],
+			"How to open the lightbox": ["Cómo abrir el lightbox"],
+			"Click on slides": ["Clic en las tarjetas"],
+			"Add a button": ["Agregar un botón"],
 			"Show slides counter": ["Mostrar contador de tarjetas"],
 			"Theme": ["Tema"],
 			"Light": ["Claro"],

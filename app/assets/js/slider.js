@@ -28,8 +28,9 @@ class MGBlockSlider {
 		paginationType  = '',
 		autoHeight      = true,
 		lightbox        = false,
-		lightboxCounter = false,
+		lightboxOpens   = 'slide',
 		lightboxArrows  = false,
+		lightboxCounter = false,
 	} = {} ) {
 		this.selector        = selector;
 		this.theme           = theme;
@@ -53,8 +54,9 @@ class MGBlockSlider {
 		this.paginationType  = paginationType;
 		this.autoHeight      = autoHeight;
 		this.lightbox        = lightbox;
-		this.lightboxCounter = lightboxCounter;
+		this.lightboxOpens   = lightboxOpens;
 		this.lightboxArrows  = lightboxArrows;
+		this.lightboxCounter = lightboxCounter;
 		this.current         = 0;
 		this.loadState       = false;
 		this.triggerObserver = false;
@@ -599,10 +601,13 @@ class MGBlockSlider {
 		const lightboxNext      = lightbox.querySelector( '.wp-block-mg-block-slider-slider__lightbox__control--next' );
 
 		// Open icon.
-		const openLightbox = document.createElement( 'p' );
-		openLightbox.classList.add( 'wp-block-mg-block-slider-slide__open-lightbox' );
-		openLightbox.setAttribute( 'title', this.i18n.openLightbox );
-		openLightbox.innerHTML = `+ <span class="screen-reader-text">${ this.i18n.openLightbox }</span>`;
+		let openLightbox;
+		if ( 'button' === this.lightboxOpens ) {
+			openLightbox = document.createElement( 'p' );
+			openLightbox.classList.add( 'wp-block-mg-block-slider-slide__open-lightbox' );
+			openLightbox.setAttribute( 'title', this.i18n.openLightbox );
+			openLightbox.innerHTML = `+ <span class="screen-reader-text">${ this.i18n.openLightbox }</span>`;
+		}
 
 		// Slides counter.
 		let slidesCounter;
@@ -615,7 +620,9 @@ class MGBlockSlider {
 		// Control types.
 		if ( '' !== this.arrowType ) {
 			lightbox.querySelectorAll( '.wp-block-mg-block-slider-slider__lightbox__control' ).forEach( ( control ) => control.classList.add( `wp-block-mg-block-slider-slider__lightbox__control--${ this.arrowType }` ) );
-			openLightbox.classList.add( `wp-block-mg-block-slider-slide__open-lightbox--${ this.arrowType }` );
+			if ( 'button' === this.lightboxOpens ) {
+				openLightbox.classList.add( `wp-block-mg-block-slider-slide__open-lightbox--${ this.arrowType }` );
+			}
 		}
 
 		// Hide controls.
@@ -636,20 +643,34 @@ class MGBlockSlider {
 			// Append slides clones.
 			lightboxContainer.appendChild( slideContent );
 
-			// Append open icon.
-			const openLightboxItem = openLightbox.cloneNode( true );
-			slide.appendChild( openLightboxItem );
+			if ( 'button' === this.lightboxOpens ) {
+				// Append open icon.
+				const openLightboxItem = openLightbox.cloneNode( true );
+				slide.appendChild( openLightboxItem );
 
-			openLightboxItem.addEventListener( 'click', () => {
-				document.body.style.overflow = 'hidden';
-				lightboxContainer.style.transform = `translateX(-${ this.current * 100 }vw)`;
-				lightbox.classList.add( 'wp-block-mg-block-slider-slider__lightbox--is-open' );
-				slideContent.classList.add( 'wp-block-mg-block-slider-slide__current' );
+				openLightboxItem.addEventListener( 'click', () => {
+					document.body.style.overflow = 'hidden';
+					lightboxContainer.style.transform = `translateX(-${ this.current * 100 }vw)`;
+					lightbox.classList.add( 'wp-block-mg-block-slider-slider__lightbox--is-open' );
+					slideContent.classList.add( 'wp-block-mg-block-slider-slide__current' );
 
-				if ( this.lightboxCounter ) {
-					slidesCounter.innerHTML = `${ this.current + 1 }/${ this.slides.length }`;
-				}
-			} );
+					if ( this.lightboxCounter ) {
+						slidesCounter.innerHTML = `${ this.current + 1 }/${ this.slides.length }`;
+					}
+				} );
+			} else {
+				slide.setAttribute( 'data-openlightbox', 'true' );
+				slide.addEventListener( 'click', () => {
+					document.body.style.overflow = 'hidden';
+					lightboxContainer.style.transform = `translateX(-${ this.current * 100 }vw)`;
+					lightbox.classList.add( 'wp-block-mg-block-slider-slider__lightbox--is-open' );
+					slideContent.classList.add( 'wp-block-mg-block-slider-slide__current' );
+
+					if ( this.lightboxCounter ) {
+						slidesCounter.innerHTML = `${ this.current + 1 }/${ this.slides.length }`;
+					}
+				} );
+			}
 		} );
 
 		// Close button.

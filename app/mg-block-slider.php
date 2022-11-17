@@ -203,11 +203,16 @@ if ( ! class_exists( 'MGBlockSlider' ) ) {
 					paginationType  : '{$default_configs['paginationType']}',
 					autoHeight      : {$default_configs['autoHeight']},
 					lightbox        : {$default_configs['lightbox']},
+					lightboxOpens   : '{$default_configs['lightboxOpens']}',
 					lightboxCounter : {$default_configs['lightboxCounter']},
 					lightboxArrows  : {$default_configs['lightboxArrows']}
 				});";
 				// Compress output.
 				self::$render_slider .= preg_replace( '/\s+/', ' ', $init_slider );
+
+				// echo '<pre>';
+				// var_dump( $default_configs['lightboxOpens'] );
+				// echo '</pre>';
 
 				return "
 					<div id='{$slider_id}' {$wrapper_attributes}>

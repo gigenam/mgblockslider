@@ -212,13 +212,49 @@ export const controlsSlider = ( props ) => {
 							onChange={ ( val ) => setAttributes( { waitVideo: val } ) }
 						/>
 					</PanelRow>
+				</PanelBody>
+
+				<PanelBody title={__( 'Theme', 'mg-block-slider' )} initialOpen={false} className="components-panel__body__mg-block-slider">
+					<PanelRow>
+						<SelectControl
+							value={ attributes.theme }
+							options={ [
+								{ label: __( 'Light', 'mg-block-slider' ), value: 'light' },
+								{ label: __( 'Dark', 'mg-block-slider' ),  value: 'dark' },
+							] }
+							onChange={ ( val ) => setAttributes( { theme: val } ) }
+						/>
+					</PanelRow>
+					<PanelRow>
+						<ToggleControl
+							label={__( 'Auto minimum height', 'mg-block-slider' )}
+							checked={ attributes.autoHeight }
+							onChange={ ( val ) => setAttributes( { autoHeight: val } ) }
+						/>
+					</PanelRow>
+				</PanelBody>
+
+				<PanelBody title={__( 'Lightbox (Beta)', 'mg-block-slider' )} initialOpen={false} className="components-panel__body__mg-block-slider" icon="warning">
+					<PanelRow>
+						<p>{__( 'These features are in beta and need more testing with different blocks and user customizations. Be careful and let me know of any problem you experience.', 'mg-block-slider' )}</p>
+					</PanelRow>
 					{/* TODO: Remove beta-testing classes when this is stable and well tested. */}
 					<PanelRow className='beta-testing'>
 						<ToggleControl
 							label={__( 'Open content on a lightbox', 'mg-block-slider' )}
 							checked={ attributes.lightbox }
 							onChange={ ( val ) => setAttributes( { lightbox: val } ) }
-							help={__( 'This feature is in BETA and need more tests with different blocks. Use with careful in production.', 'mg-block-slider' )}
+						/>
+					</PanelRow>
+					<PanelRow className={attributes.lightbox ? '' : 'hidden'}>
+						<SelectControl
+							label={__( 'How to open the lightbox', 'mg-block-slider' )}
+							value={ attributes.lightboxOpens }
+							options={ [
+								{ label: __( 'Click on slides', 'mg-block-slider' ), value: 'slide' },
+								{ label: __( 'Add a button', 'mg-block-slider' ),    value: 'button' },
+							] }
+							onChange={ ( val ) => setAttributes( { lightboxOpens: val } ) }
 						/>
 					</PanelRow>
 					<PanelRow className={attributes.lightbox ? 'beta-testing' : 'hidden'}>
@@ -238,26 +274,6 @@ export const controlsSlider = ( props ) => {
 							label={__( 'Show slides counter', 'mg-block-slider' )}
 							checked={ attributes.lightboxCounter }
 							onChange={ ( val ) => setAttributes( { lightboxCounter: val } ) }
-						/>
-					</PanelRow>
-				</PanelBody>
-
-				<PanelBody title={__( 'Theme', 'mg-block-slider' )} initialOpen={false} className="components-panel__body__mg-block-slider">
-					<PanelRow>
-						<SelectControl
-							value={ attributes.theme }
-							options={ [
-								{ label: __( 'Light', 'mg-block-slider' ), value: 'light' },
-								{ label: __( 'Dark', 'mg-block-slider' ),  value: 'dark' },
-							] }
-							onChange={ ( val ) => setAttributes( { theme: val } ) }
-						/>
-					</PanelRow>
-					<PanelRow>
-						<ToggleControl
-							label={__( 'Auto minimum height', 'mg-block-slider' )}
-							checked={ attributes.autoHeight }
-							onChange={ ( val ) => setAttributes( { autoHeight: val } ) }
 						/>
 					</PanelRow>
 				</PanelBody>
@@ -293,6 +309,10 @@ export const controlsSlider = ( props ) => {
 							arrowType: '',
 							paginationType: '',
 							autoHeight: true,
+							lightbox: false,
+							lightboxOpens: 'slide',
+							lightboxCounter: false,
+							lightboxArrows: false,
 						} ) }
 						variant="secondary">
 						{__( 'Restore everything to default', 'mg-block-slider' )}

@@ -3,31 +3,57 @@
  */
 
 // Open button in main slides.
-.wp-block-mg-block-slider-slide__open-lightbox {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 1em !important;
-	height: 1em !important;
-	position: absolute;
-	top: 0;
-	right: 0;
-	z-index: calc(var(--slider--z-index--controls) + 50);
-	color: var(--slider--items--primary);
-	font-size: 1.6rem;
-	cursor: pointer;
-	opacity: 0.25;
+.wp-block-mg-block-slider-slide {
+	// Open lightbox with a button.
+	&__open-lightbox {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 1em !important;
+		height: 1em !important;
+		position: absolute;
+		top: 0;
+		right: 0;
+		z-index: calc(var(--slider--z-index--controls) + 50);
+		color: var(--slider--items--primary);
+		font-size: 1.6rem;
+		cursor: pointer;
+		opacity: 0.5;
 
-	&--squares,
-	&--circles {
-		color: var(--slider--items--secondary);
-		background-color: var(--slider--items--primary);
+		&--squares,
+		&--circles {
+			color: var(--slider--items--secondary);
+			background-color: var(--slider--items--primary);
+		}
+
+		&--circles {
+			top: 0.25rem;
+			right: 0.25rem;
+			border-radius: 50%;
+		}
 	}
 
-	&--circles {
-		top: 0.25rem;
-		right: 0.25rem;
-		border-radius: 50%;
+	// Open lightbox on slide click.
+	&[data-openlightbox] {
+		cursor: zoom-in;
+
+		@include to(medium) {
+			&::before {
+				content: "+";
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 1em;
+				height: 1em;
+				position: absolute;
+				top: 0.25rem;
+				right: 0.25rem;
+				z-index: 99999999;
+				color: currentColor;
+				background-color: var(--slider--items--primary);
+				opacity: 0.7;
+			}
+		}
 	}
 }
 
