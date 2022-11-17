@@ -3,7 +3,7 @@ Contributors: gigenam
 Tags: block, editor, slider, slideshow, content, image, video
 Requires at least: 5.9
 Tested up to: 6.1
-Stable tag: 1.1.3
+Stable tag: 1.2.0
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
@@ -26,6 +26,7 @@ A couple of examples of what you can configure with this plugin.
 - Custom time between slides and changing speed.
 - Custom interactions for videos.
 - Light and Dark theme.
+- Lightbox support.
 - A couple of arrows and dots types to choose.
 - Developer friendly, you can add your own assets with a couple of CSS lines.
 
@@ -96,6 +97,9 @@ No money, no coding? No problem. Please, share, review it and let me know if you
 5. Slider with thumbnails and hidden arrows.
 
 == Changelog ==
+
+= 1.2.0 - 2022-11-17 : =
+* Added lightbox support (in beta).
 
 = 1.1.3 - 2022-11-10 : =
 * Minor fix for hiding arrows.

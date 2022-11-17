@@ -13,7 +13,7 @@
  * Author: Marcos Gigena
  * Author URI: https://github.com/gigenam
  * Description: A simple slideshow block to use it in any block editor with any type of content. Post, pages, widgets. Anything and anywhere where you want.
- * Version: 1.1.3
+ * Version: 1.2.0
  * Requires at least: 5.9
  * Tested up to: 6.1
  * Requires PHP: 7.0
@@ -209,10 +209,6 @@ if ( ! class_exists( 'MGBlockSlider' ) ) {
 				});";
 				// Compress output.
 				self::$render_slider .= preg_replace( '/\s+/', ' ', $init_slider );
-
-				// echo '<pre>';
-				// var_dump( $default_configs['lightboxOpens'] );
-				// echo '</pre>';
 
 				return "
 					<div id='{$slider_id}' {$wrapper_attributes}>
