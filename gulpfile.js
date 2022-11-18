@@ -99,6 +99,11 @@ export const cleanCss = () => {
 		.pipe( clean() );
 };
 
+export const cleanImages = () => {
+	return gulp.src( paths.images.dest + '/', { read: false, allowEmpty: true } )
+		.pipe( clean() );
+};
+
 // Compilar archivos SCSS.
 export const styles = ( done ) => {
 	if ( PRODUCTION !== 'production' ) {
@@ -234,4 +239,4 @@ export const dev = gulp.series( cleanCss, gulp.parallel( styles, scripts, images
 export const watch = gulp.series( cleanCss, gulp.parallel( styles, scripts, images ), watchFiles );
 
 // Compilar y comprimir todo para producción.
-export const build = gulp.series( cleanCss, gulp.parallel( styles, scripts, images ), updateThemeVersion );
+export const build = gulp.series( cleanCss, cleanImages, gulp.parallel( styles, scripts, images ), updateThemeVersion );

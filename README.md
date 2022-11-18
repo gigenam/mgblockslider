@@ -42,6 +42,7 @@ A couple of examples of what you can configure with this plugin.
 - Custom time between slides and changing speed.
 - Custom interactions for videos.
 - Light and Dark theme.
+- Lightbox support.
 - A couple of arrows and dots types to choose.
 - Texts in English and Spanish (check FAQ), and is translation ready.
 - Developer friendly, you can add your own assets with a couple of CSS lines.
