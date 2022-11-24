@@ -3,7 +3,7 @@ Contributors: gigenam
 Tags: block, editor, slider, slideshow, content, image, video
 Requires at least: 5.9
 Tested up to: 6.1
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
@@ -97,6 +97,9 @@ No money, no coding? No problem. Please, share, review it and let me know if you
 5. Slider with thumbnails and hidden arrows.
 
 == Changelog ==
+
+= 1.2.2 - 2022-11-24 : =
+* Validate that `post_content` and `widget_block` exist to prevent PHP Notices.
 
 = 1.2.1 - 2022-11-17 : =
 * Minor fixes with missing images.
