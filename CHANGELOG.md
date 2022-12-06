@@ -12,6 +12,10 @@ License URI : https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
 [ + ] Add -- [ - ] Remove -- [ ! ] Fix/Modify.
 
+## 2022-12-06 :
+
+- Quick fix for float numbers on duration and speed on [blocks.json](app/assets/blocks/block.json).
+
 ## 2022-11-17 :
 
 - Added lightbox support (in beta).
