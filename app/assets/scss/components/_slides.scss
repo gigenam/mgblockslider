@@ -27,6 +27,12 @@
 			transform: translate3d(100%, 0, 0);
 		}
 	}
+
+	&:not(&--2-slides) .wp-block-mg-block-slider-slide {
+		&:not(&__current, &__prev, &__next) {
+			opacity: 0;
+		}
+	}
 }
 
 .wp-block-mg-block-slider-slide {
@@ -38,6 +44,7 @@
 	margin: 0;
 	background-color: var(--slider--items--primary);
 	transition-timing-function: inherit;
+	transition-property: transform, border-radius, z-index, box-shadow;
 	touch-action: pan-y;
 
 	// Every slide except the current are absolutes.
@@ -109,10 +116,10 @@
 	// Cards.
 	&.is-cards .wp-block-mg-block-slider-slide {
 		&:not(.wp-block-mg-block-slider-slide__current, .wp-block-mg-block-slider-slide__next) {
-			transform: scale(0.96);
-			border-radius: 8px;
-			overflow: hidden;
 			z-index: -1000;
+			overflow: hidden;
+			border-radius: 8px;
+			transform: scale(0.96);
 		}
 
 		&__current {

@@ -59,6 +59,7 @@ class MGBlockSlider {
 		this.lightboxCounter = lightboxCounter;
 		this.current         = 0;
 		this.loadState       = false;
+		this.setAnimation    = false;
 		this.triggerObserver = false;
 		this.slider          = document.querySelector( `${ this.selector } .wp-block-mg-block-slider-slider__container` );
 		this.slidesContainer = document.querySelector( `${ this.selector } .wp-block-mg-block-slider-slides__container` );
@@ -130,13 +131,14 @@ class MGBlockSlider {
 	 * Calculate the max height of all slides
 	 */
 	calcMinHeight() {
-		let minHeight = 0;
+		this.minHeight = this.slides[ this.current ].getBoundingClientRect().height;
 		this.slides.forEach( ( slide ) => {
-			if ( slide.getBoundingClientRect().height > minHeight ) {
-				minHeight = slide.getBoundingClientRect().height;
+			if ( slide.getBoundingClientRect().height > this.minHeight ) {
+				this.minHeight = Math.floor( slide.getBoundingClientRect().height );
 			}
-			slide.style.height = `${ Math.floor( minHeight ) }px`;
+			slide.style.height = `${ this.minHeight }px`;
 		} );
+		this.slides[ this.current ].style.height = `${ this.minHeight }px`;
 	}
 
 	/**
@@ -162,8 +164,8 @@ class MGBlockSlider {
 			}
 
 			this.slider.appendChild( directionNavigation );
-			const navPrev = directionNavigation.querySelector( `.wp-block-mg-block-slider-slider__control__arrow--prev` );
-			const navNext = directionNavigation.querySelector( `.wp-block-mg-block-slider-slider__control__arrow--next` );
+			const navPrev = directionNavigation.querySelector( `.wp-block-mg-block-slider-slider__control__arrow--prev` ),
+				navNext   = directionNavigation.querySelector( `.wp-block-mg-block-slider-slider__control__arrow--next` );
 
 			// Change slides.
 			navPrev.addEventListener( 'click', ( e ) => {
@@ -260,9 +262,8 @@ class MGBlockSlider {
 				let slideSrc = slide.querySelector( 'img' ) ? slide.querySelector( 'img' ).src : null;
 
 				if ( slideSrc ) {
-					const imageFormat = slideSrc.split( '.' ).pop();
-					const imagePath = slideSrc.slice( 0, slideSrc.length - imageFormat.length - 1 );
-
+					const imageFormat = slideSrc.split( '.' ).pop(),
+						imagePath     = slideSrc.slice( 0, slideSrc.length - imageFormat.length - 1 );
 					thumbNavigation.innerHTML += `
 						<li class="wp-block-mg-block-slider-slider__thumb">
 							<img src="${ imagePath }.${ imageFormat }" alt="${ this.i18n.slide } ${ index + 1 }">
@@ -328,7 +329,6 @@ class MGBlockSlider {
 
 			// If there are videos.
 			if ( slide.querySelector( 'video' ) ) {
-				slide.classList.add( 'wp-block-mg-block-slider-slide--has-video' );
 				const videoDuration = Math.ceil( slide.querySelector( 'video' ).duration ) * 1000;
 
 				// Pause the video on change slide.
@@ -343,13 +343,13 @@ class MGBlockSlider {
 				// Stop animation and wait until the video ends.
 				if ( position === index && this.waitVideo ) {
 					if ( slide.querySelector( 'video' ).autoplay ) {
-						clearInterval( this.animation );
-						this.animation = setInterval( ( nextIndex ) => {
+						clearInterval( this.setAnimation );
+						this.setAnimation = setInterval( ( nextIndex ) => {
 							this.current = ( this.current + 1 ) % this.slides.length;
 							this.changeSlide( 'next', nextIndex );
 						}, videoDuration + 250 );
 					} else {
-						this.animation = setInterval( ( nextIndex ) => {
+						this.setAnimation = setInterval( ( nextIndex ) => {
 							this.current = ( this.current + 1 ) % this.slides.length;
 							this.changeSlide( 'next', nextIndex );
 						}, this.duration );
@@ -421,26 +421,28 @@ class MGBlockSlider {
 	 * Change slides with a swipe on touch screens
 	 */
 	swipeEvents() {
-		let touchstartX = 0;
-		let startTouch  = 0;
+		let touchstartX = 0,
+			startTouch  = 0;
 
-		this.slidesContainer.addEventListener( 'touchstart', ( e ) => {
+		this.slider.parentElement.addEventListener( 'touchstart', ( e ) => {
 			// Stop animation to prevent overlapping.
-			clearInterval( this.animation );
+			clearInterval( this.setAnimation );
 
 			this.slider.classList.add( 'dragging' );
 			this.slidesContainer.style.transitionDuration = '0ms';
 			startTouch = e.touches[ 0 ].clientX - this.slides[ this.current ].clientLeft;
-		}, false );
+		} );
 
-		this.slidesContainer.addEventListener( 'touchmove', ( e ) => {
+		this.slider.parentElement.addEventListener( 'touchmove', ( e ) => {
 			touchstartX = e.touches[ 0 ].clientX;
-			this.slides[ this.current ].style.transform = `translate3d(${ touchstartX - startTouch }px, 0, 0)`;
+			if ( 'slide' === this.animation || 'cards' === this.animation ) {
+				this.slides[ this.current ].style.transform = `translate3d(${ touchstartX - startTouch }px, 0, 0)`;
+			}
 			this.slidesContainer.querySelector( '.wp-block-mg-block-slider-slide__prev' ).style.transform = `translate3d(calc(${ touchstartX - startTouch }px - 100%), 0, 0)`;
 			this.slidesContainer.querySelector( '.wp-block-mg-block-slider-slide__next' ).style.transform = `translate3d(calc(${ touchstartX - startTouch }px + 100%), 0, 0)`;
 		} );
 
-		this.slidesContainer.addEventListener( 'touchend', ( e ) => {
+		this.slider.parentElement.addEventListener( 'touchend', () => {
 			this.slidesContainer.querySelector( '.wp-block-mg-block-slider-slide__current' ).style.removeProperty( 'transform' );
 			this.slidesContainer.querySelector( '.wp-block-mg-block-slider-slide__prev' ).style.removeProperty( 'transform' );
 			this.slidesContainer.querySelector( '.wp-block-mg-block-slider-slide__next' ).style.removeProperty( 'transform' );
@@ -465,12 +467,12 @@ class MGBlockSlider {
 
 			// Restart animation.
 			if ( this.autoStart ) {
-				this.animation = setInterval( () => {
+				this.setAnimation = setInterval( () => {
 					this.current = ( this.current + 1 ) % this.slides.length;
 					this.changeSlide( 'next', this.current );
 				}, this.duration );
 			}
-		}, false );
+		} );
 	}
 
 	/**
@@ -479,7 +481,7 @@ class MGBlockSlider {
 	keyEvents() {
 		document.addEventListener( 'keydown', ( e ) => {
 			// Stop animation to prevent overlapping.
-			clearInterval( this.animation );
+			clearInterval( this.setAnimation );
 
 			switch ( e.key ) {
 				case 'ArrowLeft' :
@@ -507,7 +509,7 @@ class MGBlockSlider {
 
 			// Restart animation.
 			if ( this.autoStart ) {
-				this.animation = setInterval( () => {
+				this.setAnimation = setInterval( () => {
 					this.current = ( this.current + 1 ) % this.slides.length;
 					this.changeSlide( 'next', this.current );
 				}, this.duration );
@@ -519,18 +521,18 @@ class MGBlockSlider {
 	 * Auto start animation
 	 */
 	startAnimation() {
-		this.animation = setInterval( ( index ) => {
+		this.setAnimation = setInterval( ( index ) => {
 			this.current = ( this.current + 1 ) % this.slides.length;
 			this.changeSlide( 'next', index );
 		}, this.duration );
 
 		if ( this.stopOnHover ) {
 			// Stop animation on hover.
-			this.slider.parentElement.addEventListener( 'mouseenter', () => clearInterval( this.animation ) );
+			this.slider.parentElement.addEventListener( 'mouseenter', () => clearInterval( this.setAnimation ) );
 
 			// Resume animation when lost hover.
 			this.slider.parentElement.addEventListener( 'mouseleave', () => {
-				this.animation = setInterval( () => {
+				this.setAnimation = setInterval( () => {
 					this.current = ( this.current + 1 ) % this.slides.length;
 					this.changeSlide( 'next', this.current );
 				}, this.duration );
@@ -538,8 +540,8 @@ class MGBlockSlider {
 		} else {
 			// Stop and restart animation on click to prevent overlapping.
 			this.slider.parentElement.addEventListener( 'click', () => {
-				clearInterval( this.animation );
-				this.animation = setInterval( () => {
+				clearInterval( this.setAnimation );
+				this.setAnimation = setInterval( () => {
 					this.current = ( this.current + 1 ) % this.slides.length;
 					this.changeSlide( 'next', this.current );
 				}, this.duration );
@@ -552,10 +554,10 @@ class MGBlockSlider {
 				( entries, observer ) => {
 					entries.forEach( ( entry ) => {
 						if ( ! entry.isIntersecting ) {
-							clearInterval( this.animation );
+							clearInterval( this.setAnimation );
 							this.triggerObserver = true;
 						} else if ( this.triggerObserver ) {
-							this.animation = setInterval( ( index ) => {
+							this.setAnimation = setInterval( ( index ) => {
 								this.current = ( this.current + 1 ) % this.slides.length;
 								this.changeSlide( 'next', index );
 							}, this.duration );
@@ -574,9 +576,9 @@ class MGBlockSlider {
 		// Stop animation on change the browser tab.
 		document.addEventListener( 'visibilitychange', () => {
 			if ( document.visibilityState !== 'visible' ) {
-				clearInterval( this.animation );
+				clearInterval( this.setAnimation );
 			} else {
-				this.animation = setInterval( () => {
+				this.setAnimation = setInterval( () => {
 					this.current = ( this.current + 1 ) % this.slides.length;
 					this.changeSlide( 'next', this.current );
 				}, this.duration );
