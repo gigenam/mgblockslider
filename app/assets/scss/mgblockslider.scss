@@ -148,6 +148,10 @@
 		&:first-of-type {
 			margin-top: 1.25em;
 		}
+
+		&--no-top-margin {
+			margin-top: -0.5em;
+		}
 	}
 
 	.components-flex,

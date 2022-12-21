@@ -28,6 +28,7 @@
 		}
 	}
 
+	// Hide background slides.
 	&:not(&--2-slides) .wp-block-mg-block-slider-slide {
 		&:not(&__current, &__prev, &__next) {
 			opacity: 0;

@@ -135,10 +135,18 @@ class MGBlockSlider {
 		this.slides.forEach( ( slide ) => {
 			if ( slide.getBoundingClientRect().height > this.minHeight ) {
 				this.minHeight = Math.floor( slide.getBoundingClientRect().height );
+
+				// Recalculate the slider height after resize the window.
+				window.addEventListener( 'resize', () => {
+					clearTimeout( window.resizedFinished );
+					window.resizedFinished = setTimeout( () => {
+						this.minHeight = Math.floor( slide.getBoundingClientRect().height );
+						this.slidesContainer.style.height = `${ this.minHeight }px`;
+					}, 300 );
+				} );
 			}
-			slide.style.height = `${ this.minHeight }px`;
+			this.slidesContainer.style.height = `${ this.minHeight }px`;
 		} );
-		this.slides[ this.current ].style.height = `${ this.minHeight }px`;
 	}
 
 	/**
@@ -435,11 +443,11 @@ class MGBlockSlider {
 
 		this.slider.parentElement.addEventListener( 'touchmove', ( e ) => {
 			touchstartX = e.touches[ 0 ].clientX;
-			if ( 'slide' === this.animation || 'cards' === this.animation ) {
+			if ( ! this.vertical && ( 'slide' === this.animation || 'cards' === this.animation ) ) {
 				this.slides[ this.current ].style.transform = `translate3d(${ touchstartX - startTouch }px, 0, 0)`;
+				this.slidesContainer.querySelector( '.wp-block-mg-block-slider-slide__prev' ).style.transform = `translate3d(calc(${ touchstartX - startTouch }px - 100%), 0, 0)`;
+				this.slidesContainer.querySelector( '.wp-block-mg-block-slider-slide__next' ).style.transform = `translate3d(calc(${ touchstartX - startTouch }px + 100%), 0, 0)`;
 			}
-			this.slidesContainer.querySelector( '.wp-block-mg-block-slider-slide__prev' ).style.transform = `translate3d(calc(${ touchstartX - startTouch }px - 100%), 0, 0)`;
-			this.slidesContainer.querySelector( '.wp-block-mg-block-slider-slide__next' ).style.transform = `translate3d(calc(${ touchstartX - startTouch }px + 100%), 0, 0)`;
 		} );
 
 		this.slider.parentElement.addEventListener( 'touchend', () => {
@@ -521,9 +529,9 @@ class MGBlockSlider {
 	 * Auto start animation
 	 */
 	startAnimation() {
-		this.setAnimation = setInterval( ( index ) => {
+		this.setAnimation = setInterval( () => {
 			this.current = ( this.current + 1 ) % this.slides.length;
-			this.changeSlide( 'next', index );
+			this.changeSlide( 'next' );
 		}, this.duration );
 
 		if ( this.stopOnHover ) {

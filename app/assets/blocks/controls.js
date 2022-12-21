@@ -33,7 +33,7 @@ export const controlsSlider = ( props ) => {
 							onChange={ ( val ) => setAttributes( { hideDirections: val } ) }
 						/>
 					</PanelRow>
-					<PanelRow className={attributes.showArrowsOptions ? '' : 'hidden'}>
+					<PanelRow className={attributes.showArrowsOptions ? 'components-panel__row--no-top-margin' : 'hidden'}>
 						<SelectControl
 							label={__( 'Arrows type', 'mg-block-slider' )}
 							value={ attributes.arrowType }
@@ -64,7 +64,7 @@ export const controlsSlider = ( props ) => {
 							onChange={ ( val ) => setAttributes( { hideControls: val } ) }
 						/>
 					</PanelRow>
-					<PanelRow className={attributes.showControlOptions ? '' : 'hidden'}>
+					<PanelRow className={attributes.showControlOptions ? 'components-panel__row--no-top-margin' : 'hidden'}>
 						<SelectControl
 							label={__( 'Paginations type', 'mg-block-slider' )}
 							value={ attributes.paginationType }
@@ -121,6 +121,13 @@ export const controlsSlider = ( props ) => {
 						/>
 					</PanelRow>
 					<PanelRow>
+						<ToggleControl
+							label={__( 'Vertical animations', 'mg-block-slider' )}
+							checked={ attributes.vertical }
+							onChange={ ( val ) => setAttributes( { vertical: val } ) }
+						/>
+					</PanelRow>
+					<PanelRow className={'components-panel__row--no-top-margin'}>
 						<SelectControl
 							label={__( 'Animation type', 'mg-block-slider' )}
 							value={ attributes.animation }
@@ -133,14 +140,7 @@ export const controlsSlider = ( props ) => {
 							onChange={ ( val ) => setAttributes( { animation: val } ) }
 						/>
 					</PanelRow>
-					<PanelRow>
-						<ToggleControl
-							label={__( 'Vertical animations', 'mg-block-slider' )}
-							checked={ attributes.vertical }
-							onChange={ ( val ) => setAttributes( { vertical: val } ) }
-						/>
-					</PanelRow>
-					<PanelRow>
+					<PanelRow className={'components-panel__row--no-top-margin'}>
 						<SelectControl
 							label={__( 'Transition type', 'mg-block-slider' )}
 							value={ attributes.transition }
@@ -307,8 +307,8 @@ export const controlsSlider = ( props ) => {
 							duration: 5.0,
 							speed: 0.5,
 							arrowType: '',
-							paginationType: '',
-							autoHeight: true,
+							paginationType: 'block',
+							autoHeight: false,
 							lightbox: false,
 							lightboxOpens: 'slide',
 							lightboxCounter: false,
