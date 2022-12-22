@@ -18,22 +18,17 @@ export const controlsSlider = ( props ) => {
 						<ToggleControl
 							label={__( 'Navigation arrows', 'mg-block-slider' )}
 							checked={ attributes.directionNav }
-							onChange={ ( val ) => {
-								setAttributes( {
-									directionNav: val,
-									showArrowsOptions: val,
-								} );
-							} }
+							onChange={ ( val ) => setAttributes( { directionNav: val } ) }
 						/>
 					</PanelRow>
-					<PanelRow className={attributes.showArrowsOptions ? '' : 'hidden'}>
+					<PanelRow className={attributes.directionNav ? '' : 'hidden'}>
 						<ToggleControl
 							label={__( 'Auto hide arrows', 'mg-block-slider' )}
 							checked={ attributes.hideDirections }
 							onChange={ ( val ) => setAttributes( { hideDirections: val } ) }
 						/>
 					</PanelRow>
-					<PanelRow className={attributes.showArrowsOptions ? 'components-panel__row--no-top-margin' : 'hidden'}>
+					<PanelRow className={attributes.directionNav ? 'components-panel__row--no-top-margin' : 'hidden'}>
 						<SelectControl
 							label={__( 'Arrows type', 'mg-block-slider' )}
 							value={ attributes.arrowType }
@@ -49,22 +44,17 @@ export const controlsSlider = ( props ) => {
 						<ToggleControl
 							label={__( 'Pagination dots', 'mg-block-slider' )}
 							checked={ attributes.controlNav }
-							onChange={ ( val ) => {
-								setAttributes( {
-									controlNav: val,
-									showControlOptions: val,
-								} );
-							} }
+							onChange={ ( val ) => setAttributes( { controlNav: val } ) }
 						/>
 					</PanelRow>
-					<PanelRow className={attributes.showControlOptions ? '' : 'hidden'}>
+					<PanelRow className={attributes.controlNav ? '' : 'hidden'}>
 						<ToggleControl
 							label={__( 'Auto hide dots', 'mg-block-slider' )}
 							checked={ attributes.hideControls }
 							onChange={ ( val ) => setAttributes( { hideControls: val } ) }
 						/>
 					</PanelRow>
-					<PanelRow className={attributes.showControlOptions ? 'components-panel__row--no-top-margin' : 'hidden'}>
+					<PanelRow className={attributes.controlNav ? 'components-panel__row--no-top-margin' : 'hidden'}>
 						<SelectControl
 							label={__( 'Paginations type', 'mg-block-slider' )}
 							value={ attributes.paginationType }
@@ -81,15 +71,10 @@ export const controlsSlider = ( props ) => {
 						<ToggleControl
 							label={__( 'Thumbnails navigation', 'mg-block-slider' )}
 							checked={ attributes.thumbsNav }
-							onChange={ ( val ) => {
-								setAttributes( {
-									thumbsNav: val,
-									showThumbOptions: val,
-								} );
-							} }
+							onChange={ ( val ) => setAttributes( { thumbsNav: val } ) }
 						/>
 					</PanelRow>
-					<PanelRow className={attributes.showThumbOptions ? '' : 'hidden'}>
+					<PanelRow className={attributes.thumbsNav ? '' : 'hidden'}>
 						<ToggleControl
 							label={__( 'Auto hide thumbs', 'mg-block-slider' )}
 							checked={ attributes.hideThumbs }
@@ -152,14 +137,9 @@ export const controlsSlider = ( props ) => {
 								{ label: 'Ease-in-out', value: 'ease-in-out' },
 								{ label: 'Custom',      value: 'custom' },
 							] }
-							onChange={ ( val ) => {
-								setAttributes( {
-									transition: val,
-									showCustomTransition: ( 'custom' === val ) ? true : false,
-								} );
-							} }
+							onChange={ ( val ) => setAttributes( { transition: val } ) }
 						/>
-						<TextControl className={attributes.showCustomTransition ? 'components-base-control--custom' : 'hidden'}
+						<TextControl className={( 'custom' === attributes.transition ) ? 'components-base-control--custom' : 'hidden'}
 							value={ attributes.customTransition }
 							onChange={ ( val ) => setAttributes( { customTransition: val } ) }
 							help={ __( 'Add custom css transitions with steps() or cubic-bezier().', 'mg-block-slider' ) }
@@ -286,13 +266,10 @@ export const controlsSlider = ( props ) => {
 						onClick={ () => setAttributes( {
 							theme: 'light',
 							directionNav: true,
-							showArrowsOptions: true,
 							hideDirections: true,
 							controlNav: false,
-							showControlOptions: false,
 							hideControls: false,
 							thumbsNav: false,
-							showThumbOptions: false,
 							hideThumbs: false,
 							autoStart: true,
 							stopOnHover: true,
@@ -302,7 +279,6 @@ export const controlsSlider = ( props ) => {
 							animation: 'slide',
 							vertical: false,
 							transition: 'ease',
-							showCustomTransition: false,
 							customTransition: '',
 							duration: 5.0,
 							speed: 0.5,

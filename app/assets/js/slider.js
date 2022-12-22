@@ -104,7 +104,7 @@ class MGBlockSlider {
 		}
 
 		this.createControls();
-		this.changeSlide();
+		this.orderSlides( this.current );
 		this.loadingEvent( this.loadState );
 
 		if ( this.swipeNav ) {
@@ -142,7 +142,7 @@ class MGBlockSlider {
 					window.resizedFinished = setTimeout( () => {
 						this.minHeight = Math.floor( slide.getBoundingClientRect().height );
 						this.slidesContainer.style.height = `${ this.minHeight }px`;
-					}, 300 );
+					}, 150 );
 				} );
 			}
 			this.slidesContainer.style.height = `${ this.minHeight }px`;
@@ -443,7 +443,7 @@ class MGBlockSlider {
 
 		this.slider.parentElement.addEventListener( 'touchmove', ( e ) => {
 			touchstartX = e.touches[ 0 ].clientX;
-			if ( ! this.vertical && ( 'slide' === this.animation || 'cards' === this.animation ) ) {
+			if ( ! this.vertical && this.slides.length > 2 && ( 'slide' === this.animation || 'cards' === this.animation ) ) {
 				this.slides[ this.current ].style.transform = `translate3d(${ touchstartX - startTouch }px, 0, 0)`;
 				this.slidesContainer.querySelector( '.wp-block-mg-block-slider-slide__prev' ).style.transform = `translate3d(calc(${ touchstartX - startTouch }px - 100%), 0, 0)`;
 				this.slidesContainer.querySelector( '.wp-block-mg-block-slider-slide__next' ).style.transform = `translate3d(calc(${ touchstartX - startTouch }px + 100%), 0, 0)`;
@@ -452,8 +452,10 @@ class MGBlockSlider {
 
 		this.slider.parentElement.addEventListener( 'touchend', () => {
 			this.slidesContainer.querySelector( '.wp-block-mg-block-slider-slide__current' ).style.removeProperty( 'transform' );
-			this.slidesContainer.querySelector( '.wp-block-mg-block-slider-slide__prev' ).style.removeProperty( 'transform' );
-			this.slidesContainer.querySelector( '.wp-block-mg-block-slider-slide__next' ).style.removeProperty( 'transform' );
+			if ( this.slides.length > 2 ) {
+				this.slidesContainer.querySelector( '.wp-block-mg-block-slider-slide__prev' ).style.removeProperty( 'transform' );
+				this.slidesContainer.querySelector( '.wp-block-mg-block-slider-slide__next' ).style.removeProperty( 'transform' );
+			}
 
 			if ( 0 !== touchstartX ) {
 				if ( startTouch - touchstartX < -50 ) {
