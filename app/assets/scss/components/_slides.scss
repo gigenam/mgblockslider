@@ -141,11 +141,11 @@
 	&.is-slide {
 		.wp-block-mg-block-slider-slide {
 			&__prev {
-				transform: translate3d(0, 100%, 0);
+				transform: translate3d(0, -100%, 0);
 			}
 
 			&__next {
-				transform: translate3d(0, -100%, 0);
+				transform: translate3d(0, 100%, 0);
 			}
 		}
 
@@ -164,7 +164,7 @@
 	// Cards.
 	&.is-cards {
 		.wp-block-mg-block-slider-slide__next {
-			transform: translate3d(0, -100%, 0);
+			transform: translate3d(0, 100%, 0);
 		}
 	}
 }

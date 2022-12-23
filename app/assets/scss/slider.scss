@@ -22,11 +22,11 @@
 	--slider--z-index--controls: 50;
 	--slider--transition-duration--controls: 200ms;
 	width: 100%;
-	position: relative;
 	margin-bottom: 1em;
 	color: var(--slider--items--secondary);
 
 	// Main container for thumbnails, dots, and slides container.
+	&,
 	&__container {
 		position: relative;
 		overflow: hidden;

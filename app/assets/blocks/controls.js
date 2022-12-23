@@ -7,114 +7,150 @@ export const controlsSlider = ( props ) => {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={__( 'Help', 'mg-block-slider' )} initialOpen={false} className="components-panel__body__mg-block-slider" icon="editor-help">
+				<PanelBody title={ __( 'Help', 'mg-block-slider' )} initialOpen={ false } className="mg-block-slider" icon="editor-help">
 					<PanelRow>
 						<p>{ __( 'Check out how to configure and customize at the', 'mg-block-slider' ) } <a href={ __( 'https://github.com/gigenam/mgblockslider/wiki', 'mg-block-slider' ) } target="_blank">{ __( 'GitHub Wiki', 'mg-block-slider' ) }</a>.</p>
 					</PanelRow>
 				</PanelBody>
 
-				<PanelBody title={__( 'Navigations', 'mg-block-slider' )} initialOpen={true} className="components-panel__body__mg-block-slider">
+				<PanelBody title={ __( 'Navigations', 'mg-block-slider' )} initialOpen={ true } className="mg-block-slider">
+					<PanelBody className="components-panel__body__inner">
+						<PanelRow>
+							<ToggleControl
+								label={ __( 'Navigation arrows', 'mg-block-slider' ) }
+								checked={ attributes.directionNav }
+								onChange={ ( val ) => setAttributes( { directionNav: val } ) }
+							/>
+						</PanelRow>
+						<PanelRow className={ attributes.directionNav ? '' : 'hidden' }>
+							<ToggleControl
+								label={ __( 'Auto hide arrows', 'mg-block-slider' ) }
+								checked={ attributes.hideDirections }
+								onChange={ ( val ) => setAttributes( { hideDirections: val } ) }
+							/>
+						</PanelRow>
+						<PanelRow className={ attributes.directionNav ? '' : 'hidden' }>
+							<ToggleControl
+								label={ __( 'Vertical arrows', 'mg-block-slider' ) }
+								checked={ attributes.verticalArrows }
+								onChange={ ( val ) => setAttributes( { verticalArrows: val } ) }
+							/>
+						</PanelRow>
+						<PanelRow className={ attributes.directionNav ? 'components-panel__row--no-top-margin' : 'hidden' }>
+							<SelectControl
+								label={ __( 'Arrows type', 'mg-block-slider' ) }
+								value={ attributes.arrowType }
+								options={ [
+									{ label: __( 'Default', 'mg-block-slider' ), value: '' },
+									{ label: __( 'Squares', 'mg-block-slider' ), value: 'squares' },
+									{ label: __( 'Circles', 'mg-block-slider' ), value: 'circles' },
+								] }
+								onChange={ ( val ) => setAttributes( { arrowType: val } ) }
+							/>
+						</PanelRow>
+					</PanelBody>
+
+					<PanelBody className="components-panel__body__inner">
+						<PanelRow>
+							<ToggleControl
+								label={ __( 'Pagination dots', 'mg-block-slider' ) }
+								checked={ attributes.controlNav }
+								onChange={ ( val ) => setAttributes( { controlNav: val } ) }
+							/>
+						</PanelRow>
+						<PanelRow className={ attributes.controlNav ? '' : 'hidden' }>
+							<ToggleControl
+								label={ __( 'Auto hide dots', 'mg-block-slider' ) }
+								checked={ attributes.hideControls }
+								onChange={ ( val ) => setAttributes( { hideControls: val } ) }
+							/>
+						</PanelRow>
+						<PanelRow className={ attributes.controlNav ? 'components-panel__row--no-top-margin' : 'hidden' }>
+							<SelectControl
+								label={ __( 'Paginations type', 'mg-block-slider' ) }
+								value={ attributes.paginationType }
+								options={ [
+									{ label: __( 'Circles', 'mg-block-slider' ), value: '' },
+									{ label: __( 'Squares', 'mg-block-slider' ), value: 'squares' },
+									{ label: __( 'Circles with background', 'mg-block-slider' ), value: 'block' },
+									{ label: __( 'Squares with background', 'mg-block-slider' ), value: 'squares-block' },
+								] }
+								onChange={ ( val ) => setAttributes( { paginationType: val } ) }
+							/>
+						</PanelRow>
+						<PanelRow className={ attributes.controlNav ? '' : 'hidden' }>
+							<ToggleControl
+								label={ __( 'Floating pagination', 'mg-block-slider' ) }
+								checked={ attributes.thumbsNavFloat }
+								onChange={ ( val ) => setAttributes( { thumbsNavFloat: val } ) }
+							/>
+						</PanelRow>
+						<PanelRow className={ attributes.thumbsNavFloat ? 'components-panel__row--no-top-margin' : 'hidden' }>
+							<SelectControl
+								label={ __( 'Position', 'mg-block-slider' ) }
+								value={ attributes.thumbsNavFloatPos }
+								options={ [
+									{ label: __( 'Top', 'mg-block-slider' ),    value: 'top' },
+									{ label: __( 'Right', 'mg-block-slider' ),  value: 'right' },
+									{ label: __( 'Bottom', 'mg-block-slider' ), value: 'bottom' },
+									{ label: __( 'Left', 'mg-block-slider' ),   value: 'left' },
+								] }
+								onChange={ ( val ) => setAttributes( { thumbsNavFloatPos: val } ) }
+							/>
+						</PanelRow>
+					</PanelBody>
+
+					<PanelBody className="components-panel__body__inner">
+						<PanelRow>
+							<ToggleControl
+								label={ __( 'Thumbnails navigation', 'mg-block-slider' ) }
+								checked={ attributes.thumbsNav }
+								onChange={ ( val ) => setAttributes( { thumbsNav: val } ) }
+							/>
+						</PanelRow>
+						<PanelRow className={ attributes.thumbsNav ? '' : 'hidden' }>
+							<ToggleControl
+								label={ __( 'Auto hide thumbs', 'mg-block-slider' ) }
+								checked={ attributes.hideThumbs }
+								onChange={ ( val ) => setAttributes( { hideThumbs: val } ) }
+							/>
+						</PanelRow>
+					</PanelBody>
+
 					<PanelRow>
 						<ToggleControl
-							label={__( 'Navigation arrows', 'mg-block-slider' )}
-							checked={ attributes.directionNav }
-							onChange={ ( val ) => setAttributes( { directionNav: val } ) }
-						/>
-					</PanelRow>
-					<PanelRow className={attributes.directionNav ? '' : 'hidden'}>
-						<ToggleControl
-							label={__( 'Auto hide arrows', 'mg-block-slider' )}
-							checked={ attributes.hideDirections }
-							onChange={ ( val ) => setAttributes( { hideDirections: val } ) }
-						/>
-					</PanelRow>
-					<PanelRow className={attributes.directionNav ? 'components-panel__row--no-top-margin' : 'hidden'}>
-						<SelectControl
-							label={__( 'Arrows type', 'mg-block-slider' )}
-							value={ attributes.arrowType }
-							options={ [
-								{ label: __( 'Default', 'mg-block-slider' ), value: '' },
-								{ label: __( 'Squares', 'mg-block-slider' ), value: 'squares' },
-								{ label: __( 'Circles', 'mg-block-slider' ), value: 'circles' },
-							] }
-							onChange={ ( val ) => setAttributes( { arrowType: val } ) }
-						/>
-					</PanelRow>
-					<PanelRow>
-						<ToggleControl
-							label={__( 'Pagination dots', 'mg-block-slider' )}
-							checked={ attributes.controlNav }
-							onChange={ ( val ) => setAttributes( { controlNav: val } ) }
-						/>
-					</PanelRow>
-					<PanelRow className={attributes.controlNav ? '' : 'hidden'}>
-						<ToggleControl
-							label={__( 'Auto hide dots', 'mg-block-slider' )}
-							checked={ attributes.hideControls }
-							onChange={ ( val ) => setAttributes( { hideControls: val } ) }
-						/>
-					</PanelRow>
-					<PanelRow className={attributes.controlNav ? 'components-panel__row--no-top-margin' : 'hidden'}>
-						<SelectControl
-							label={__( 'Paginations type', 'mg-block-slider' )}
-							value={ attributes.paginationType }
-							options={ [
-								{ label: __( 'Circles', 'mg-block-slider' ), value: '' },
-								{ label: __( 'Squares', 'mg-block-slider' ), value: 'squares' },
-								{ label: __( 'Circles with background', 'mg-block-slider' ), value: 'block' },
-								{ label: __( 'Squares with background', 'mg-block-slider' ), value: 'squares-block' },
-							] }
-							onChange={ ( val ) => setAttributes( { paginationType: val } ) }
-						/>
-					</PanelRow>
-					<PanelRow>
-						<ToggleControl
-							label={__( 'Thumbnails navigation', 'mg-block-slider' )}
-							checked={ attributes.thumbsNav }
-							onChange={ ( val ) => setAttributes( { thumbsNav: val } ) }
-						/>
-					</PanelRow>
-					<PanelRow className={attributes.thumbsNav ? '' : 'hidden'}>
-						<ToggleControl
-							label={__( 'Auto hide thumbs', 'mg-block-slider' )}
-							checked={ attributes.hideThumbs }
-							onChange={ ( val ) => setAttributes( { hideThumbs: val } ) }
-						/>
-					</PanelRow>
-					<PanelRow>
-						<ToggleControl
-							label={__( 'Swipe navigation', 'mg-block-slider' )}
+							label={ __( 'Swipe navigation', 'mg-block-slider' ) }
 							checked={ attributes.swipeNav }
 							onChange={ ( val ) => setAttributes( { swipeNav: val } ) }
 						/>
 					</PanelRow>
 				</PanelBody>
 
-				<PanelBody title={__( 'Animations', 'mg-block-slider' )} initialOpen={false} className="components-panel__body__mg-block-slider">
+				<PanelBody title={ __( 'Animations', 'mg-block-slider' ) } initialOpen={ false } className="mg-block-slider">
 					<PanelRow>
 						<ToggleControl
-							label={__( 'Auto start animations', 'mg-block-slider' )}
+							label={ __( 'Auto start animations', 'mg-block-slider' ) }
 							checked={ attributes.autoStart }
 							onChange={ ( val ) => setAttributes( { autoStart: val } ) }
 						/>
 					</PanelRow>
 					<PanelRow>
 						<ToggleControl
-							label={__( 'Stop animations on hover', 'mg-block-slider' )}
+							label={ __( 'Stop animations on hover', 'mg-block-slider' ) }
 							checked={ attributes.stopOnHover }
 							onChange={ ( val ) => setAttributes( { stopOnHover: val } ) }
 						/>
 					</PanelRow>
 					<PanelRow>
 						<ToggleControl
-							label={__( 'Vertical animations', 'mg-block-slider' )}
+							label={ __( 'Vertical animations', 'mg-block-slider' ) }
 							checked={ attributes.vertical }
 							onChange={ ( val ) => setAttributes( { vertical: val } ) }
 						/>
 					</PanelRow>
-					<PanelRow className={'components-panel__row--no-top-margin'}>
+					<PanelRow className="components-panel__row--no-top-margin">
 						<SelectControl
-							label={__( 'Animation type', 'mg-block-slider' )}
+							label={ __( 'Animation type', 'mg-block-slider' ) }
 							value={ attributes.animation }
 							options={ [
 								{ label: __( 'Swipe', 'mg-block-slider' ),        value: 'slide' },
@@ -125,9 +161,9 @@ export const controlsSlider = ( props ) => {
 							onChange={ ( val ) => setAttributes( { animation: val } ) }
 						/>
 					</PanelRow>
-					<PanelRow className={'components-panel__row--no-top-margin'}>
+					<PanelRow className="components-panel__row--no-top-margin">
 						<SelectControl
-							label={__( 'Transition type', 'mg-block-slider' )}
+							label={ __( 'Transition type', 'mg-block-slider' ) }
 							value={ attributes.transition }
 							options={ [
 								{ label: 'Linear',      value: 'linear' },
@@ -139,7 +175,7 @@ export const controlsSlider = ( props ) => {
 							] }
 							onChange={ ( val ) => setAttributes( { transition: val } ) }
 						/>
-						<TextControl className={( 'custom' === attributes.transition ) ? 'components-base-control--custom' : 'hidden'}
+						<TextControl className={ ( 'custom' === attributes.transition ) ? 'components-base-control--custom' : 'hidden' }
 							value={ attributes.customTransition }
 							onChange={ ( val ) => setAttributes( { customTransition: val } ) }
 							help={ __( 'Add custom css transitions with steps() or cubic-bezier().', 'mg-block-slider' ) }
@@ -147,7 +183,7 @@ export const controlsSlider = ( props ) => {
 					</PanelRow>
 					<PanelRow>
 						<RangeControl
-							label={__( 'Duration between slides', 'mg-block-slider' )}
+							label={ __( 'Duration between slides', 'mg-block-slider' ) }
 							value={ attributes.duration }
 							onChange={ ( val ) => {
 								setAttributes( { duration: val } );
@@ -162,7 +198,7 @@ export const controlsSlider = ( props ) => {
 					</PanelRow>
 					<PanelRow>
 						<RangeControl
-							label={__( 'Animation speed', 'mg-block-slider' )}
+							label={ __( 'Animation speed', 'mg-block-slider' ) }
 							value={ attributes.speed }
 							onChange={ ( val ) => {
 								setAttributes( { speed: val } );
@@ -173,28 +209,29 @@ export const controlsSlider = ( props ) => {
 							min={ 0.1 }
 							max={ 9.5 }
 							step={ 0.1 }
+							help={ __( 'If you select a value too close to the duration, you may experience problems with overlapping animations.', 'mg-block-slider' ) }
 						/>
 					</PanelRow>
 				</PanelBody>
 
-				<PanelBody title={__( 'Media', 'mg-block-slider' )} initialOpen={false} className="components-panel__body__mg-block-slider">
+				<PanelBody title={ __( 'Media', 'mg-block-slider' ) } initialOpen={ false } className="mg-block-slider">
 					<PanelRow>
 						<ToggleControl
-							label={__( 'Pause content when losing focus', 'mg-block-slider' )}
+							label={ __( 'Pause content when losing focus', 'mg-block-slider' ) }
 							checked={ attributes.pauseUnfocused }
 							onChange={ ( val ) => setAttributes( { pauseUnfocused: val } ) }
 						/>
 					</PanelRow>
 					<PanelRow>
 						<ToggleControl
-							label={__( 'Wait videos to finish', 'mg-block-slider' )}
+							label={ __( 'Wait videos to finish', 'mg-block-slider' ) }
 							checked={ attributes.waitVideo }
 							onChange={ ( val ) => setAttributes( { waitVideo: val } ) }
 						/>
 					</PanelRow>
 				</PanelBody>
 
-				<PanelBody title={__( 'Theme', 'mg-block-slider' )} initialOpen={false} className="components-panel__body__mg-block-slider">
+				<PanelBody title={ __( 'Theme', 'mg-block-slider' ) } initialOpen={ false } className="mg-block-slider">
 					<PanelRow>
 						<SelectControl
 							value={ attributes.theme }
@@ -207,39 +244,28 @@ export const controlsSlider = ( props ) => {
 					</PanelRow>
 					<PanelRow>
 						<ToggleControl
-							label={__( 'Auto minimum height', 'mg-block-slider' )}
+							label={ __( 'Auto minimum height', 'mg-block-slider' ) }
 							checked={ attributes.autoHeight }
 							onChange={ ( val ) => setAttributes( { autoHeight: val } ) }
 						/>
 					</PanelRow>
 				</PanelBody>
 
-				<PanelBody title={__( 'Lightbox (Beta)', 'mg-block-slider' )} initialOpen={false} className="components-panel__body__mg-block-slider" icon="warning">
+				<PanelBody title={ __( 'Lightbox (Beta)', 'mg-block-slider' ) } initialOpen={ false } className="mg-block-slider" icon="warning">
 					<PanelRow>
-						<p>{__( 'These features are in beta and need more testing with different blocks and user customizations. Be careful and let me know of any problem you experience.', 'mg-block-slider' )}</p>
+						<p>{ __( 'These features are in beta and need more testing with different blocks and user customizations. Be careful and let me know of any problem you experience.', 'mg-block-slider' ) }</p>
 					</PanelRow>
 					{/* TODO: Remove beta-testing classes when this is stable and well tested. */}
 					<PanelRow className='beta-testing'>
 						<ToggleControl
-							label={__( 'Open content on a lightbox', 'mg-block-slider' )}
+							label={ __( 'Open content on a lightbox', 'mg-block-slider' ) }
 							checked={ attributes.lightbox }
 							onChange={ ( val ) => setAttributes( { lightbox: val } ) }
 						/>
 					</PanelRow>
-					<PanelRow className={attributes.lightbox ? '' : 'hidden'}>
-						<SelectControl
-							label={__( 'How to open the lightbox', 'mg-block-slider' )}
-							value={ attributes.lightboxOpens }
-							options={ [
-								{ label: __( 'Click on slides', 'mg-block-slider' ), value: 'slide' },
-								{ label: __( 'Add a button', 'mg-block-slider' ),    value: 'button' },
-							] }
-							onChange={ ( val ) => setAttributes( { lightboxOpens: val } ) }
-						/>
-					</PanelRow>
-					<PanelRow className={attributes.lightbox ? 'beta-testing' : 'hidden'}>
+					<PanelRow className={ attributes.lightbox ? 'beta-testing' : 'hidden' }>
 						<ToggleControl
-							label={__( 'Navigation arrows', 'mg-block-slider' )}
+							label={ __( 'Navigation arrows', 'mg-block-slider' ) }
 							checked={ attributes.lightboxArrows }
 							onChange={ ( val ) => {
 								setAttributes( { lightboxArrows: val } );
@@ -249,11 +275,22 @@ export const controlsSlider = ( props ) => {
 							} }
 						/>
 					</PanelRow>
-					<PanelRow className={attributes.lightbox && attributes.lightboxArrows ? 'beta-testing' : 'hidden'}>
+					<PanelRow className={ attributes.lightbox && attributes.lightboxArrows ? 'beta-testing' : 'hidden' }>
 						<ToggleControl
-							label={__( 'Show slides counter', 'mg-block-slider' )}
+							label={ __( 'Show slides counter', 'mg-block-slider' ) }
 							checked={ attributes.lightboxCounter }
 							onChange={ ( val ) => setAttributes( { lightboxCounter: val } ) }
+						/>
+					</PanelRow>
+					<PanelRow className={ attributes.lightbox ? 'components-panel__row--no-top-margin' : 'hidden' }>
+						<SelectControl
+							label={ __( 'How to open the lightbox', 'mg-block-slider' ) }
+							value={ attributes.lightboxOpens }
+							options={ [
+								{ label: __( 'Click on slides', 'mg-block-slider' ), value: 'slide' },
+								{ label: __( 'Add a button', 'mg-block-slider' ),    value: 'button' },
+							] }
+							onChange={ ( val ) => setAttributes( { lightboxOpens: val } ) }
 						/>
 					</PanelRow>
 				</PanelBody>
@@ -270,6 +307,8 @@ export const controlsSlider = ( props ) => {
 							controlNav: false,
 							hideControls: false,
 							thumbsNav: false,
+							thumbsNavFloat: false,
+							thumbsNavFloatPos: 'bottom',
 							hideThumbs: false,
 							autoStart: true,
 							stopOnHover: true,
@@ -278,7 +317,8 @@ export const controlsSlider = ( props ) => {
 							swipeNav: true,
 							animation: 'slide',
 							vertical: false,
-							transition: 'ease',
+							verticalArrows: false,
+							transition: 'linear',
 							customTransition: '',
 							duration: 5.0,
 							speed: 0.5,
@@ -291,7 +331,7 @@ export const controlsSlider = ( props ) => {
 							lightboxArrows: false,
 						} ) }
 						variant="secondary">
-						{__( 'Restore everything to default', 'mg-block-slider' )}
+						{ __( 'Restore everything to default', 'mg-block-slider' ) }
 					</Button>
 				</PanelRow>
 			</InspectorAdvancedControls>

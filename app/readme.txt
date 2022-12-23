@@ -3,7 +3,7 @@ Contributors: gigenam
 Tags: block, editor, slider, slideshow, content, image, video
 Requires at least: 5.9
 Tested up to: 6.1
-Stable tag: 1.2.3
+Stable tag: 1.3.0
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
@@ -98,6 +98,14 @@ No money, no coding? No problem. Please, share, review it and let me know if you
 
 == Changelog ==
 
+= 1.3.0 - 2022-12-23 : =
+* New - Floating position for pagination dots (top | right | bottom | left).
+* New - Control the vertical position for arrows manually.
+* Modify for the vertical animation order. Now the previous slide go up.
+* Fix for the minimum height and recalculate on resize window.
+* Minor changes on the order and look of some controls.
+* Minor changes on default options.
+
 = 1.2.3 - 2022-12-06 : =
 * Quick fix for float numbers on duration and speed.
 
@@ -125,8 +133,5 @@ No money, no coding? No problem. Please, share, review it and let me know if you
 
 = 1.0.1 - 2022-10-27 : =
 * Support for WP 6.1
-
-= 1.0.0 - 2022-10-22 : =
-* Init Version.
 
 == Upgrade Notice ==

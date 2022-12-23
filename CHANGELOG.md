@@ -12,24 +12,33 @@ License URI : https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
 [ + ] Add -- [ - ] Remove -- [ ! ] Fix/Modify.
 
+## 2022-12-23 :
+
+- [+] Floating position for pagination dots (top | right | bottom | left).
+- [+] Control the vertical position for arrows manually.
+- [!] Modify for the vertical animation order. Now the previous slide go up.
+- [!] Fix for the minimum height and recalculate on resize window.
+- [!] Minor changes on the order and look of some controls.
+- [!] Minor changes on default options.
+
 ## 2022-12-06 :
 
-- Quick fix for float numbers on duration and speed on [blocks.json](app/assets/blocks/block.json).
+- [!] Quick fix for float numbers on duration and speed on [blocks.json](app/assets/blocks/block.json).
 
 ## 2022-11-17 :
 
-- Added lightbox support (in beta).
+- [+] Added lightbox support (in beta).
 
 ## 2022-11-03 :
 
-- Changes in dev files and documentation.
+- [!] Changes in dev files and documentation.
 
 ## 2022-11-02 :
 
-- Minor fix on touch scroll.
+- [!] Minor fix on touch scroll.
 
 ## 2022-11-01 :
 
-- Improvements in optimization for animations on lost focus.
+- [!] Improvements in optimization for animations on lost focus.
 
 ## 2022-10-19 : Init version.

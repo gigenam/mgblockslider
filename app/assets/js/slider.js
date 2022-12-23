@@ -6,65 +6,71 @@
 
 class MGBlockSlider {
 	constructor( {
-		selector        = '.wp-block-mgblockslider-slider',
-		theme           = 'light',
-		directionNav    = true,
-		hideDirections  = true,
-		controlNav      = false,
-		hideControls    = false,
-		thumbsNav       = false,
-		hideThumbs      = false,
-		autoStart       = true,
-		stopOnHover     = true,
-		pauseUnfocused  = true,
-		waitVideo       = false,
-		swipeNav        = true,
-		animation       = 'slide',
-		vertical        = false,
-		transition      = 'ease',
-		duration        = 5.0,
-		speed           = 0.5,
-		arrowType       = '',
-		paginationType  = '',
-		autoHeight      = true,
-		lightbox        = false,
-		lightboxOpens   = 'slide',
-		lightboxArrows  = false,
-		lightboxCounter = false,
+		selector          = '.wp-block-mgblockslider-slider',
+		theme             = 'light',
+		directionNav      = true,
+		hideDirections    = true,
+		controlNav        = false,
+		hideControls      = false,
+		thumbsNav         = false,
+		thumbsNavFloat    = false,
+		thumbsNavFloatPos = false,
+		hideThumbs        = false,
+		autoStart         = true,
+		stopOnHover       = true,
+		pauseUnfocused    = true,
+		waitVideo         = false,
+		swipeNav          = true,
+		animation         = 'slide',
+		vertical          = false,
+		verticalArrows    = false,
+		transition        = 'linear',
+		duration          = 5.0,
+		speed             = 0.5,
+		arrowType         = '',
+		paginationType    = '',
+		autoHeight        = true,
+		lightbox          = false,
+		lightboxOpens     = 'slide',
+		lightboxArrows    = false,
+		lightboxCounter   = false,
 	} = {} ) {
-		this.selector        = selector;
-		this.theme           = theme;
-		this.directionNav    = directionNav;
-		this.hideDirections  = hideDirections;
-		this.controlNav      = controlNav;
-		this.hideControls    = hideControls;
-		this.thumbsNav       = thumbsNav;
-		this.hideThumbs      = hideThumbs;
-		this.autoStart       = autoStart;
-		this.stopOnHover     = stopOnHover;
-		this.pauseUnfocused  = pauseUnfocused;
-		this.waitVideo       = waitVideo;
-		this.swipeNav        = swipeNav;
-		this.animation       = animation;
-		this.vertical        = vertical;
-		this.transition      = transition;
-		this.duration        = duration * 1000;
-		this.speed           = speed * 1000;
-		this.arrowType       = arrowType;
-		this.paginationType  = paginationType;
-		this.autoHeight      = autoHeight;
-		this.lightbox        = lightbox;
-		this.lightboxOpens   = lightboxOpens;
-		this.lightboxArrows  = lightboxArrows;
-		this.lightboxCounter = lightboxCounter;
-		this.current         = 0;
-		this.loadState       = false;
-		this.setAnimation    = false;
-		this.triggerObserver = false;
-		this.slider          = document.querySelector( `${ this.selector } .wp-block-mg-block-slider-slider__container` );
-		this.slidesContainer = document.querySelector( `${ this.selector } .wp-block-mg-block-slider-slides__container` );
-		this.slides          = document.querySelectorAll( `${ this.selector } .wp-block-mg-block-slider-slide` );
-		this.i18n            = mgblocksliderI18n;
+		this.selector          = selector;
+		this.theme             = theme;
+		this.directionNav      = directionNav;
+		this.hideDirections    = hideDirections;
+		this.controlNav        = controlNav;
+		this.hideControls      = hideControls;
+		this.thumbsNav         = thumbsNav;
+		this.thumbsNavFloat    = thumbsNavFloat;
+		this.thumbsNavFloatPos = thumbsNavFloatPos;
+		this.hideThumbs        = hideThumbs;
+		this.autoStart         = autoStart;
+		this.stopOnHover       = stopOnHover;
+		this.pauseUnfocused    = pauseUnfocused;
+		this.waitVideo         = waitVideo;
+		this.swipeNav          = swipeNav;
+		this.animation         = animation;
+		this.vertical          = vertical;
+		this.verticalArrows    = verticalArrows;
+		this.transition        = transition;
+		this.duration          = duration * 1000;
+		this.speed             = speed * 1000;
+		this.arrowType         = arrowType;
+		this.paginationType    = paginationType;
+		this.autoHeight        = autoHeight;
+		this.lightbox          = lightbox;
+		this.lightboxOpens     = lightboxOpens;
+		this.lightboxArrows    = lightboxArrows;
+		this.lightboxCounter   = lightboxCounter;
+		this.current           = 0;
+		this.loadState         = false;
+		this.setAnimation      = false;
+		this.triggerObserver   = false;
+		this.slider            = document.querySelector( `${ this.selector } .wp-block-mg-block-slider-slider__container` );
+		this.slidesContainer   = document.querySelector( `${ this.selector } .wp-block-mg-block-slider-slides__container` );
+		this.slides            = document.querySelectorAll( `${ this.selector } .wp-block-mg-block-slider-slide` );
+		this.i18n              = mgblocksliderI18n;
 
 		if ( this.slider ) {
 			document.addEventListener( 'DOMContentLoaded', () => this.initSlider() );
@@ -128,7 +134,8 @@ class MGBlockSlider {
 	}
 
 	/**
-	 * Calculate the max height of all slides
+	 * Calculate the max height of all slides and set to the container for
+	 * auto-height.
 	 */
 	calcMinHeight() {
 		this.minHeight = this.slides[ this.current ].getBoundingClientRect().height;
@@ -142,7 +149,7 @@ class MGBlockSlider {
 					window.resizedFinished = setTimeout( () => {
 						this.minHeight = Math.floor( slide.getBoundingClientRect().height );
 						this.slidesContainer.style.height = `${ this.minHeight }px`;
-					}, 150 );
+					}, 100 );
 				} );
 			}
 			this.slidesContainer.style.height = `${ this.minHeight }px`;
@@ -169,6 +176,10 @@ class MGBlockSlider {
 
 			if ( '' !== this.arrowType ) {
 				directionNavigation.classList.add( `wp-block-mg-block-slider-slider__control--${ this.arrowType }` );
+			}
+
+			if ( this.verticalArrows ) {
+				directionNavigation.classList.add( 'wp-block-mg-block-slider-slider__control--vertical' );
 			}
 
 			this.slider.appendChild( directionNavigation );
@@ -220,6 +231,13 @@ class MGBlockSlider {
 
 			if ( '' !== this.paginationType ) {
 				controlNavigation.classList.add( `wp-block-mg-block-slider-slider__control--${ this.paginationType }` );
+			}
+
+			if ( this.thumbsNavFloat ) {
+				controlNavigation.classList.add(
+					'is-floating',
+					`wp-block-mg-block-slider-slider__control--floating-${ this.thumbsNavFloatPos }`,
+				);
 			}
 
 			this.slider.insertAdjacentElement( 'afterend', controlNavigation );
@@ -435,7 +453,6 @@ class MGBlockSlider {
 		this.slider.parentElement.addEventListener( 'touchstart', ( e ) => {
 			// Stop animation to prevent overlapping.
 			clearInterval( this.setAnimation );
-
 			this.slider.classList.add( 'dragging' );
 			this.slidesContainer.style.transitionDuration = '0ms';
 			startTouch = e.touches[ 0 ].clientX - this.slides[ this.current ].clientLeft;

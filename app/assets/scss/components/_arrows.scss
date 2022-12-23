@@ -94,8 +94,8 @@
 // Vertical controls.
 // If you select the vertical animation, the controls will take this styles.
 // ----------------------------------------------
-.wp-block-mg-block-slider-slider__container.is-vertical .wp-block-mg-block-slider-slider__control {
-	&__arrow {
+.wp-block-mg-block-slider-slider__control--vertical {
+	.wp-block-mg-block-slider-slider__control__arrow {
 		&--prev,
 		&--next {
 			top: 0;
@@ -115,7 +115,7 @@
 		}
 	}
 
-	&--squares {
+	&.wp-block-mg-block-slider-slider__control--squares {
 		.wp-block-mg-block-slider-slider__control__arrow--prev {
 			top: -11px;
 		}
@@ -124,7 +124,7 @@
 		}
 	}
 
-	&--circles {
+	&.wp-block-mg-block-slider-slider__control--circles {
 		.wp-block-mg-block-slider-slider__control__arrow--prev {
 			top: 6px;
 		}

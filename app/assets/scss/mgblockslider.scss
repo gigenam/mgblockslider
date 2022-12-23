@@ -137,40 +137,51 @@
 //
 // Sidebar options
 // ----------------------------------------------
-.components-panel__body__mg-block-slider {
-	.hidden {
-		display: none;
-	}
-
-	.components-panel__row {
-		flex-wrap: wrap;
-
-		&:first-of-type {
-			margin-top: 1.25em;
+.mg-block-slider {
+	&.components-panel__body {
+		.hidden {
+			display: none;
 		}
 
-		&--no-top-margin {
-			margin-top: -0.5em;
-		}
-	}
-
-	.components-flex,
-	.components-base-control {
-		width: 100%;
-	}
-
-	.components-base-control {
-		&:first-of-type:where(:not(.components-range-control)) {
-			margin-bottom: 1em;
+		// Inner groups.
+		.components-panel__body__inner {
+			padding: 0;
+			margin-bottom: 2em;
+			border-top: none;
+			border-bottom: 1px solid #e0e0e0;
 		}
 
-		&--custom {
-			margin-top: -1.5em;
+		// Rows.
+		.components-panel__row {
+			flex-wrap: wrap;
+
+			&:first-of-type {
+				margin-top: 1.25em;
+			}
+
+			&--no-top-margin {
+				margin-top: -0.5em;
+			}
 		}
 
-		.components-text-control__input {
-			margin-right: 0;
-			margin-left: 0;
+		.components-flex,
+		.components-base-control {
+			width: 100%;
+		}
+
+		.components-base-control {
+			&:first-of-type:where(:not(.components-range-control)) {
+				margin-bottom: 1em;
+			}
+
+			&--custom {
+				margin-top: -1.5em;
+			}
+
+			.components-text-control__input {
+				margin-right: 0;
+				margin-left: 0;
+			}
 		}
 	}
 }
@@ -196,7 +207,7 @@
 	}
 }
 
-.components-panel__body__mg-block-slider,
+.mg-block-slider.components-panel__body,
 .block-editor-block-inspector__advanced {
 	.components-base-control__label,
 	.components-input-control__label {

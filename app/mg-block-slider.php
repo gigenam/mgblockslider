@@ -13,7 +13,7 @@
  * Author: Marcos Gigena
  * Author URI: https://github.com/gigenam
  * Description: A simple slideshow block to use it in any block editor with any type of content. Post, pages, widgets. Anything and anywhere where you want.
- * Version: 1.2.3
+ * Version: 1.3.0
  * Requires at least: 5.9
  * Tested up to: 6.1
  * Requires PHP: 7.0
@@ -181,31 +181,34 @@ if ( ! class_exists( 'MGBlockSlider' ) ) {
 				$slider_id          = strtolower( ! empty( $default_configs['customId'] ) ? str_replace( ' ', '-', $default_configs['customId'] ) : $default_configs['id'] );
 				$slider_id_formated = str_replace( '-', '_', $slider_id );
 				$init_slider        = "var {$slider_id_formated} = new MGBlockSlider({
-					selector        : '.wp-block-mg-block-slider-slider#{$slider_id}',
-					theme           : '{$default_configs['theme']}',
-					directionNav    : {$default_configs['directionNav']},
-					hideDirections  : {$default_configs['hideDirections']},
-					controlNav      : {$default_configs['controlNav']},
-					hideControls    : {$default_configs['hideControls']},
-					thumbsNav       : {$default_configs['thumbsNav']},
-					hideThumbs      : {$default_configs['hideThumbs']},
-					autoStart       : {$default_configs['autoStart']},
-					stopOnHover     : {$default_configs['stopOnHover']},
-					pauseUnfocused  : {$default_configs['pauseUnfocused']},
-					waitVideo       : {$default_configs['waitVideo']},
-					swipeNav        : {$default_configs['swipeNav']},
-					animation       : '{$default_configs['animation']}',
-					vertical        : {$default_configs['vertical']},
-					transition      : '{$default_configs['transition']}',
-					duration        : {$default_configs['duration']},
-					speed           : {$default_configs['speed']},
-					arrowType       : '{$default_configs['arrowType']}',
-					paginationType  : '{$default_configs['paginationType']}',
-					autoHeight      : {$default_configs['autoHeight']},
-					lightbox        : {$default_configs['lightbox']},
-					lightboxOpens   : '{$default_configs['lightboxOpens']}',
-					lightboxCounter : {$default_configs['lightboxCounter']},
-					lightboxArrows  : {$default_configs['lightboxArrows']}
+					selector          : '.wp-block-mg-block-slider-slider#{$slider_id}',
+					theme             : '{$default_configs['theme']}',
+					directionNav      : {$default_configs['directionNav']},
+					hideDirections    : {$default_configs['hideDirections']},
+					controlNav        : {$default_configs['controlNav']},
+					hideControls      : {$default_configs['hideControls']},
+					thumbsNav         : {$default_configs['thumbsNav']},
+					thumbsNavFloat    : {$default_configs['thumbsNavFloat']},
+					thumbsNavFloatPos : '{$default_configs['thumbsNavFloatPos']}',
+					hideThumbs        : {$default_configs['hideThumbs']},
+					autoStart         : {$default_configs['autoStart']},
+					stopOnHover       : {$default_configs['stopOnHover']},
+					pauseUnfocused    : {$default_configs['pauseUnfocused']},
+					waitVideo         : {$default_configs['waitVideo']},
+					swipeNav          : {$default_configs['swipeNav']},
+					animation         : '{$default_configs['animation']}',
+					vertical          : {$default_configs['vertical']},
+					verticalArrows    : {$default_configs['verticalArrows']},
+					transition        : '{$default_configs['transition']}',
+					duration          : {$default_configs['duration']},
+					speed             : {$default_configs['speed']},
+					arrowType         : '{$default_configs['arrowType']}',
+					paginationType    : '{$default_configs['paginationType']}',
+					autoHeight        : {$default_configs['autoHeight']},
+					lightbox          : {$default_configs['lightbox']},
+					lightboxOpens     : '{$default_configs['lightboxOpens']}',
+					lightboxCounter   : {$default_configs['lightboxCounter']},
+					lightboxArrows    : {$default_configs['lightboxArrows']}
 				});";
 				// Compress output.
 				self::$render_slider .= preg_replace( '/\s+/', ' ', $init_slider );
