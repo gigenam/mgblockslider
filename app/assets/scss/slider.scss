@@ -101,8 +101,7 @@
 		width: 100%;
 		height: 100%;
 		z-index: calc(var(--slider--z-index--controls) + 10);
-		background-color: var(--slider--items--primary);
-		opacity: 0.95;
+		background-color: var(--slider--items--background);
 
 		// Loading animation.
 		p {

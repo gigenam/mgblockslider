@@ -3,17 +3,22 @@ Contributors: gigenam
 Tags: block, editor, slider, slideshow, content, image, video
 Requires at least: 5.9
 Tested up to: 6.1
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
 == Changelog ==
 
+= 1.3.1 - 2022-12-26 : =
+* Changes on pagination colors depending the theme and options selected.
+* Added a border to the SVGs so they can be seen on backgrounds of the same color.
+* Minor fix for lightbox.
+
 = 1.3.0 - 2022-12-23 : =
 * New - Floating position for pagination dots (top | right | bottom | left).
 * New - Control the vertical position for arrows manually.
-* Modify for the vertical animation order. Now the previous slide go up.
+* Modify the vertical animation order. Now the previous slide go up.
 * Fix for the minimum height and recalculate on resize window.
 * Minor changes on the order and look of some controls.
 * Minor changes on default options.

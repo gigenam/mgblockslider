@@ -73,13 +73,6 @@
 }
 
 //
-// Minimum height for all slides
-// ----------------------------------------------
-&.auto-height .wp-block-mg-block-slider-slide > * {
-	height: 100%;
-}
-
-//
 // Slides animations
 // ----------------------------------------------
 .wp-block-mg-block-slider-slider__container {
@@ -117,7 +110,7 @@
 	// Cards.
 	&.is-cards .wp-block-mg-block-slider-slide {
 		&:not(.wp-block-mg-block-slider-slide__current, .wp-block-mg-block-slider-slide__next) {
-			z-index: -1000;
+			z-index: -100;
 			overflow: hidden;
 			border-radius: 8px;
 			transform: scale(0.96);

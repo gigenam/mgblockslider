@@ -323,7 +323,7 @@ export const controlsSlider = ( props ) => {
 							duration: 5.0,
 							speed: 0.5,
 							arrowType: '',
-							paginationType: 'block',
+							paginationType: '',
 							autoHeight: false,
 							lightbox: false,
 							lightboxOpens: 'slide',

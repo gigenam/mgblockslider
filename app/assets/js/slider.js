@@ -77,6 +77,9 @@ class MGBlockSlider {
 			window.addEventListener( 'load', () => {
 				this.loadState = true;
 				this.slider.parentElement.removeChild( this.loadingSpinner );
+				if ( this.autoStart ) {
+					this.startAnimation();
+				}
 			} );
 		}
 	}
@@ -116,10 +119,6 @@ class MGBlockSlider {
 		if ( this.swipeNav ) {
 			this.swipeEvents();
 			this.keyEvents();
-		}
-
-		if ( this.autoStart ) {
-			this.startAnimation();
 		}
 
 		if ( this.autoHeight ) {
@@ -691,7 +690,7 @@ class MGBlockSlider {
 				slide.setAttribute( 'data-openlightbox', 'true' );
 				slide.addEventListener( 'click', () => {
 					document.body.style.overflow = 'hidden';
-					lightboxContainer.style.transform = `translateX(-${ this.current * 100 }vw)`;
+					lightboxContainer.style.transform = `translateX(-${ this.current * 100 }%)`;
 					lightbox.classList.add( 'wp-block-mg-block-slider-slider__lightbox--is-open' );
 					slideContent.classList.add( 'wp-block-mg-block-slider-slide__current' );
 
@@ -716,7 +715,7 @@ class MGBlockSlider {
 				this.current = this.slides.length - 1;
 			}
 			this.changeSlide( 'prev' );
-			lightboxContainer.style.transform = `translate3d(-${ this.current * 100 }vw, 0, 0)`;
+			lightboxContainer.style.transform = `translateX(-${ this.current * 100 }%)`;
 
 			if ( this.lightboxCounter ) {
 				slidesCounter.innerHTML = `${ this.current + 1 }/${ this.slides.length }`;
@@ -727,14 +726,14 @@ class MGBlockSlider {
 		lightboxNext.addEventListener( 'click', () => {
 			this.current = ( this.current + 1 ) % this.slides.length;
 			this.changeSlide( 'next' );
-			lightboxContainer.style.transform = `translate3d(-${ this.current * 100 }vw, 0, 0)`;
+			lightboxContainer.style.transform = `translateX(-${ this.current * 100 }%)`;
 
 			if ( this.lightboxCounter ) {
 				slidesCounter.innerHTML = `${ this.current + 1 }/${ this.slides.length }`;
 			}
 		} );
 
-		lightboxContainer.style.width = `${ this.slides.length * 100 }vw`;
+		lightboxContainer.style.width = `${ this.slides.length * 100 }%`;
 		this.slider.parentElement.appendChild( lightbox );
 	}
 
